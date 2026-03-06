@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Docs — Fight Farm</title>
+    <meta name="description" content="Fight Farm documentation. How the combat sports collectible economy works — NFTs, tokens, Arena, burn mechanics, and more.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🥊</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Oswald:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/main.css">
+    <style>
+        .docs-page { max-width: 760px; margin: 0 auto; padding: 7rem 2rem 4rem; }
+        .docs-header { text-align: center; margin-bottom: 3rem; }
+        .docs-header h1 {
+            font-family: var(--font-display);
+            font-size: 2.8rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+        .docs-header h1 span { color: var(--red-bright); }
+        .docs-header p { font-size: 1rem; color: var(--text-secondary); max-width: 500px; margin: 0 auto; }
+
+        /* ── TOC ── */
+        .docs-toc {
+            padding: 1.5rem;
+            border-radius: var(--radius-md);
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            margin-bottom: 3rem;
+        }
+        .docs-toc-title {
+            font-family: var(--font-display);
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--text-dim);
+            margin-bottom: 0.75rem;
+        }
+        .docs-toc-list { list-style: none; }
+        .docs-toc-list li { padding: 0.3em 0; }
+        .docs-toc-list a {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            transition: color 0.2s;
+        }
+        .docs-toc-list a:hover { color: var(--red-bright); }
+        .docs-toc-list a::before {
+            content: '# ';
+            color: var(--text-dim);
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+        }
+
+        /* ── Content ── */
+        .docs-section { margin-bottom: 3rem; }
+        .docs-section-label {
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--red-bright);
+            margin-bottom: 0.5rem;
+        }
+        .docs-section h2 {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+        .docs-section h3 {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .docs-section p {
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+        .docs-section strong { color: var(--text-primary); }
+        .docs-section ul {
+            list-style: none;
+            margin-bottom: 1rem;
+        }
+        .docs-section ul li {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            padding: 0.25em 0 0.25em 1.4em;
+            position: relative;
+        }
+        .docs-section ul li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.7em;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: var(--red);
+        }
+
+        /* ── Info Boxes ── */
+        .docs-box {
+            padding: 1.25rem;
+            border-radius: var(--radius-md);
+            margin: 1.5rem 0;
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+        .docs-box--key {
+            background: var(--red-dim);
+            border: 1px solid var(--border-red);
+            color: var(--text-secondary);
+        }
+        .docs-box--key strong { color: var(--red-bright); }
+        .docs-box--gold {
+            background: var(--gold-dim);
+            border: 1px solid hsla(42, 85%, 55%, 0.15);
+            color: var(--text-secondary);
+        }
+        .docs-box--gold strong { color: var(--gold); }
+
+        /* ── Table ── */
+        .docs-table-wrap { overflow-x: auto; margin: 1rem 0 1.5rem; }
+        .docs-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.82rem;
+        }
+        .docs-table th {
+            font-family: var(--font-mono);
+            font-size: 0.68rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            text-align: left;
+            padding: 0.75em 1em;
+            background: var(--bg-card);
+            color: var(--text-dim);
+            border-bottom: 1px solid var(--border-subtle);
+        }
+        .docs-table td {
+            padding: 0.65em 1em;
+            color: var(--text-secondary);
+            border-bottom: 1px solid var(--border-subtle);
+        }
+        .docs-table td strong { color: var(--text-primary); }
+
+        .docs-divider {
+            border: none;
+            border-top: 1px solid var(--border-subtle);
+            margin: 2rem 0;
+        }
+
+        @media (max-width: 640px) {
+            .docs-header h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="nav">
+        <a href="/" class="nav-brand"><span>Fight</span> Farm</a>
+        <div class="nav-links">
+            <a href="/event" class="nav-link">Event</a>
+            <a href="/mint" class="nav-link">Mint</a>
+            <a href="/arena" class="nav-link">Arena</a>
+            <a href="/collection" class="nav-link">Collection</a>
+            <a href="/docs" class="nav-link">Docs</a>
+        </div>
+    </nav>
+
+    <div class="docs-page">
+        <div class="docs-header">
+            <h1>Fight Farm <span>Docs</span></h1>
+            <p>How the combat sports collectible economy works.</p>
+        </div>
+
+        <div class="docs-toc">
+            <div class="docs-toc-title">Contents</div>
+            <ul class="docs-toc-list">
+                <li><a href="#overview">Overview</a></li>
+                <li><a href="#nft-tiers">NFT Tiers</a></li>
+                <li><a href="#versioning">Versioning System</a></li>
+                <li><a href="#tokens">Tokens ($FIGHT & $ARENA)</a></li>
+                <li><a href="#arena">The Arena</a></li>
+                <li><a href="#lgnd">Legendary Upgrade (Burn)</a></li>
+                <li><a href="#fees">Fee Structure</a></li>
+                <li><a href="#staking">Staking</a></li>
+                <li><a href="#trading">Trading</a></li>
+            </ul>
+        </div>
+
+        <!-- ═══ Overview ═══ -->
+        <div class="docs-section" id="overview">
+            <div class="docs-section-label">01</div>
+            <h2>Overview</h2>
+            <p>Fight Farm is a <strong>combat sports collectible economy</strong> built on Base (Ethereum L2). Every real UFC event generates new fighter NFTs. Players collect versioned fighters, compete in prediction markets, burn complete sets to forge Legendaries, and govern the ecosystem through token ownership.</p>
+            <div class="docs-box docs-box--key">
+                <strong>Core thesis:</strong> Fight Farm is a collectible sports economy where NFTs are the assets, $FIGHT is the fuel, and $ARENA represents ownership of the arena itself.
+            </div>
+            <p>The system creates a <strong>self-reinforcing flywheel</strong>: players buy NFTs, playing requires $FIGHT, fees burn $FIGHT and fund rewards, ecosystem value increases, $ARENA governance becomes more valuable, cycle repeats.</p>
+        </div>
+
+        <hr class="docs-divider">
+
+        <!-- ═══ NFT Tiers ═══ -->
+        <div class="docs-section" id="nft-tiers">
+            <div class="docs-section-label">02</div>
+            <h2>NFT Tiers</h2>
+            <p>Fighter NFTs follow the <strong>ERC-721</strong> standard on Base. There are four tiers, each serving different player types.</p>
+            <div class="docs-table-wrap">
+                <table class="docs-table">
+                    <thead>
+                        <tr>
+                            <th>Tier</th>
+                            <th>Supply</th>
+                            <th>Price</th>
+                            <th>Currency</th>
+                            <th>Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>SE</strong> (Standard)</td>
+                            <td>Uncapped</td>
+                            <td>$25</td>
+                            <td>ETH/USDC or $FIGHT</td>
+                            <td>10-15% discount with $FIGHT</td>
+                        </tr>
+                        <tr>
+                            <td><strong>LE</strong> (Limited)</td>
+                            <td>Max 5 / fighter</td>
+                            <td>$50-75</td>
+                            <td>$FIGHT only</td>
+                            <td>Random launchpad, free SE airdrop</td>
+                        </tr>
+                        <tr>
+                            <td><strong>FE</strong> (First Edition)</td>
+                            <td>1 of 1</td>
+                            <td>$200+ bid</td>
+                            <td>$ARENA only</td>
+                            <td>Auction, free SE airdrop</td>
+                        </tr>
+                        <tr>
+                            <td><strong>LGND</strong> (Legendary)</td>
+                            <td>Burn-limited</td>
+                            <td>Burn all versions</td>
+                            <td>+ $FIGHT fee</td>
+                            <td>Capped by scarcest version</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <hr class="docs-divider">
+
+        <!-- ═══ Versioning ═══ -->
+        <div class="docs-section" id="versioning">
+            <div class="docs-section-label">03</div>
+            <h2>Versioning System</h2>
+            <p>Every fighter receives a <strong>new version number</strong> each time they appear on a UFC card. Version 1 is their first Fight Farm appearance, incrementing by +1 per event. Versions are immutable once committed.</p>
+            <p>This creates a growing collection per fighter over their career. A fighter who has appeared at 5 UFC events has 5 versions. To forge their Legendary, you need <strong>one SE from every version</strong>.</p>
+            <div class="docs-box docs-box--gold">
+                <strong>The Bottleneck:</strong> The scarcest version of any fighter caps how many LGNDs can ever exist. When it reaches zero supply, no more Legendaries can be forged. Ever.
+            </div>
+        </div>
+
+        <hr class="docs-divider">
+
+        <!-- ═══ Tokens ═══ -->
+        <div class="docs-section" id="tokens">
+            <div class="docs-section-label">04</div>
+            <h2>Tokens</h2>
+
+            <h3>$FIGHT — Utility / Fuel</h3>
+            <p>The transactional engine of Fight Farm. Every player action consumes $FIGHT. Fees are split between <strong>permanent burns</strong> (deflationary) and <strong>recycled rewards</strong> (back to stakers).</p>
+            <ul>
+                <li>10-15% discount on SE purchases</li>
+                <li>Required for LE Launchpad purchases</li>
+                <li>LGND upgrade fee (100% burn)</li>
+                <li>Arena entry and predictions</li>
+                <li>Escrow trade fees</li>
+            </ul>
+
+            <h3>$ARENA — Governance / Ownership</h3>
+            <p>Ownership of the Fight Farm ecosystem. $ARENA holders control treasury decisions, reward distribution rules, and the platform's future direction.</p>
+            <ul>
+                <li>Required for FE auctions (1-of-1s)</li>
+                <li>Treasury governance via Snapshot + Safe</li>
+                <li>Reward distribution rules</li>
+                <li>Ecosystem upgrade proposals</li>
+                <li>Future revenue share</li>
+            </ul>
+        </div>
+
+        <hr class="docs-divider">
+
+        <!-- ═══ Arena ═══ -->
+        <div class="docs-section" id="arena">
+            <div class="docs-section-label">05</div>
+            <h2>The Arena</h2>
+            <p>The Arena creates <strong>on-chain prediction pools</strong> for every UFC bout. Players lock fighters, predict outcomes, and claim rewards when fights resolve.</p>
+            <ul>
+                <li><strong>Fight Pools:</strong> Tied to real bout slots (not specific fighters). Pools survive fighter replacements.</li>
+                <li><strong>LGND Slots:</strong> Legendary holders compete for prestige positions with collateral locks and steal mechanics.</li>
+                <li><strong>State Machine:</strong> Scheduled &rarr; Locked &rarr; Resolved &rarr; Claimable</li>
+                <li><strong>3% fee:</strong> 2% burned, 1% recycled to rewards</li>
+            </ul>
+            <p>Pools are keyed by stable bout identifiers (e.g., <strong>UFC326_BOUT04</strong>), not fighter names. If a fighter gets replaced, the pool updates &mdash; it doesn't cancel.</p>
+        </div>
+
+        <hr class="docs-divider">
+
+        <!-- ═══ LGND ═══ -->
+        <div class="docs-section" id="lgnd">
+            <div class="docs-section-label">06</div>
+            <h2>Legendary Upgrade</h2>
+            <p>The LGND upgrade is the core burn mechanic. To forge a Legendary:</p>
+            <ul>
+                <li>Own <strong>one SE of every version</strong> of that fighter</li>
+                <li>Burn all of them in a single transaction</li>
+                <li>Pay a <strong>$FIGHT upgrade fee</strong> ($75-150 equivalent, 100% burned)</li>
+                <li>Receive an irreplaceable LGND NFT</li>
+            </ul>
+            <div class="docs-box docs-box--key">
+                <strong>Version Bottleneck Ratchet:</strong> Each LGND upgrade burns one SE from every version. The scarcest version hits zero first. At that point, LGND supply is permanently capped. The formula: <code>LGND_max = min(Float_v1, Float_v2, ..., Float_vN)</code>
+            </div>
+            <p>This creates a <strong>deflationary spiral</strong>: early LGNDs are cheap, but as bottleneck versions get burned, remaining upgrade paths become exponentially more valuable.</p>
+        </div>
+
+        <hr class="docs-divider">
+
+        <!-- ═══ Fee Structure ═══ -->
+        <div class="docs-section" id="fees">
+            <div class="docs-section-label">07</div>
+            <h2>Fee Structure</h2>
+            <p>All fees route through the <strong>FeeRouter</strong> contract, which splits between burn and recycle based on the module type.</p>
+            <div class="docs-table-wrap">
+                <table class="docs-table">
+                    <thead>
+                        <tr>
+                            <th>Module</th>
+                            <th>Fee</th>
+                            <th>Burn</th>
+                            <th>Recycle</th>
+                            <th>Token</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>SE Mint ($FIGHT)</td><td>3%</td><td>1.8%</td><td>1.2%</td><td>$FIGHT</td></tr>
+                        <tr><td>SE Mint (ETH/USDC)</td><td>0%</td><td>-</td><td>-</td><td>ETH/USDC</td></tr>
+                        <tr><td>LE Launchpad</td><td>5%</td><td>3%</td><td>2%</td><td>$FIGHT</td></tr>
+                        <tr><td>FE Auction</td><td>8%</td><td>5%</td><td>3%</td><td>$ARENA</td></tr>
+                        <tr><td>LGND Upgrade</td><td>10%</td><td>10%</td><td>0%</td><td>$FIGHT</td></tr>
+                        <tr><td>Arena Predictions</td><td>3%</td><td>2%</td><td>1%</td><td>$FIGHT</td></tr>
+                        <tr><td>Escrow Trade</td><td>Fixed</td><td>60%</td><td>40%</td><td>$FIGHT</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <hr class="docs-divider">
+
+        <!-- ═══ Staking ═══ -->
+        <div class="docs-section" id="staking">
+            <div class="docs-section-label">08</div>
+            <h2>Staking</h2>
+            <p>The <strong>EmissionsVault</strong> lets players stake fighter NFTs to earn weekly rewards. Staked NFTs are held in custody by the contract.</p>
+            <ul>
+                <li>Fixed weekly emissions distributed pro-rata to stakers</li>
+                <li>Cooldown period on unstake to prevent gaming</li>
+                <li>Staked NFTs cannot be traded, burned, or used in Arena simultaneously</li>
+                <li>ClaimRouter enables one-click claim from all sources (vault + rewards + arena)</li>
+            </ul>
+        </div>
+
+        <hr class="docs-divider">
+
+        <!-- ═══ Trading ═══ -->
+        <div class="docs-section" id="trading">
+            <div class="docs-section-label">09</div>
+            <h2>Trading</h2>
+            <p>Fight Farm NFTs are tradable on <strong>OpenSea, Blur, Magic Eden, and Zora</strong> automatically via ERC-721 compatibility.</p>
+            <p>Fight Farm also provides a native <strong>EscrowTrade</strong> system for direct NFT-for-NFT swaps:</p>
+            <ul>
+                <li>NFT-for-NFT only (no token-for-NFT)</li>
+                <li>Escrow deposit with configurable expiry</li>
+                <li>Bundle support (trade multiple NFTs at once)</li>
+                <li>$FIGHT fee routed through FeeRouter</li>
+            </ul>
+            <p>This creates a barter economy where players can swap bottleneck versions directly without needing to sell and rebuy.</p>
+        </div>
+
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2026 Fight Farm. Built on Base.</p>
+    </footer>
+</body>
+</html>

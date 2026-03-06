@@ -1,5 +1,9 @@
 {
     "rewrites": [
-        { "source": "/(.*)", "destination": "/index.html" }
+        { "source": "/event", "destination": "/event.html" },
+        { "source": "/mint", "destination": "/mint.html" },
+        { "source": "/arena", "destination": "/arena.html" },
+        { "source": "/collection", "destination": "/collection.html" },
+        { "source": "/docs", "destination": "/docs.html" }
     ]
 }

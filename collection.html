@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collection — Fight Farm</title>
+    <meta name="description" content="Your Fight Farm collection. View owned fighter NFTs, track version progress, and forge Legendaries.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🥊</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Oswald:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/main.css">
+    <style>
+        .collection-page { max-width: 960px; margin: 0 auto; padding: 7rem 2rem 4rem; }
+        .collection-header { text-align: center; margin-bottom: 3rem; }
+        .collection-header h1 {
+            font-family: var(--font-display);
+            font-size: 2.8rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+        .collection-header h1 span { color: var(--red-bright); }
+        .collection-header p { font-size: 1rem; color: var(--text-secondary); max-width: 480px; margin: 0 auto; }
+
+        /* ── Connect Gate ── */
+        .connect-gate {
+            text-align: center;
+            padding: 4rem 2rem;
+            border-radius: var(--radius-lg);
+            border: 1px dashed var(--border-subtle);
+            background: var(--bg-card);
+        }
+        .connect-gate-icon { font-size: 3rem; margin-bottom: 1rem; display: block; }
+        .connect-gate h3 {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+        .connect-gate p {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ── Stats Row ── */
+        .collection-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+        }
+        .coll-stat {
+            padding: 1.25rem;
+            border-radius: var(--radius-md);
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            text-align: center;
+        }
+        .coll-stat-value {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            font-weight: 800;
+        }
+        .coll-stat-value--red { color: var(--red-bright); }
+        .coll-stat-value--gold { color: var(--gold); }
+        .coll-stat-value--green { color: var(--fight-green); }
+        .coll-stat-value--blue { color: var(--arena-blue); }
+        .coll-stat-label {
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--text-dim);
+            margin-top: 0.2rem;
+        }
+
+        /* ── Fighter Collection Cards ── */
+        .fighters-section-title {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+        .fighter-coll-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+        }
+        .fighter-coll-card {
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-subtle);
+            background: var(--bg-card);
+            overflow: hidden;
+            transition: border-color 0.2s;
+        }
+        .fighter-coll-card:hover { border-color: var(--border-red); }
+
+        .fighter-coll-top {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.25rem;
+        }
+        .fighter-coll-avatar {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: var(--bg-elevated);
+            border: 2px solid var(--border-subtle);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+        .fighter-coll-name {
+            font-family: var(--font-display);
+            font-size: 1.05rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        .fighter-coll-meta {
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            color: var(--text-dim);
+        }
+
+        /* ── Version Progress ── */
+        .version-progress {
+            padding: 0 1.25rem 1.25rem;
+        }
+        .version-progress-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.72rem;
+            color: var(--text-dim);
+            margin-bottom: 0.4rem;
+        }
+        .version-progress-label strong { color: var(--text-secondary); }
+        .version-bar {
+            height: 6px;
+            border-radius: 3px;
+            background: var(--bg-elevated);
+            overflow: hidden;
+            margin-bottom: 0.75rem;
+        }
+        .version-bar-fill {
+            height: 100%;
+            border-radius: 3px;
+            background: linear-gradient(90deg, var(--red), var(--orange));
+        }
+        .version-bar-fill--complete { background: linear-gradient(90deg, var(--gold), hsl(42, 90%, 60%)); }
+
+        .version-chips {
+            display: flex;
+            gap: 0.4rem;
+            flex-wrap: wrap;
+        }
+        .version-chip {
+            font-family: var(--font-mono);
+            font-size: 0.62rem;
+            font-weight: 600;
+            padding: 0.25em 0.6em;
+            border-radius: var(--radius-sm);
+        }
+        .version-chip--owned { background: var(--red-dim); color: var(--red-bright); }
+        .version-chip--missing { background: hsla(0, 0%, 100%, 0.04); color: var(--text-dim); }
+
+        .fighter-coll-actions {
+            display: flex;
+            gap: 0.5rem;
+            padding: 0 1.25rem 1.25rem;
+        }
+        .coll-action-btn {
+            font-family: var(--font-body);
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 0.45em 1em;
+            border: none;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: filter 0.2s;
+        }
+        .coll-action-btn:hover { filter: brightness(1.15); }
+        .coll-action-btn--burn { background: var(--gold); color: #000; }
+        .coll-action-btn--burn:disabled { background: hsla(0, 0%, 100%, 0.04); color: var(--text-dim); cursor: not-allowed; }
+        .coll-action-btn--stake { background: hsla(0, 0%, 100%, 0.06); color: var(--text-secondary); }
+
+        /* ── Mock data badge ── */
+        .mock-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3em;
+            font-family: var(--font-mono);
+            font-size: 0.6rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            padding: 0.3em 0.8em;
+            border-radius: var(--radius-sm);
+            background: hsla(42, 85%, 55%, 0.08);
+            color: var(--gold);
+            margin-bottom: 2rem;
+        }
+
+        @media (max-width: 640px) {
+            .collection-header h1 { font-size: 2rem; }
+            .collection-stats { grid-template-columns: repeat(2, 1fr); }
+            .fighter-coll-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="nav">
+        <a href="/" class="nav-brand"><span>Fight</span> Farm</a>
+        <div class="nav-links">
+            <a href="/event" class="nav-link">Event</a>
+            <a href="/mint" class="nav-link">Mint</a>
+            <a href="/arena" class="nav-link">Arena</a>
+            <a href="/collection" class="nav-link">Collection</a>
+            <a href="/docs" class="nav-link">Docs</a>
+        </div>
+    </nav>
+
+    <div class="collection-page">
+        <div class="collection-header">
+            <h1>My <span>Collection</span></h1>
+            <p>Your fighters, your versions, your path to Legendary.</p>
+        </div>
+
+        <div class="mock-badge">Preview &mdash; Demo Data</div>
+
+        <!-- Stats -->
+        <div class="collection-stats">
+            <div class="coll-stat">
+                <div class="coll-stat-value coll-stat-value--red">12</div>
+                <div class="coll-stat-label">Total NFTs</div>
+            </div>
+            <div class="coll-stat">
+                <div class="coll-stat-value coll-stat-value--blue">5</div>
+                <div class="coll-stat-label">Fighters</div>
+            </div>
+            <div class="coll-stat">
+                <div class="coll-stat-value coll-stat-value--gold">1</div>
+                <div class="coll-stat-label">LGNDs</div>
+            </div>
+            <div class="coll-stat">
+                <div class="coll-stat-value coll-stat-value--green">3</div>
+                <div class="coll-stat-label">Staked</div>
+            </div>
+        </div>
+
+        <!-- Fighters -->
+        <div class="fighters-section-title">Your Fighters</div>
+        <div class="fighter-coll-grid">
+            <!-- Fighter 1: Complete set -->
+            <div class="fighter-coll-card">
+                <div class="fighter-coll-top">
+                    <div class="fighter-coll-avatar">&#128081;</div>
+                    <div>
+                        <div class="fighter-coll-name">Max Holloway</div>
+                        <div class="fighter-coll-meta">LGND &middot; 155 lbs</div>
+                    </div>
+                </div>
+                <div class="version-progress">
+                    <div class="version-progress-label">
+                        <span>Version Progress</span>
+                        <strong>3/3 &mdash; LGND Forged</strong>
+                    </div>
+                    <div class="version-bar"><div class="version-bar-fill version-bar-fill--complete" style="width:100%"></div></div>
+                    <div class="version-chips">
+                        <span class="version-chip version-chip--owned">v1 Burned</span>
+                        <span class="version-chip version-chip--owned">v2 Burned</span>
+                        <span class="version-chip version-chip--owned">v3 Burned</span>
+                    </div>
+                </div>
+                <div class="fighter-coll-actions">
+                    <button class="coll-action-btn coll-action-btn--stake">Stake in Vault</button>
+                    <button class="coll-action-btn coll-action-btn--stake">Enter Arena</button>
+                </div>
+            </div>
+
+            <!-- Fighter 2: Partial set -->
+            <div class="fighter-coll-card">
+                <div class="fighter-coll-top">
+                    <div class="fighter-coll-avatar">&#129354;</div>
+                    <div>
+                        <div class="fighter-coll-name">Charles Oliveira</div>
+                        <div class="fighter-coll-meta">2 SEs &middot; 155 lbs</div>
+                    </div>
+                </div>
+                <div class="version-progress">
+                    <div class="version-progress-label">
+                        <span>Version Progress</span>
+                        <strong>2/4 versions</strong>
+                    </div>
+                    <div class="version-bar"><div class="version-bar-fill" style="width:50%"></div></div>
+                    <div class="version-chips">
+                        <span class="version-chip version-chip--owned">v1</span>
+                        <span class="version-chip version-chip--missing">v2</span>
+                        <span class="version-chip version-chip--owned">v3</span>
+                        <span class="version-chip version-chip--missing">v4</span>
+                    </div>
+                </div>
+                <div class="fighter-coll-actions">
+                    <button class="coll-action-btn coll-action-btn--burn" disabled>Need all versions to forge LGND</button>
+                </div>
+            </div>
+
+            <!-- Fighter 3: Early collection -->
+            <div class="fighter-coll-card">
+                <div class="fighter-coll-top">
+                    <div class="fighter-coll-avatar">&#129354;</div>
+                    <div>
+                        <div class="fighter-coll-name">Raul Rosas Jr.</div>
+                        <div class="fighter-coll-meta">1 SE &middot; 135 lbs</div>
+                    </div>
+                </div>
+                <div class="version-progress">
+                    <div class="version-progress-label">
+                        <span>Version Progress</span>
+                        <strong>1/2 versions</strong>
+                    </div>
+                    <div class="version-bar"><div class="version-bar-fill" style="width:50%"></div></div>
+                    <div class="version-chips">
+                        <span class="version-chip version-chip--owned">v1</span>
+                        <span class="version-chip version-chip--missing">v2</span>
+                    </div>
+                </div>
+                <div class="fighter-coll-actions">
+                    <button class="coll-action-btn coll-action-btn--stake">Stake in Vault</button>
+                </div>
+            </div>
+
+            <!-- Fighter 4: LE holder -->
+            <div class="fighter-coll-card">
+                <div class="fighter-coll-top">
+                    <div class="fighter-coll-avatar" style="border-color:var(--arena-blue);">&#9733;</div>
+                    <div>
+                        <div class="fighter-coll-name">Caio Borralho</div>
+                        <div class="fighter-coll-meta">1 LE + 1 SE &middot; 185 lbs</div>
+                    </div>
+                </div>
+                <div class="version-progress">
+                    <div class="version-progress-label">
+                        <span>Version Progress</span>
+                        <strong>1/1 versions</strong>
+                    </div>
+                    <div class="version-bar"><div class="version-bar-fill" style="width:100%"></div></div>
+                    <div class="version-chips">
+                        <span class="version-chip version-chip--owned">v1 (LE)</span>
+                        <span class="version-chip version-chip--owned">v1 (SE)</span>
+                    </div>
+                </div>
+                <div class="fighter-coll-actions">
+                    <button class="coll-action-btn coll-action-btn--stake">Stake in Vault</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2026 Fight Farm. Built on Base.</p>
+    </footer>
+</body>
+</html>

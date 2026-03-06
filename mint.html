@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mint — Fight Farm</title>
+    <meta name="description" content="Mint fighter NFTs. Standard, Limited, and First Edition tiers available during UFC event windows.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🥊</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Oswald:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/main.css">
+    <style>
+        .mint-page { max-width: 1080px; margin: 0 auto; padding: 7rem 2rem 4rem; }
+        .mint-header { text-align: center; margin-bottom: 3rem; }
+        .mint-header h1 {
+            font-family: var(--font-display);
+            font-size: 2.8rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+        .mint-header h1 span { color: var(--red-bright); }
+        .mint-header p { font-size: 1rem; color: var(--text-secondary); max-width: 500px; margin: 0 auto; }
+
+        /* ── Tier Sections ── */
+        .mint-tier {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-subtle);
+            background: var(--bg-card);
+        }
+        .mint-tier-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .mint-tier-title {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+        .mint-tier-badge {
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            padding: 0.3em 0.8em;
+            border-radius: var(--radius-sm);
+        }
+        .mint-tier-badge--se { background: hsla(0, 0%, 100%, 0.06); color: var(--text-secondary); }
+        .mint-tier-badge--le { background: var(--arena-dim); color: var(--arena-blue); }
+        .mint-tier-badge--fe { background: hsla(25, 90%, 52%, 0.1); color: var(--orange); }
+        .mint-tier-desc {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            max-width: 700px;
+        }
+
+        /* ── Fighter Mint Cards ── */
+        .mint-fighters {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+        .mint-card {
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-subtle);
+            background: var(--bg-elevated);
+            overflow: hidden;
+            transition: border-color 0.2s, transform 0.2s;
+        }
+        .mint-card:hover { border-color: var(--border-red); transform: translateY(-2px); }
+        .mint-card-art {
+            height: 140px;
+            background: linear-gradient(135deg, var(--bg-ring), var(--bg-dark));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            position: relative;
+        }
+        .mint-card-version {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            font-family: var(--font-mono);
+            font-size: 0.6rem;
+            font-weight: 600;
+            padding: 0.2em 0.5em;
+            border-radius: var(--radius-sm);
+            background: hsla(0, 0%, 0%, 0.5);
+            color: var(--text-dim);
+        }
+        .mint-card-body { padding: 1rem; }
+        .mint-card-name {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 0.15rem;
+        }
+        .mint-card-meta {
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            color: var(--text-dim);
+            margin-bottom: 0.75rem;
+        }
+        .mint-card-price {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+        }
+        .mint-card-price-value {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+        .mint-card-price-discount {
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            color: var(--fight-green);
+        }
+        .mint-btn {
+            width: 100%;
+            padding: 0.6em;
+            font-family: var(--font-body);
+            font-size: 0.8rem;
+            font-weight: 700;
+            border: none;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: filter 0.2s;
+        }
+        .mint-btn:hover { filter: brightness(1.15); }
+        .mint-btn--se { background: var(--red); color: #fff; }
+        .mint-btn--le { background: var(--arena-blue); color: #fff; }
+        .mint-btn--fe { background: var(--orange); color: #fff; }
+        .mint-btn--soon {
+            background: hsla(0, 0%, 100%, 0.06);
+            color: var(--text-dim);
+            cursor: not-allowed;
+        }
+
+        /* ── LE Random Notice ── */
+        .le-notice {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem;
+            border-radius: var(--radius-md);
+            background: var(--arena-dim);
+            margin-bottom: 1.5rem;
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+        }
+        .le-notice-icon { font-size: 1.2rem; }
+
+        /* ── FE Auction ── */
+        .fe-auction {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1rem;
+        }
+        .fe-card {
+            border-radius: var(--radius-md);
+            border: 1px solid hsla(25, 90%, 52%, 0.15);
+            background: hsla(25, 90%, 52%, 0.03);
+            padding: 1.5rem;
+            text-align: center;
+            transition: border-color 0.2s;
+        }
+        .fe-card:hover { border-color: var(--orange); }
+        .fe-card-icon { font-size: 2.5rem; margin-bottom: 0.75rem; }
+        .fe-card-name {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 0.25rem;
+        }
+        .fe-card-label {
+            font-family: var(--font-mono);
+            font-size: 0.6rem;
+            color: var(--orange);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 0.75rem;
+        }
+        .fe-card-bid {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.75rem;
+        }
+        .fe-card-bid strong {
+            font-size: 1.1rem;
+            color: var(--text-primary);
+        }
+
+        @media (max-width: 640px) {
+            .mint-header h1 { font-size: 2rem; }
+            .mint-fighters { grid-template-columns: repeat(2, 1fr); }
+            .fe-auction { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="nav">
+        <a href="/" class="nav-brand"><span>Fight</span> Farm</a>
+        <div class="nav-links">
+            <a href="/event" class="nav-link">Event</a>
+            <a href="/mint" class="nav-link">Mint</a>
+            <a href="/arena" class="nav-link">Arena</a>
+            <a href="/collection" class="nav-link">Collection</a>
+            <a href="/docs" class="nav-link">Docs</a>
+        </div>
+    </nav>
+
+    <div class="mint-page">
+        <div class="mint-header">
+            <h1><span>Mint</span> Fighters</h1>
+            <p>Collect fighter NFTs from UFC 326. Each fighter gets a versioned NFT tied to this event.</p>
+        </div>
+
+        <!-- ═══ Standard Edition ═══ -->
+        <div class="mint-tier">
+            <div class="mint-tier-header">
+                <div class="mint-tier-title">Standard Edition</div>
+                <span class="mint-tier-badge mint-tier-badge--se">Open Supply</span>
+            </div>
+            <p class="mint-tier-desc">$25 per mint (or pay with $FIGHT for a 10-15% discount). Mint on-demand during the event window. The building blocks for LGND upgrades.</p>
+            <div class="mint-fighters">
+                <div class="mint-card">
+                    <div class="mint-card-art">&#129354;<span class="mint-card-version">v1</span></div>
+                    <div class="mint-card-body">
+                        <div class="mint-card-name">Max Holloway</div>
+                        <div class="mint-card-meta">UFC 326 &middot; 155 lbs</div>
+                        <div class="mint-card-price">
+                            <span class="mint-card-price-value">$25</span>
+                            <span class="mint-card-price-discount">$21 w/ $FIGHT</span>
+                        </div>
+                        <button class="mint-btn mint-btn--soon">Coming Soon</button>
+                    </div>
+                </div>
+                <div class="mint-card">
+                    <div class="mint-card-art">&#129354;<span class="mint-card-version">v1</span></div>
+                    <div class="mint-card-body">
+                        <div class="mint-card-name">Charles Oliveira</div>
+                        <div class="mint-card-meta">UFC 326 &middot; 155 lbs</div>
+                        <div class="mint-card-price">
+                            <span class="mint-card-price-value">$25</span>
+                            <span class="mint-card-price-discount">$21 w/ $FIGHT</span>
+                        </div>
+                        <button class="mint-btn mint-btn--soon">Coming Soon</button>
+                    </div>
+                </div>
+                <div class="mint-card">
+                    <div class="mint-card-art">&#129354;<span class="mint-card-version">v1</span></div>
+                    <div class="mint-card-body">
+                        <div class="mint-card-name">Caio Borralho</div>
+                        <div class="mint-card-meta">UFC 326 &middot; 185 lbs</div>
+                        <div class="mint-card-price">
+                            <span class="mint-card-price-value">$25</span>
+                            <span class="mint-card-price-discount">$21 w/ $FIGHT</span>
+                        </div>
+                        <button class="mint-btn mint-btn--soon">Coming Soon</button>
+                    </div>
+                </div>
+                <div class="mint-card">
+                    <div class="mint-card-art">&#129354;<span class="mint-card-version">v1</span></div>
+                    <div class="mint-card-body">
+                        <div class="mint-card-name">Raul Rosas Jr.</div>
+                        <div class="mint-card-meta">UFC 326 &middot; 135 lbs</div>
+                        <div class="mint-card-price">
+                            <span class="mint-card-price-value">$25</span>
+                            <span class="mint-card-price-discount">$21 w/ $FIGHT</span>
+                        </div>
+                        <button class="mint-btn mint-btn--soon">Coming Soon</button>
+                    </div>
+                </div>
+                <div class="mint-card">
+                    <div class="mint-card-art">&#129354;<span class="mint-card-version">v1</span></div>
+                    <div class="mint-card-body">
+                        <div class="mint-card-name">Cody Garbrandt</div>
+                        <div class="mint-card-meta">UFC 326 &middot; 135 lbs</div>
+                        <div class="mint-card-price">
+                            <span class="mint-card-price-value">$25</span>
+                            <span class="mint-card-price-discount">$21 w/ $FIGHT</span>
+                        </div>
+                        <button class="mint-btn mint-btn--soon">Coming Soon</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══ Limited Edition ═══ -->
+        <div class="mint-tier">
+            <div class="mint-tier-header">
+                <div class="mint-tier-title">Limited Edition</div>
+                <span class="mint-tier-badge mint-tier-badge--le">Max 5 Per Fighter</span>
+            </div>
+            <p class="mint-tier-desc">$50-75 in $FIGHT only. Random launchpad &mdash; you don't pick your fighter. Max 5 per fighter per version. Comes with a free matching SE airdrop.</p>
+            <div class="le-notice">
+                <span class="le-notice-icon">&#127922;</span>
+                <span><strong>Random drop:</strong> You'll receive a random fighter from this event's card. The surprise is part of the strategy.</span>
+            </div>
+            <div style="text-align:center;padding:2rem;">
+                <button class="btn btn-secondary" style="cursor:not-allowed;opacity:0.5;">LE Launchpad &mdash; Coming Soon</button>
+            </div>
+        </div>
+
+        <!-- ═══ First Edition ═══ -->
+        <div class="mint-tier">
+            <div class="mint-tier-header">
+                <div class="mint-tier-title">First Edition</div>
+                <span class="mint-tier-badge mint-tier-badge--fe">1-of-1 Auction</span>
+            </div>
+            <p class="mint-tier-desc">Prestige 1-of-1 collectibles. $ARENA only. Minimum bid $200. The ultimate flex for true collectors. Comes with a free matching SE airdrop.</p>
+            <div class="fe-auction">
+                <div class="fe-card">
+                    <div class="fe-card-icon">&#128293;</div>
+                    <div class="fe-card-name">Max Holloway</div>
+                    <div class="fe-card-label">First Edition &middot; 1 of 1</div>
+                    <div class="fe-card-bid">Min bid: <strong>200 $ARENA</strong></div>
+                    <button class="btn btn-secondary" style="cursor:not-allowed;opacity:0.5;width:100%;font-size:0.8rem;">Auction Coming Soon</button>
+                </div>
+                <div class="fe-card">
+                    <div class="fe-card-icon">&#128293;</div>
+                    <div class="fe-card-name">Charles Oliveira</div>
+                    <div class="fe-card-label">First Edition &middot; 1 of 1</div>
+                    <div class="fe-card-bid">Min bid: <strong>200 $ARENA</strong></div>
+                    <button class="btn btn-secondary" style="cursor:not-allowed;opacity:0.5;width:100%;font-size:0.8rem;">Auction Coming Soon</button>
+                </div>
+                <div class="fe-card">
+                    <div class="fe-card-icon">&#128293;</div>
+                    <div class="fe-card-name">Caio Borralho</div>
+                    <div class="fe-card-label">First Edition &middot; 1 of 1</div>
+                    <div class="fe-card-bid">Min bid: <strong>200 $ARENA</strong></div>
+                    <button class="btn btn-secondary" style="cursor:not-allowed;opacity:0.5;width:100%;font-size:0.8rem;">Auction Coming Soon</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2026 Fight Farm. Built on Base.</p>
+    </footer>
+</body>
+</html>
