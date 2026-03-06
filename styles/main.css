@@ -1,0 +1,117 @@
+/* ══════════════════════════════════════
+   FIGHT FARM — Base Styles
+   ══════════════════════════════════════ */
+
+:root {
+    --bg-dark: #0a0a0f;
+    --bg-card: #12121a;
+    --bg-elevated: #1a1a24;
+    --text-primary: #f0f0f5;
+    --text-secondary: #9a9ab0;
+    --text-dim: #5a5a70;
+    --accent: hsl(0, 72%, 50%);
+    --accent-dim: hsla(0, 72%, 50%, 0.12);
+    --accent-glow: hsla(0, 72%, 50%, 0.2);
+    --border-subtle: hsla(0, 0%, 100%, 0.06);
+    --radius-md: 10px;
+    --radius-lg: 14px;
+    --font-body: 'Inter', -apple-system, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: var(--font-body);
+    background: var(--bg-dark);
+    color: var(--text-primary);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ── Nav ── */
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: hsla(240, 20%, 5%, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-subtle);
+}
+.nav-brand {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    text-decoration: none;
+}
+.nav-links { display: flex; gap: 1.5rem; }
+.nav-link {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.nav-link:hover { color: var(--text-primary); }
+
+/* ── Hero ── */
+.hero {
+    text-align: center;
+    padding: 10rem 2rem 6rem;
+}
+.hero h1 {
+    font-size: 3.5rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, hsl(0, 72%, 55%), hsl(30, 90%, 55%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1rem;
+}
+.hero-sub {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    max-width: 500px;
+    margin: 0 auto 1rem;
+}
+.hero-desc {
+    font-size: 0.95rem;
+    color: var(--text-dim);
+}
+
+/* ── Sections ── */
+.section {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+}
+.section h2 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+}
+.section p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+}
+
+/* ── Footer ── */
+.footer {
+    text-align: center;
+    padding: 3rem 2rem;
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    border-top: 1px solid var(--border-subtle);
+}
+
+/* ── Responsive ── */
+@media (max-width: 640px) {
+    .hero h1 { font-size: 2.4rem; }
+    .hero { padding: 8rem 1.5rem 4rem; }
+    .nav { padding: 1rem 1.25rem; }
+}
