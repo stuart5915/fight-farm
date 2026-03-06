@@ -1,0 +1,7366 @@
+Let’s talk about existing infrastructure for Fight Farm. What can we use that already exists so that we don’t have to code from scratch, versus what will be custom code.
+
+Great question. This is exactly the mindset that keeps a project like Fight Farm achievable instead of turning it into a 5-year dev sink. The reality is that 90% of the infrastructure already exists in Web3, and you only need to write custom code for the unique gameplay layer.
+
+Think of Fight Farm as five layers of infrastructure:
+
+Blockchain Layer
+
+Token + NFT Layer
+
+Marketplace + Trading
+
+Governance + Treasury
+
+Game Logic Layer (custom)
+
+Only Layer 5 is truly custom.
+
+Let’s walk through it clearly.
+
+Fight Farm Infrastructure Stack
+1️⃣ Blockchain Layer (Already Exists)
+
+You don't build this.
+
+You deploy on it.
+
+Recommended chain for Fight Farm:
+
+Base
+
+Why Base works well for Fight Farm:
+
+Very low gas
+
+Ethereum compatible
+
+Massive user base potential via Coinbase
+
+Strong NFT infrastructure
+
+Easy integration with wallets
+
+You inherit:
+
+security
+
+transaction processing
+
+wallets
+
+smart contract compatibility
+
+Cost to build: $0
+
+2️⃣ NFT Infrastructure (Mostly Existing)
+
+Fight Farm NFTs follow standard ERC patterns.
+
+Core Standard
+
+ERC-721
+
+Possible upgrade:
+
+ERC-1155
+
+Why these matter:
+
+They already give you:
+
+ownership tracking
+
+transfer
+
+wallet compatibility
+
+marketplace compatibility
+
+metadata standards
+
+Meaning you don't build NFT infrastructure.
+
+You only add extensions for game logic.
+
+Tools to generate contracts
+
+Use battle-tested libraries:
+
+OpenZeppelin Contracts
+
+This gives you:
+
+audited contracts
+
+security protections
+
+upgrade patterns
+
+95% of NFT contract code already exists.
+
+3️⃣ Marketplace Infrastructure (Already Exists)
+
+You do not need to build a marketplace initially.
+
+NFTs can trade instantly on:
+
+OpenSea
+
+Zora
+
+Magic Eden
+
+These platforms already provide:
+
+secondary market trading
+
+royalty enforcement
+
+price discovery
+
+liquidity
+
+wallets integration
+
+Meaning:
+
+Fight Farm NFTs become tradable automatically.
+
+Later you can build a custom UI marketplace, but it's optional.
+
+4️⃣ Token Infrastructure (Already Exists)
+
+Your tokens like:
+
+$ARENA
+
+$FIGHT
+
+Use the standard:
+
+**ERC-20
+
+Save as FF Existing Infra
+
+Got it — I’ve saved this thread under “FF Existing Infra.”
+
+Now let’s break this down the way a real startup CTO would approach it: buy/borrow infrastructure wherever possible and only build what is uniquely valuable to Fight Farm.
+
+The good news is that 80–90% of the stack already exists. The unique part you’ll build is the game logic layer.
+
+Fight Farm Infrastructure: What Already Exists vs What You Build
+
+Think of Fight Farm as 5 layers:
+
+Blockchain layer
+
+Smart contract standards
+
+Marketplace / trading
+
+DAO / treasury / governance
+
+Game logic + agents (your secret sauce)
+
+1. Blockchain Layer (Already Exists)
+
+Fight Farm does NOT need its own chain.
+
+You already selected the right option:
+
+Base (Ethereum L2)
+
+Advantages:
+
+• Massive liquidity
+• Coinbase ecosystem
+• Cheap gas
+• Full EVM compatibility
+• Huge dev tooling
+
+So this layer requires zero development.
+
+Existing tools:
+
+• Coinbase Base network
+• Hardhat
+• Foundry
+• Ethers.js
+• OpenZeppelin
+
+What you actually build here:
+
+Nothing.
+
+Just deploy contracts.
+
+2. NFT Infrastructure (Mostly Exists)
+
+Your NFTs are standard ERC tokens.
+
+You do not need to invent a new NFT standard.
+
+Use:
+
+• ERC-721 (collectible NFTs)
+• ERC-1155 (batch minting)
+
+Tools that already exist:
+
+• OpenZeppelin contracts
+• thirdweb
+• Zora
+• Manifold
+
+These already support:
+
+• minting
+• metadata
+• royalties
+• batch minting
+• burn functions
+
+Your custom code layer:
+
+You add:
+
+• LGND upgrade burn mechanics
+• SE burn multiplier system
+• Version minting logic
+• Arena contract interactions
+
+But the base NFT code is prebuilt.
+
+3. Marketplace Infrastructure (Already Exists)
+
+You do not need to build a marketplace initially.
+
+Your NFTs will automatically appear on:
+
+• OpenSea
+• Blur
+• Magic Eden
+
+Because Base is EVM compatible.
+
+Later you can build:
+
+Fight Farm Marketplace UI
+
+But the backend trading already exists.
+
+So phase 1:
+
+Use external marketplaces.
+
+4. Token Infrastructure (Mostly Exists)
+
+Your tokens:
+
+• $ARENA
+• $FIGHT
+
+Standard:
+
+ERC-20
+
+Use existing code:
+
+• OpenZeppelin ERC-20
+• Uniswap liquidity pools
+• Clanker
+• Clawnch
+
+You already explored this.
+
+These tools handle:
+
+• LP creation
+• fee splitting
+• swaps
+• trading
+
+So again:
+
+no need to code tokens from scratch.
+
+5. DAO Infrastructure (Mostly Exists)
+
+Fight Farm governance needs:
+
+• multisig treasury
+• DAO voting
+• sub-DAOs
+• proposal system
+
+You do NOT need to build this.
+
+Existing tools:
+
+• Safe multisig
+• Snapshot
+• Tally
+• DAO DAO
+
+You even mentioned earlier you love DAO DAO.
+
+Porting it to Base is possible but not required immediately.
+
+6. Data Infrastructure (Already Exists)
+
+Fight Farm agents need:
+
+• fight schedules
+• fighter records
+• results
+
+You do not build this.
+
+Sources:
+
+• ESPN API scraping
+• UFCStats.com
+• Sherdog
+• Tapology
+
+Your Matchmaker Agent just ingests data.
+
+7. Storage Infrastructure (Already Exists)
+
+NFT metadata and art:
+
+Use:
+
+• IPFS
+• Pinata
+• Arweave
+
+So you don't need storage systems.
+
+8. Wallet Infrastructure (Already Exists)
+
+Agents and players need wallets.
+
+Tools:
+
+• MetaMask
+• Coinbase Wallet
+• Safe
+
+Your fighter agents can use:
+
+Safe programmatic wallets.
+
+9. Agent Infrastructure (Mostly Exists)
+
+You already selected:
+
+OpenClaw
+
+That handles:
+
+• agent execution
+• tool usage
+• automation
+• orchestration
+
+You will build:
+
+• Matchmaker agent
+• Fighter agents
+• NFT Artist agent
+• Fight Farm HQ agent
+
+But the agent framework already exists.
+
+10. What Fight Farm Actually Needs to Build
+
+Now the important part.
+
+The unique IP layer.
+
+1️⃣ Arena Contract
+
+This is the heart of the game.
+
+Handles:
+
+• LGND deposits
+• slot auctions
+• prediction tracking
+• vote outcomes
+• steal / burn mechanics
+• unlock timers
+
+This must be custom code.
+
+2️⃣ Staking Contract
+
+Handles:
+
+• fighter staking
+• reward distribution
+• reward pool logic
+
+Custom.
+
+3️⃣ LGND Upgrade Contract
+
+Handles:
+
+• burn all versions
+• mint LGND
+• supply compression
+
+Custom.
+
+4️⃣ SE Burn Multiplier
+
+Handles:
+
+• SE burn count
+• auction leverage
+
+Custom.
+
+5️⃣ Dynamic Metadata Engine
+
+NFT traits update when:
+
+• fighter wins
+• LGND upgrades
+• zombie transformations
+
+Custom.
+
+6️⃣ Agent Factory
+
+Creates:
+
+• new fighter agents
+• wallets
+• NFT versions
+
+Custom automation.
+
+7️⃣ Matchmaker System
+
+Detects fights and triggers:
+
+• NFT minting
+• agent activation
+
+Custom.
+
+What the Final Stack Looks Like
+Layer 1
+BASE blockchain
+
+Layer 2
+ERC standards
+(OpenZeppelin)
+
+Layer 3
+Liquidity + tokens
+(Uniswap / Clanker)
+
+Layer 4
+NFT markets
+(OpenSea / Blur)
+
+Layer 5
+DAO governance
+(Safe / Snapshot)
+
+Layer 6
+Storage
+(IPFS / Arweave)
+
+Layer 7
+Agent framework
+(OpenClaw)
+
+Layer 8
+Fight Farm Game Engine
+(CUSTOM)
+Rough Development Breakdown
+
+Realistically:
+
+Existing Infrastructure
+
+≈ 85-90%
+
+Custom Fight Farm Code
+
+≈ 10-15%
+
+That is exactly why this project is feasible for a small team.
+
+You are building the game layer, not the entire internet.
+
+The 5 Smart Contracts Fight Farm Needs
+
+Minimum MVP:
+
+Fighter NFT contract
+
+Arena contract
+
+Staking contract
+
+LGND upgrade contract
+
+Treasury contract
+
+That's it.
+
+Everything else already exists.
+
+The Most Important Insight
+
+Fight Farm is not really:
+
+• an NFT project
+• a token project
+• a marketplace
+
+It is actually a:
+
+Game theory smart contract system.
+
+The Arena contract is the real invention.
+
+If you want, I can also show you something extremely useful next:
+
+The exact Fight Farm architecture diagram used by Web3 startups — showing how all these pieces connect (contracts, agents, front end, data, etc.).
+
+It will make the whole system click instantly.
+
+
+The Airdrop Safety System
+
+Because replacement airdrops sound simple but there are 3 exploit vectors that could cost you thousands of NFTs if not handled correctly.
+
+The version numbers of free airdrop do not have to match. The free airdrop of replacement version number will be decided by matchmaker: does the fighter exist? No, then V1. Yes, then check version number and create the next logical version.
+
+Yes — that approach is exactly the correct architecture, and it fits perfectly with the Matchmaker agent being the source of truth for versioning. What you’re describing is essentially deterministic version assignment, which keeps the system clean and prevents version collisions.
+
+Let me formalize it so it becomes part of your Fight Farm Infrastructure rules.
+
+Replacement NFT Version Assignment (Matchmaker Logic)
+
+When a fighter withdraws and a replacement fighter enters a bout after NFT sales have begun, replacement NFTs are airdropped to holders of the withdrawn fighter’s NFTs.
+
+However:
+
+Replacement NFT version numbers are determined dynamically by Matchmaker, not by the withdrawn fighter’s version.
+
+Replacement Version Logic
+
+When Matchmaker processes a replacement fighter:
+
+Step 1 — Check if fighter exists in registry
+IF fighter_exists == FALSE
+    version = V1
+
+Meaning:
+
+new fighter debut
+
+first appearance in Fight Farm
+
+Example
+
+Original fight
+A vs B (V6)
+
+B withdraws
+C replaces
+
+C does not exist → C V1
+
+Collectors receive:
+
+B V6 SE → C V1 SE
+B V6 LE → C V1 LE
+B V6 FE → C V1 FE
+Step 2 — Fighter already exists
+
+If replacement fighter has appeared previously:
+
+version = max(existing_versions) + 1
+
+Example
+
+C already has:
+C V1
+C V2
+C V3
+
+Replacement fight occurs
+→ C V4
+
+Collectors receive:
+
+B V6 SE → C V4 SE
+B V6 LE → C V4 LE
+B V6 FE → C V4 FE
+Why Version Matching Is NOT Required
+
+Matching versions would create problems.
+
+Example problem:
+
+B V12 withdraws
+C has only V1–V2
+
+You cannot force C to suddenly have V12.
+
+Instead:
+
+C gets the next logical version
+
+This keeps the version timeline consistent per fighter.
+
+Why Matchmaker Should Control This
+
+Your Matchmaker agent already handles:
+
+fight scraping
+
+fighter identity resolution
+
+event linking
+
+version assignment
+
+So it is the correct component to determine:
+
+fighter_id
+version_number
+event_ref
+opponent
+
+This ensures:
+
+deterministic behavior
+
+no manual intervention
+
+no version duplication
+
+Replacement Airdrop Workflow
+
+When a replacement is detected:
+
+Matchmaker detects change
+↓
+Determine replacement fighter_id
+↓
+Resolve version number
+↓
+Create replacement version record
+↓
+Trigger AirdropDistributor job
+↓
+Airdrop equivalent tiers
+Airdrop Tier Matching
+
+Replacement NFTs match tier, not version.
+
+Withdrawn NFT	Replacement NFT
+SE	SE
+LE	LE
+FE	FE
+
+Edition numbers should match where possible.
+
+Example:
+
+B V6 LE #2
+→ C V4 LE #2
+What Happens to Withdrawn Fighter NFTs
+
+They remain valid collectibles.
+
+Metadata context becomes:
+
+bout_status: withdrawn
+replacement_fighter: C
+
+Collectors still retain:
+
+staking eligibility
+
+LGND upgrade eligibility
+
+trading value
+
+Important Economic Side Effect
+
+This design creates natural scarcity events.
+
+Example:
+
+B V6 becomes a "withdrawn fight" card
+C V4 becomes a "replacement debut" card
+
+These can become highly collectible moments in the ecosystem.
+
+Example Full Timeline
+Monday
+Fight announced
+A vs B
+
+Tuesday
+NFT sales begin
+A V5
+B V6
+
+Thursday
+B withdraws
+
+Friday
+C replaces
+
+Matchmaker actions:
+- detect replacement
+- resolve C version
+- create C V1
+- airdrop C NFTs to B holders
+- update bout context
+
+Arena pool becomes:
+
+A vs C
+One Additional Safeguard I Recommend
+
+Replacement NFTs should only be airdropped if:
+
+sales_state == LIVE
+
+Otherwise people could manipulate the system by:
+
+announce fight
+withdraw fighter
+mint replacement NFTs
+farm free supply
+
+This prevents economic exploits.
+
+Why This Is a Strong System
+
+Your design does three important things:
+
+1️⃣ Protects collectors
+2️⃣ Maintains clean fighter version timelines
+3️⃣ Allows Matchmaker to remain the authoritative workflow engine
+
+Which fits perfectly with the agent-driven architecture you’re building on your Mac mini.
+
+If you'd like, the next system we should design is something extremely important that most NFT games miss:
+
+The “Version Scarcity Pressure System.”
+
+It mathematically explains why some fighter versions (even SEs) can become extremely valuable when collectors chase LGND upgrades and one version becomes the bottleneck.
+
+Let’s save the version scarcity pressure system for later, but I love the idea.
+
+As far as replacements versus cancellations, I think that’s something where we definitely need matchmaker to notify and ask for approval before triggering any creation or workflow.
+
+Specially until it proves itself. Also, I suppose, not only should it be scraping looking for future events, it needs to also have criteria to scrape and look for cancelled and replacement fill in fights.
+
+What would that criteria look like and how often leading up to fight day? A lot of times the fight can be cancelled or a replacement fighter 1 day before the fight because of failed weigh in making correct weight, or dehydration or medical issue trying to cut weight, or just an injury or emergency.
+
+It’s rare. Usually if it’s missed weight, they still fight and the fighter pays a % of their purse to the other fighter. But the fighter who made weight does not have to accept that.
+
+
+
+Totally agree on the approval gate for replacements/cancellations. Early on, Matchmaker should behave like a radar + clerk, not an autonomous executor.
+
+Here’s what the criteria + monitoring cadence should look like in a way that’s implementable.
+
+1) What Matchmaker should detect (criteria)
+
+Matchmaker needs to track each bout through a simple status model:
+
+Bout status states
+
+scheduled
+
+at_risk (signals detected)
+
+changed (replacement detected)
+
+canceled
+
+completed
+
+“Change types” it must recognize
+
+Replacement
+
+opponent name changes (A vs B → A vs C)
+
+Cancellation
+
+bout removed entirely from the card (A disappears or B disappears and no replacement)
+
+Weight miss risk (doesn’t always change bout)
+
+“missed weight” flag
+
+“fight in jeopardy” signals
+
+Medical/commission stop
+
+“removed for medical reasons”
+
+“not cleared”
+
+Card reshuffle (not a change)
+
+bout order changes, prelim ↔ main (should not trigger replacement logic)
+
+2) How to detect it from scraping (practical rules)
+The “Card Snapshot Diff” method (recommended)
+
+Instead of trying to parse rumors, you do something deterministic:
+
+Every scrape produces a normalized snapshot:
+
+event_ref
+
+list of bouts, each with (fighter_a_norm, fighter_b_norm, weight_class)
+
+Store the last known snapshot
+
+Compare new snapshot to previous snapshot
+
+Replacement detection
+
+A replacement is detected when:
+
+fighter A is still present on the card, but their opponent changes.
+
+Concretely:
+
+previous snapshot contains bout with A vs B
+
+new snapshot contains bout with A vs C
+
+AND B is no longer in a bout with A on that same event
+
+Cancellation detection
+
+A cancellation is detected when:
+
+A vs B existed previously
+
+now neither A vs B nor A vs any exists on that event (or B disappears)
+
+and no replacement bout exists for A or B
+
+In practice, you’ll treat it as canceled if either fighter disappears from the event entirely, unless that fighter appears in a new bout on that same event (which indicates a reshuffle).
+
+Card reshuffle (ignore)
+
+If the set of bouts is identical but order changes:
+
+no action
+
+3) What to do when detected (approval gate)
+
+When Matchmaker detects changed or canceled, it should NOT:
+
+mint
+
+deploy sales
+
+airdrop
+
+update Arena configs on-chain
+
+Instead it creates a Change Proposal record and pings you.
+
+Change Proposal object (DB)
+
+proposal_id
+
+event_id
+
+detected_at
+
+change_type (replacement | cancellation)
+
+before_snapshot (the exact bout line)
+
+after_snapshot
+
+confidence_score (high/medium/low)
+
+recommended_actions[] (what would happen if approved)
+
+Then:
+
+status = pending_approval
+
+Only after approval:
+
+jobs are emitted for replacement version creation + airdrops + pool updates.
+
+This is the safe path until Matchmaker proves itself.
+
+4) Monitoring cadence (how often + when)
+
+You’re right: changes can happen late (weigh-ins, medicals, day-before).
+
+So cadence should ramp up as fight day approaches.
+
+Suggested cadence schedule
+
+T-60 to T-21 days (far out)
+
+scrape 1x/day
+
+goal: new cards, early changes
+
+T-21 to T-7 days
+
+scrape every 6 hours
+
+goal: replacements due to injuries/travel/contract issues
+
+T-7 to T-2 days
+
+scrape every 2 hours
+
+goal: late replacements, bout removals, card reshuffles
+
+T-48 hours to weigh-in completion
+
+scrape hourly
+
+goal: catch weigh-in issues and last-second removals
+
+Weigh-in day to fight start
+
+scrape every 15–30 minutes
+
+goal: medical pullouts, commission issues, last-minute cancellations
+
+Fight window
+
+stop scraping schedule pages; switch to “results mode” (separate worker)
+
+This isn’t heavy compute. It’s just small requests + diff logic, and it’s exactly where your Mac mini agent architecture shines.
+
+5) “At risk” detection (weigh-ins + signals) without getting fooled
+
+You don’t want Matchmaker to react to rumor tweets. You want to react to authoritative sources.
+
+So “at risk” should only be set if the official source page includes any of these strings/flags:
+
+“removed”
+
+“withdraws”
+
+“out”
+
+“canceled”
+
+“fight canceled”
+
+“medical”
+
+“not cleared”
+
+“missed weight”
+
+“in jeopardy”
+
+Important: “missed weight” does NOT automatically mean replacement/cancel
+
+As you said, many still fight.
+
+So the rules should be:
+
+“missed weight” → set at_risk = true
+
+but do not treat as changed unless the bout actually changes or disappears on the official card
+
+This lets you:
+
+notify you (“at risk: missed weight reported”)
+
+but avoid triggering airdrops/pool edits prematurely
+
+6) What Matchmaker should notify you with (clear human decision)
+
+When it pings you, it should include:
+
+Event + bout
+
+What changed (before/after)
+
+Confidence (based on source consistency)
+
+Buttons/choices (conceptually):
+
+Approve replacement workflow
+
+Approve cancellation workflow
+
+Ignore (false positive)
+
+Snooze / check again
+
+And it should propose what will happen if approved:
+
+“Create replacement fighter/version”
+
+“Airdrop tier-matched replacement NFTs to B holders”
+
+“Update Arena pool to A vs C”
+
+“Mark withdrawn fighter bout_status = withdrawn”
+
+7) One extra guardrail (prevents a nasty edge case)
+
+Sometimes cards briefly show a fight removed, then it reappears.
+
+So require two consecutive confirmations for late-stage changes:
+
+Rule
+
+If T < 48 hours and a bout is detected canceled/replaced:
+
+require change to be observed in 2 consecutive scrapes before generating a proposal (or mark as “low confidence” and ask you)
+
+This reduces false positives from stale caches.
+
+If you want next, I can write the Matchmaker Change Detection Spec V1 as a formal doc section (DB tables + diff algorithm + thresholds + cadence scheduler), so it plugs directly into your existing Matchmaker Spec V1.
+
+Would it be easy for matchmaker to push this to a dev dashboard if a fight is at risk or changes appear to be made, or sometimes the news and data is confusing?
+
+Yes — and it’s one of the easiest, highest-leverage things you can build because it’s mostly DB + simple UI. Matchmaker already produces the hard part (normalized snapshots + diffs). A dashboard is just a read-only window into that.
+
+What “easy” looks like in practice
+
+Matchmaker writes 3 kinds of records:
+
+Event Snapshots (what the card looked like at time T)
+
+Diffs / Alerts (what changed between snapshots)
+
+Change Proposals (things that require approval)
+
+Your dev dashboard just queries those tables and renders them.
+
+No blockchain calls. No complex UI logic. Just lists, filters, and an “Approve / Reject / Snooze” action.
+
+Recommended Dev Dashboard features (minimum viable)
+1) “Risk & Changes” inbox (main screen)
+
+A single table sorted by severity:
+
+Status: at_risk, changed, canceled, confirmed
+
+Event: UFC 305
+
+Bout: A vs B
+
+What triggered: “bout removed”, “opponent changed”, “missed weight flag”
+
+Confidence: High / Medium / Low
+
+Last seen: timestamp
+
+Actions: Approve / Reject / Snooze
+
+This becomes your operations cockpit.
+
+2) Snapshot diff viewer (click any alert)
+
+Shows side-by-side:
+
+Before snapshot (previous scrape)
+
+After snapshot (latest scrape)
+
+Highlight:
+
+removed bouts
+
+added bouts
+
+opponent swaps
+
+This makes “confusing data” instantly understandable.
+
+3) Bout timeline (audit trail)
+
+For any bout, show a timeline:
+
+first seen scheduled
+
+any “at risk” signals
+
+replacement detected
+
+cancellation detected
+
+final locked state
+
+This is crucial when sources contradict each other.
+
+Handling confusing/contradictory data
+
+This is where the dashboard shines.
+
+Confidence scoring (simple, effective)
+
+Matchmaker can set confidence based on:
+
+Source consistency: change appears on both ESPN + UFC site (high)
+
+Consecutive confirmation: same change appears in 2 scrapes (medium→high)
+
+Single scrape only: change appears once (low)
+
+Partial data: names missing / “TBD” placeholders (low)
+
+Then the dashboard sorts:
+
+High confidence → top
+
+Low confidence → still visible but not screaming
+
+“Needs human review” triggers
+
+Matchmaker flags for review if:
+
+bout disappears then reappears
+
+“TBD” appears for either fighter
+
+both fighters disappear (could be card refresh issue)
+
+opponent appears swapped but name normalization uncertain
+
+Approval workflow (clean and safe)
+
+When you click “Approve Replacement” the dashboard doesn’t execute it directly. It just flips:
+
+change_proposals.status = approved
+
+creates a single job: EXECUTE_CHANGE_PROPOSAL(proposal_id)
+
+Then a worker does the real work:
+
+create replacement version record
+
+schedule airdrop jobs
+
+mark arena pool update job
+
+update bout_context status
+
+This keeps the dashboard thin and safe.
+
+Implementation note (what you need to build)
+
+This can be extremely light:
+
+Backend
+
+read-only endpoints for:
+
+alerts
+
+snapshots
+
+diffs
+
+proposals
+
+a single write endpoint for:
+
+approve/reject/snooze
+
+Frontend
+
+3 pages:
+
+Inbox
+
+Alert detail (diff view)
+
+Event view (snapshot timeline)
+
+You could build it in Next.js in a weekend, or even start with a simple admin panel framework.
+
+The biggest win
+
+This dashboard becomes your “truth layer” when the internet is messy.
+
+Instead of you trying to interpret chaos, you get:
+
+“Here’s what the card was yesterday”
+
+“Here’s what it is now”
+
+“Here’s what changed”
+
+“Here’s how confident we are”
+
+“Approve if you want the machine to act”
+
+If you want, I’ll define the exact tables + API endpoints + UI wireframe for the dashboard (Dev Dashboard Spec V1), and it will plug directly into the Matchmaker specs we already saved.
+
+Ok, make sure all of your previous workflow documentation for matchmaker, triggering agent and nft creation, and making changes to the fight rewards pool for cancelled fights (replacement fight where one fighter was replaced will use the same original rewards pool).
+
+Perfect call — this is exactly the kind of rule that must be baked into the architecture, otherwise agents later might accidentally create new pools or mint unnecessary NFTs.
+
+I’ll consolidate the rule and integrate it with the Matchmaker workflow, NFT creation workflow, and Arena rewards pool logic so everything stays deterministic.
+
+Fight Farm Matchmaker Workflow Update (Replacements & Cancellations)
+
+This update applies to the previously defined systems:
+
+Matchmaker Agent
+
+NFT Builder / Version Creator
+
+Arena Rewards Pool Engine
+
+Airdrop Distributor
+
+Dev Dashboard Approval System
+
+The goal is to ensure that fight changes do not break existing economics or contracts.
+
+Core Principle
+
+Fight Farm treats the bout slot on an event card as the economic unit, not the specific fighters.
+
+Therefore:
+
+Rewards pools are tied to the bout slot
+
+Replacement fighters inherit the same rewards pool
+
+Canceled fights deactivate the pool
+
+Event → Bout → Fighter Structure
+
+System hierarchy:
+
+Event
+  └─ Bout Slot
+        ├─ Fighter A
+        └─ Fighter B
+
+The bout slot is persistent.
+
+Fighters occupying the slot can change.
+
+Replacement Fighter Workflow
+
+Example:
+
+Original
+A vs B
+
+Replacement
+A vs C
+Step 1 — Matchmaker detects change
+
+Snapshot diff:
+
+previous: A vs B
+current:  A vs C
+
+Matchmaker creates:
+
+change_type = replacement
+fighter_out = B
+fighter_in = C
+Step 2 — Create Change Proposal
+
+Matchmaker pushes to Dev Dashboard:
+
+PROPOSAL_TYPE = REPLACEMENT
+EVENT = UFC_305
+BOUT = A vs B → A vs C
+CONFIDENCE = HIGH
+
+Await approval.
+
+Step 3 — Approval triggers workflow
+
+When approved:
+
+A. Create replacement fighter version
+
+Matchmaker logic:
+
+IF fighter_exists == false
+    version = V1
+ELSE
+    version = max_version + 1
+
+Example:
+
+C → V1
+B. Trigger replacement airdrop
+
+Airdrop equivalent tiers.
+
+Example:
+
+B V6 SE → C V1 SE
+B V6 LE → C V1 LE
+B V6 FE → C V1 FE
+
+Edition numbers preserved where possible.
+
+C. Update bout context
+bout_status = replaced
+original_opponent = B
+final_opponent = C
+D. Arena Rewards Pool
+
+The rewards pool remains the same.
+
+Only the participating fighter changes.
+
+Example:
+
+Pool ID = UFC305_BOUT04
+
+Original:
+
+Pool UFC305_BOUT04
+A vs B
+
+Updated:
+
+Pool UFC305_BOUT04
+A vs C
+
+No new pool is created.
+
+No redistribution of funds.
+
+This prevents:
+
+pool fragmentation
+
+prediction manipulation
+
+economic inconsistencies
+
+Fight Cancellation Workflow
+
+Example:
+
+A vs B canceled
+no replacement
+Step 1 — Matchmaker detects removal
+
+Snapshot diff:
+
+previous: A vs B
+current:  (bout missing)
+
+Matchmaker creates proposal:
+
+PROPOSAL_TYPE = CANCELLATION
+EVENT = UFC_305
+BOUT = A vs B
+Step 2 — Approval triggers cancellation workflow
+
+When approved:
+
+A. Arena rewards pool deactivated
+pool_status = cancelled
+
+No prediction allowed.
+
+No rewards distributed.
+
+B. NFTs remain valid
+
+Collectors retain:
+
+collectible NFT
+
+staking eligibility
+
+LGND upgrade eligibility
+
+marketplace trading
+
+C. Metadata context update
+bout_status = cancelled
+
+No NFT metadata rewrite required.
+
+Why Rewards Pools Must Stay Tied to Bout Slots
+
+If replacement fighters created new pools, you would introduce:
+
+Economic exploit risk
+
+Example:
+
+A vs B pool created
+B withdraws
+C replaces
+
+New pool created
+
+Players could:
+
+abandon original pool
+
+manipulate liquidity
+
+game prediction odds
+
+Keeping the same pool avoids this.
+
+Matchmaker Monitoring Logic (Reminder)
+
+Scrape cadence increases toward fight night.
+
+T-60 → daily
+T-21 → every 6 hours
+T-7 → every 2 hours
+T-48 → hourly
+fight day → every 15–30 min
+
+Change detection uses snapshot diffing.
+
+Dev Dashboard Integration
+
+Matchmaker never executes replacement/cancellation workflows automatically (initially).
+
+Instead it pushes proposals:
+
+Replacement detected
+Cancellation detected
+Bout at risk
+
+The dashboard allows:
+
+Approve replacement workflow
+Approve cancellation workflow
+Ignore false signal
+Agent Workflow Summary
+Matchmaker
+     ↓
+Snapshot Diff Engine
+     ↓
+Change Proposal
+     ↓
+Dev Dashboard Approval
+     ↓
+Execution Worker
+     ↓
+• Create replacement version
+• Trigger NFT airdrops
+• Update bout context
+• Update Arena pool fighter
+Result
+
+This system guarantees:
+
+predictable economics
+
+collector protection
+
+stable rewards pools
+
+deterministic NFT versioning
+
+controlled automation
+
+Which fits perfectly with your agent-driven architecture running on the Mac mini.
+
+If you'd like, the next thing I’d strongly recommend designing (it directly affects scarcity and trading strategy) is the Version Bottleneck Mechanism — the mathematical reason why one missing SE from an early version can become the most expensive NFT in the entire fighter set.
+
+Yes please. Show me this and save as fight farm infrastructure.
+
+Saved to Fight Farm Infrastructure ✅
+
+Now here’s the Version Bottleneck / Scarcity Pressure System (the “why one random SE can become a grail” mechanism).
+
+Version Bottleneck Mechanism
+The rule that creates everything
+
+To upgrade a fighter into a LGND, a player must own (and burn) one of each required version of that fighter (at minimum the SE set, and optionally other tier requirements depending on your final rule).
+
+That means the maximum number of LGNDs that can ever exist for a fighter is constrained by the scarcest required version.
+
+Core formula
+
+Let a fighter have versions 
+𝑉
+1..
+𝑉
+𝑛
+V1..Vn.
+Let the available quantity of the required tier in each version be:
+
+𝑄
+1
+,
+𝑄
+2
+,
+.
+.
+.
+,
+𝑄
+𝑛
+Q
+1
+	​
+
+,Q
+2
+	​
+
+,...,Q
+n
+	​
+
+
+Then the theoretical maximum number of LGND upgrades is:
+
+𝐿
+𝐺
+𝑁
+𝐷
+max
+⁡
+=
+min
+⁡
+(
+𝑄
+1
+,
+𝑄
+2
+,
+.
+.
+.
+,
+𝑄
+𝑛
+)
+LGND
+max
+	​
+
+=min(Q
+1
+	​
+
+,Q
+2
+	​
+
+,...,Q
+n
+	​
+
+)
+
+That “min” is the bottleneck version.
+
+Why this gets violent over time (burn + lock + escrow = float collapse)
+
+Even if a version started with 
+𝑄
+𝑘
+=
+40
+Q
+k
+	​
+
+=40 SEs, the tradable float is not 40. It becomes:
+
+𝐹
+𝑙
+𝑜
+𝑎
+𝑡
+𝑘
+=
+𝑄
+𝑘
+−
+𝑆
+𝑡
+𝑎
+𝑘
+𝑒
+𝑑
+𝑘
+−
+𝐿
+𝑜
+𝑐
+𝑘
+𝑒
+𝑑
+𝐴
+𝑟
+𝑒
+𝑛
+𝑎
+𝑘
+−
+𝐸
+𝑠
+𝑐
+𝑟
+𝑜
+𝑤
+𝑒
+𝑑
+𝑘
+−
+𝐵
+𝑢
+𝑟
+𝑛
+𝑒
+𝑑
+𝑘
+Float
+k
+	​
+
+=Q
+k
+	​
+
+−Staked
+k
+	​
+
+−LockedArena
+k
+	​
+
+−Escrowed
+k
+	​
+
+−Burned
+k
+	​
+
+
+And the real pain is that Burned_k increases over time as upgrades happen.
+
+So the bottleneck isn’t just “lowest minted.”
+It becomes “lowest available.”
+
+Effective bottleneck at time t
+𝐿
+𝐺
+𝑁
+𝐷
+max
+⁡
+(
+𝑡
+)
+=
+min
+⁡
+(
+𝐹
+𝑙
+𝑜
+𝑎
+𝑡
+1
+(
+𝑡
+)
+,
+𝐹
+𝑙
+𝑜
+𝑎
+𝑡
+2
+(
+𝑡
+)
+,
+.
+.
+.
+,
+𝐹
+𝑙
+𝑜
+𝑎
+𝑡
+𝑛
+(
+𝑡
+)
+)
+LGND
+max
+	​
+
+(t)=min(Float
+1
+	​
+
+(t),Float
+2
+	​
+
+(t),...,Float
+n
+	​
+
+(t))
+
+This is why your marketplace gets strategic: the “min” shifts.
+
+Scarcity Pressure: why one missing SE becomes expensive
+The “set-completion premium”
+
+If a whale (or team) has every other version except one missing SE (say V6), then V6 is no longer priced like a normal SE.
+
+It’s priced like a key that unlocks:
+
+an LGND upgrade (steal mechanics, prestige, earning power)
+
+or the ability to sell a complete set at a premium
+
+That creates a discontinuous price jump.
+
+A simple way to understand pricing pressure
+
+If the value of a completed set is 
+𝑆
+S, and the value of all owned pieces except the missing one is 
+𝑃
+P, then the missing piece’s rational ceiling price is:
+
+𝑃
+𝑟
+𝑖
+𝑐
+𝑒
+(
+𝑉
+6
+)
+≤
+𝑆
+−
+𝑃
+Price(V6)≤S−P
+
+If the set unlocks an LGND with long-run value (steal power + scarcity), then 
+𝑆
+S can be very high—meaning the last missing SE can become the most expensive item.
+
+The bottleneck “ratchet” effect
+
+Each successful LGND upgrade burns one from every required version. So every upgrade reduces all 
+𝑄
+𝑖
+Q
+i
+	​
+
+ by 1, but the bottleneck version reaches zero first.
+
+If the bottleneck started at 12, this is what happens:
+
+after 6 upgrades: bottleneck remaining = 6
+
+after 9 upgrades: remaining = 3
+
+after 11 upgrades: remaining = 1
+
+after 12 upgrades: no more LGNDs can ever be made
+
+That final stretch (3 → 1) is where prices go nuts, because every buyer knows they’re competing for the last keys.
+
+Why this creates “blue chips” inside your own collection
+
+Over time, each fighter’s market naturally splits into:
+
+1) Bottleneck fighters (high set pressure)
+
+early versions low quantity
+
+high demand from teams/whales
+
+high scarcity narrative (retirement, title run, etc.)
+
+2) Burn-fodder fighters (commodity layer)
+
+versions with high supply
+
+used as burn fuel for auctions and other mechanics (like your SE burn multipliers)
+
+This is the “Darwinian” marketplace you described: liquidity concentrates into high-signal fighters, while others become economic fuel.
+
+Where escrow trading becomes a killer feature
+
+When the float gets tight, price discovery on OpenSea/Blur becomes messy, because:
+
+there may be no listings
+
+sellers may not want to “sell for ETH”—they want a trade for the missing pieces they need
+
+So your EscrowTrade contract becomes the “barter desk” for:
+
+set completion
+
+version swaps
+
+tier swaps
+
+And because fees are in $FIGHT only, every trade becomes:
+
+a token sink
+
+a burn/recycle event
+
+and a retention engine (players keep interacting rather than cashing out)
+
+How staking + Arena locks amplify scarcity
+
+This is why your design is special: you have multiple non-sale “sinks” that remove NFTs from the market:
+
+Staked for emissions
+
+Locked in Arena for LGND gameplay duration
+
+Locked in escrow while offers are pending
+
+Burned for upgrades
+
+Even if total supply is static, available supply collapses.
+
+That creates real, organic scarcity without needing artificial “rarity multipliers.”
+
+The “last 1” scenario (why this is your endgame)
+
+Your favorite example is the most important one:
+
+One version has only 1 SE left in circulation.
+
+At that point, the owner is holding a monopoly key.
+
+They can choose:
+
+list for a massive price
+
+demand a favorable bundle trade
+
+wait for teams to bid against each other
+
+This is exactly how real sports card scarcity behaves—except your scarcity has gameplay utility, not just collector nostalgia.
+
+What this does to your fee/burn/recycle machine
+
+The bottleneck pressure increases:
+
+secondary trading velocity (especially escrow trades)
+
+upgrade attempts (burn events)
+
+auction bidding and burn multipliers
+
+token purchasing demand (because $FIGHT is needed to operate)
+
+So the scarcity system isn’t just “cool.” It’s an engine that:
+
+increases $FIGHT usage
+
+increases burn/recycle throughput
+
+increases player retention and strategy depth
+
+If you want, next I can turn this into a simple dashboard metric set so players can see the pressure in real time, like:
+
+Bottleneck version (current)
+
+Effective float per version
+
+LGND max remaining (estimated)
+
+“Set completion index” per fighter
+
+That kind of transparency makes people obsessed (in a good way).
+
+And what’s great is, even without selling the last SE of a specific fighter version, to a collector who needs that version to pair, burn, upgrade, from a collectibles standpoint, that rare, scarce, nft is a 1/1 (all others burned). It may be more expensive than an FE 1/1, or any LGNDs, specially if it’s pegged to a popular fighter in the UFC.
+
+That’s the strange part of Fight Farm, an SE with perceived less value can become very valuable after burns decreased supply.  And less popular fighters who you think wouldn’t move collectibles may actually become more popular in fight farm gameplay because of less natural demand for collectors to want the nft because it’s not associated with a popular ufc fighter, but in the game, that could be an early catch for a future superstar, or even if the fighter is a dud, and loses, sells less NFTs, gets cut from UFC after 1-3 fights, that’s less required collectibles to upgrade to a LGND, and if it’s a naturally low supply, the burn shrinkage may make those NFTs in demand because of its ease to upgrade.
+
+How would we describe this to potential collectors/players? What term would we call this type of demand on the worst fighters to choose to win?
+
+What you’re describing is actually a really powerful game-economy phenomenon, and giving it the right name will help players understand the strategy immediately.
+
+Right now in Fight Farm there are two different types of demand for fighters:
+
+Collector Demand (fans want the fighter because they’re famous)
+
+Game Demand (players want the fighter because the economics are favorable)
+
+Your insight is that these can move in opposite directions, which creates strategy.
+
+Let’s define the concept clearly.
+
+The Phenomenon You Discovered
+
+In Fight Farm, some fighters will have:
+
+low real-world popularity
+
+low NFT mint demand
+
+low version counts
+
+But that means:
+
+fewer NFTs required for upgrades
+
+easier LGND creation
+
+tighter supply after burns
+
+So the NFTs become valuable because of game mechanics, not because of fame.
+
+That’s extremely rare in collectible systems.
+
+The Best Term For This
+
+The cleanest term is:
+
+Strategic Scarcity
+
+Meaning:
+
+Value created by the game mechanics rather than the fighter’s real-world popularity.
+
+Players identify fighters where:
+
+supply is naturally low
+
+upgrade paths are easier
+
+burn pressure is higher
+
+Those fighters become strategically valuable assets.
+
+Another Term (even stronger)
+
+If you want something more “Fight Farm branded”:
+
+Underdog Advantage
+
+Meaning:
+
+Fighters with less collector demand may become the most powerful strategic assets in the game.
+
+Players who recognize this early can:
+
+accumulate cheap versions
+
+complete sets easily
+
+upgrade to LGNDs faster
+
+control scarce versions later
+
+This rewards game knowledge over hype.
+
+A Third Term (my personal favorite)
+
+This one fits your economy perfectly:
+
+Asymmetric Fighter Value
+
+In Fight Farm:
+
+Popularity Value = what fans want
+
+Strategic Value = what players need
+
+Sometimes the least popular fighters have the highest strategic value.
+
+That asymmetry is where smart players make money.
+
+Example Explanation for Players
+
+You could explain it like this:
+
+In Fight Farm, the most famous fighters aren’t always the most valuable.
+
+Popular fighters may have many collectors competing for their NFTs, which increases supply and makes LGND upgrades harder.
+
+Meanwhile, lesser-known fighters often have fewer NFTs minted, making their upgrade paths easier and their versions scarcer after burns.
+
+Smart players learn to identify these Strategic Scarcity Fighters early.
+
+This Creates Two Different Player Types
+
+Which is fantastic for the ecosystem.
+
+The Fans
+
+They buy:
+
+popular fighters
+
+champions
+
+hype prospects
+
+This drives primary sales.
+
+The Strategists
+
+They buy:
+
+low supply fighters
+
+early career fighters
+
+undervalued versions
+
+This drives marketplace activity.
+
+The Ultimate Result
+
+Fight Farm becomes:
+
+Part sports collectibles
+Part economic strategy game
+
+And the best players will understand both.
+
+The Really Cool Outcome
+
+Sometimes the most valuable NFT in a fighter’s entire set might be:
+
+a single surviving SE
+
+from an early version
+
+after most were burned
+
+That SE becomes a functional 1/1.
+
+That’s something traditional NFT rarity systems cannot produce.
+
+If we were writing this in the whitepaper
+
+I’d call the section:
+
+Strategic Scarcity & Underdog Advantage
+
+And the headline line would be:
+
+In Fight Farm, the least popular fighters can become the most powerful assets.
+
+One more concept (this one is really powerful)
+
+Your system also creates:
+
+Emergent Rarity
+
+Meaning rarity is not predefined.
+
+It emerges dynamically from:
+
+player behavior
+
+burns
+
+staking
+
+upgrades
+
+Which means the market itself determines rarity.
+
+That’s a huge differentiator from normal NFT collections.
+
+If you want, I can also show you something very important for Fight Farm long-term:
+
+A 10–20 year marketplace evolution model that explains how your ecosystem naturally develops:
+
+early speculation phase
+
+mid-phase scarcity wars
+
+late-phase historical collectibles
+
+It will help you explain Fight Farm to investors or platforms in a very compelling way.
+
+Also, if they are less popular and require less to upgrade, it’s less financial investment to collect those fighters. 
+
+At first, you won’t see a lot of those fighters versions move. 
+
+You might see zero or few bids on an FE.
+
+The LE Launchpads are random, do you may see some of those minted into existence by pure luck.
+
+The FE and LE determines the first half of SEs due to the free airdrops to FE and LE buyers. But the mint on demand and cap of the rest of the SEs could be zero or low.
+
+But what happens when savvy players realize this and that strategy flips?
+
+What you’re describing is a classic market phase transition that happens in good game economies: an asset that was ignored becomes strategically valuable once players understand the system. Fight Farm will likely go through that cycle repeatedly as players learn.
+
+Below is the clean way to explain it to players, collectors, and even investors.
+
+The Strategic Flip
+
+Early in Fight Farm, collectors will behave like normal sports card buyers:
+
+They chase:
+
+famous fighters
+
+champions
+
+hype prospects
+
+recognizable names
+
+That means those fighters will have:
+
+many bids
+
+higher SE mint counts
+
+strong early liquidity
+
+Meanwhile other fighters will look dead.
+
+You may see:
+
+no bids on FE auctions
+
+random LE mints from the launchpad
+
+very few SE mints
+
+At this stage those fighters appear worthless.
+
+But something important is happening underneath.
+
+The Hidden Supply Compression
+
+Because demand is low:
+
+fewer SEs mint
+
+fewer collectors hold the sets
+
+fewer versions exist
+
+Which means the LGND upgrade requirement becomes dramatically easier.
+
+Example:
+
+Fighter A (popular)
+
+V1 SE = 120
+V2 SE = 140
+V3 SE = 180
+
+LGND path requires collecting all versions → extremely expensive.
+
+Fighter B (unknown)
+
+V1 SE = 8
+V2 SE = 6
+V3 SE = 10
+
+LGND path requires far fewer NFTs.
+
+So the real cost to upgrade might be 10x cheaper.
+
+When Players Realize This
+
+Eventually players will understand the mechanic.
+
+That moment is the Strategic Flip.
+
+Demand suddenly moves from:
+
+Popularity demand
+
+to
+
+Strategic scarcity demand
+
+Players start asking:
+
+Which fighters have the lowest supply?
+
+Which version bottlenecks exist?
+
+Which sets are easiest to complete?
+
+Suddenly the fighters that nobody wanted become the most efficient upgrade paths.
+
+What Happens to the Market
+
+When the strategic flip occurs, three things happen quickly.
+
+1. Dormant NFTs wake up
+
+Fighters that had:
+
+no bids
+
+no listings
+
+no movement
+
+suddenly see buying pressure.
+
+2. Bottleneck versions explode
+
+Players identify the rarest version needed for upgrades.
+
+Example:
+
+V3 SE supply = 3
+
+Now those three become the most valuable pieces.
+
+3. The cheapest path becomes contested
+
+If an unknown fighter requires:
+
+8 NFTs to upgrade
+
+instead of
+
+100 NFTs
+
+multiple players may try to complete the set.
+
+That creates bidding wars.
+
+The Game Theory Layer
+
+Your system rewards players who discover this early.
+
+There are three archetypes.
+
+Collector
+
+Buys:
+
+favorite fighters
+
+famous names
+
+aesthetically cool NFTs
+
+Drives early hype.
+
+Strategist
+
+Buys:
+
+low supply fighters
+
+early bottleneck versions
+
+cheap upgrade paths
+
+Drives marketplace efficiency.
+
+Speculator
+
+Buys:
+
+undervalued fighters
+
+future prospects
+
+fighters about to become popular
+
+Drives price volatility.
+
+The Emergent Market Cycle
+
+Fight Farm naturally creates a repeating cycle:
+
+Phase 1 — Popularity Market
+Fans buy famous fighters
+
+Phase 2 — Discovery
+Players analyze supply mechanics
+
+Phase 3 — Strategic Flip
+Demand shifts to low supply fighters
+
+Phase 4 — Scarcity War
+Bottleneck versions become extremely valuable
+
+Then new events introduce new fighters and the cycle repeats.
+
+The Really Interesting Outcome
+
+Some fighters who were:
+
+unknown
+
+unpopular
+
+short UFC careers
+
+may become the most valuable Fight Farm collectibles because they are:
+
+easy upgrade paths
+
+extremely scarce after burns
+
+strategically powerful in gameplay
+
+That’s something traditional sports collectibles can’t do.
+
+What We Call This Mechanic
+
+The cleanest term for this is:
+
+Strategic Scarcity Flip
+
+Meaning:
+
+When the market shifts from popularity-driven demand to game-mechanic-driven demand.
+
+Players who recognize the flip early gain massive advantage.
+
+The Beautiful Part of Your System
+
+Your design doesn’t force rarity.
+
+Instead rarity emerges from:
+
+player behavior
+
+burn mechanics
+
+supply caps
+
+upgrade pressure
+
+That’s why Fight Farm is closer to a living economy than a static NFT collection.
+
+If you want, I can also show you the next layer of the system that will make Fight Farm markets even more interesting:
+
+The Collector vs Strategist Market War — where popular fighters and strategic fighters begin competing for liquidity and the marketplace splits into two different value systems.
+
+Save as fight farm infrastructure 
+
+Saved to Fight Farm Infrastructure ✅
+
+The Strategic Scarcity Flip concept is now part of the infrastructure knowledge alongside:
+
+Version Bottleneck / Scarcity Pressure System
+
+Replacement & Cancellation Workflow
+
+Matchmaker monitoring + approval flow
+
+Arena rewards pool persistence
+
+Escrow trading mechanics
+
+NFT versioning logic
+
+This will be useful later for:
+
+whitepaper explanations
+
+investor decks
+
+player education
+
+market analytics dashboards
+
+Because it explains why the Fight Farm economy behaves differently than normal NFT collections.
+
+When you're ready, the next piece that ties all of this together (and makes the ecosystem feel alive) is the 10–20 year Fight Farm Marketplace Evolution Model — how the system evolves from early speculation → scarcity wars → historical sports archive.
+
+Yes please. Then save again.
+
+Great — this is one of the most important ways to explain Fight Farm to investors, platforms, and serious collectors because it shows the system isn’t just a short-term NFT drop. It’s designed to evolve over decades like real sports collectibles.
+
+I’ll lay out the Fight Farm Marketplace Evolution Model (10–20 Year View) and then note it as part of Fight Farm Infrastructure.
+
+Fight Farm Marketplace Evolution Model (10–20 Years)
+
+Fight Farm’s economy evolves through several natural phases as the number of fighters, events, versions, burns, and collectors grows.
+
+Unlike traditional NFT projects that stagnate after mint, Fight Farm introduces continuous supply + continuous compression, which drives long-term market evolution.
+
+Phase 1 — Genesis Era (Years 0–2)
+
+This is the early ecosystem phase.
+
+Players behave primarily like collectors.
+
+Market characteristics
+
+Demand focuses on:
+
+famous fighters
+
+champions
+
+hype prospects
+
+recognizable UFC names
+
+Typical behavior:
+
+FE auctions compete for popular fighters
+
+LE launchpads mint quickly for stars
+
+SE mint counts high for well-known fighters
+
+Less popular fighters see:
+
+few bids on FE auctions
+
+random LE mints
+
+low SE mint counts
+
+At this stage, the Strategic Scarcity Flip has not occurred yet.
+
+Players are still learning the mechanics.
+
+Phase 2 — Discovery Era (Years 2–5)
+
+Savvy players begin studying the system.
+
+They discover:
+
+version bottlenecks
+
+burn compression
+
+upgrade economics
+
+LGND scarcity
+
+This is where strategic players enter the market.
+
+New questions players start asking
+
+Instead of:
+
+“Who is the best fighter?”
+
+Players ask:
+
+Which fighter has the lowest SE supply?
+Which version is the bottleneck?
+Which upgrade path is cheapest?
+Which sets are easiest to complete?
+
+Low-demand fighters begin attracting strategic buyers.
+
+Dormant NFTs start moving.
+
+Phase 3 — Strategic Scarcity Flip (Years 3–7)
+
+This is when the market fundamentally changes.
+
+Demand shifts from:
+
+Popularity demand
+
+to:
+
+Strategic scarcity demand
+
+Some of the most valuable NFTs are now:
+
+early versions
+
+bottleneck versions
+
+low-mint fighters
+
+rare surviving SEs
+
+Market outcome
+
+You now have two parallel markets:
+
+Market Type	Driver
+Collector Market	Fighter popularity
+Strategic Market	Upgrade efficiency
+
+This creates constant liquidity and strategy.
+
+Phase 4 — Scarcity Wars (Years 5–10)
+
+By this stage:
+
+many fighters have 10+ versions
+
+burns have reduced supply significantly
+
+staking + Arena locks remove NFTs from circulation
+
+Some versions become extremely scarce.
+
+Example:
+
+Version 4 SE supply = 2
+
+If LGND upgrades require that version, those NFTs become extreme bottlenecks.
+
+Players begin competing for:
+
+last upgrade keys
+
+rare surviving versions
+
+strategic sets
+
+Marketplace activity increases dramatically.
+
+Phase 5 — Historical Era (Years 8–15)
+
+Now the system begins resembling real sports card markets.
+
+Collectors start valuing:
+
+early era NFTs
+
+retired fighters
+
+legendary champions
+
+rare historical moments
+
+Examples of valuable collectibles:
+
+a fighter’s first Fight Farm version
+
+early era SEs that survived burns
+
+NFTs from historic fights
+
+fighters who became champions later
+
+Collectors and historians enter the ecosystem.
+
+Phase 6 — Legacy Archive Era (Years 12–20)
+
+At this stage Fight Farm becomes something much bigger.
+
+It evolves into a combat sports archive + game economy.
+
+Players now trade:
+
+historical sets
+
+champion collections
+
+rare early versions
+
+retired fighter NFTs
+
+The ecosystem contains:
+
+thousands of fighters
+
+tens of thousands of versions
+
+heavily compressed supply from burns and upgrades
+
+Some NFTs become true digital sports artifacts.
+
+Why This Model Is Sustainable
+
+Most NFT projects fail because:
+
+supply is fixed
+
+interest fades after mint
+
+no new collectors arrive
+
+Fight Farm avoids this because:
+
+1️⃣ Continuous fighter supply
+
+Each UFC event introduces new versions.
+
+2️⃣ Continuous burn compression
+
+Upgrades reduce circulating supply.
+
+3️⃣ Gameplay demand
+
+Players need NFTs for:
+
+Arena predictions
+
+LGND upgrades
+
+strategic trading
+
+4️⃣ Historical value
+
+Over time NFTs become:
+
+sports memorabilia
+
+early ecosystem artifacts
+
+strategic game assets
+
+The Long-Term Result
+
+After 10–20 years, the Fight Farm marketplace may resemble a hybrid of:
+
+sports card collecting
+
+fantasy sports
+
+economic strategy gaming
+
+digital memorabilia
+
+Where value comes from history, scarcity, and gameplay utility.
+
+The Most Important Insight
+
+Fight Farm doesn’t rely on:
+
+artificial rarity
+
+random traits
+
+static supply
+
+Instead rarity emerges from:
+
+player behavior
+burn mechanics
+supply caps
+upgrade pressure
+time
+
+Which makes the economy alive rather than static.
+
+The Endgame Scenario
+
+At maturity, the most valuable NFTs may be:
+
+surviving SEs from early versions
+
+first appearance of legendary fighters
+
+rare bottleneck versions
+
+completed LGND sets of historic fighters
+
+These become the grails of the ecosystem.
+
+Why Investors Like This Model
+
+It demonstrates:
+
+long-term engagement
+
+evolving scarcity
+
+continuous gameplay demand
+
+collectible market expansion
+
+Which means Fight Farm is not just a game or NFT drop — it’s a long-term digital sports economy.
+
+✅ This 10–20 Year Marketplace Evolution Model is now saved under Fight Farm Infrastructure along with:
+
+Strategic Scarcity Flip
+
+Version Bottleneck / Scarcity Pressure
+
+Replacement & Cancellation Logic
+
+Matchmaker workflow
+
+Arena rewards pool design
+
+If you'd like, I can also show you something extremely powerful that sits above all of this economically:
+
+The Three-Layer Fight Farm Economy
+
+This explains how ARENA, FIGHT, and NFTs form a self-reinforcing system, and it’s probably the clearest way to explain the project to investors or platforms like OmniFlix or Base.
+
+Yes please. Then save as usual.
+
+Saved to Fight Farm Infrastructure ✅
+
+Now let’s break down the Three-Layer Fight Farm Economy, which is the clearest way to explain the system to:
+
+investors
+
+platforms (OmniFlix, Base, etc.)
+
+serious players
+
+It shows that Fight Farm isn’t just NFTs — it’s a layered economic engine.
+
+The Three-Layer Fight Farm Economy
+
+Fight Farm operates through three interconnected layers:
+
+1️⃣ NFT Layer — The Assets
+2️⃣ $FIGHT Layer — The Fuel
+3️⃣ $ARENA Layer — The Ownership & Governance
+
+Each layer feeds the others.
+
+Layer 1 — The NFT Economy (Assets)
+
+NFTs are the core assets of the game.
+
+They represent:
+
+fighter collectibles
+
+staking units
+
+LGND upgrade components
+
+Arena gameplay participants
+
+marketplace trading pieces
+
+NFT Types
+Type	Purpose
+SE	primary circulating supply
+LE	scarce strategic supply
+FE	prestige collectibles
+LGND	powerful gameplay asset
+What NFTs do
+
+NFTs enable:
+
+staking for rewards
+
+LGND upgrades
+
+Arena predictions
+
+trading strategies
+
+set completion
+
+This creates constant demand for NFTs.
+
+Layer 2 — $FIGHT (The Fuel)
+
+$FIGHT is the transactional currency of the ecosystem.
+
+It powers the economic engine.
+
+$FIGHT is used for
+
+marketplace fees
+
+escrow trading fees
+
+burn multipliers in auctions
+
+upgrade mechanics
+
+game entry mechanics
+
+other gameplay services
+
+Every time players interact with the system, $FIGHT is consumed.
+
+The burn & recycle engine
+
+$FIGHT fees are split between:
+
+burn
+
+recycle to rewards pools
+
+ecosystem funding
+
+Example:
+
+Trade Fee → $FIGHT
+     ↓
+Burn Portion
+     ↓
+Supply decreases
+
+Which strengthens the token.
+
+Layer 3 — $ARENA (Ownership Layer)
+
+$ARENA is the meta-layer token.
+
+It represents:
+
+governance
+
+treasury control
+
+ecosystem ownership
+
+future revenue share
+
+$ARENA holders are the owners of the Fight Farm ecosystem.
+
+$ARENA controls
+
+treasury decisions
+
+reward distribution rules
+
+ecosystem upgrades
+
+long-term governance
+
+It is less about gameplay and more about ownership and control.
+
+How The Layers Reinforce Each Other
+
+The magic of Fight Farm is that each layer increases demand for the others.
+
+Example loop
+
+1️⃣ Players buy NFTs to play
+2️⃣ Playing requires spending $FIGHT
+3️⃣ Fees burn $FIGHT and fund rewards
+4️⃣ Ecosystem value increases
+5️⃣ $ARENA governance becomes more valuable
+
+Which drives:
+
+NFT demand
+→ $FIGHT usage
+→ token burn
+→ ecosystem growth
+→ $ARENA value
+
+Then the cycle repeats.
+
+Why This Model Works Long Term
+
+Most NFT projects only have one economic layer.
+
+Example:
+
+NFT → speculation
+
+Once speculation fades, the project dies.
+
+Fight Farm instead has:
+
+NFT gameplay
+→ token fuel
+→ governance layer
+
+This creates three reinforcing feedback loops.
+
+The Hidden Economic Engine
+
+The true engine is:
+
+Scarcity Compression
+
+Created by:
+
+burns
+
+upgrades
+
+staking locks
+
+Arena locks
+
+escrow locks
+
+This constantly reduces circulating NFT supply.
+
+Which increases the value of remaining assets.
+
+Why This Is Attractive To Platforms
+
+Platforms like Base or OmniFlix look for ecosystems that generate:
+
+high transaction volume
+
+ongoing user activity
+
+sustainable token demand
+
+Fight Farm achieves this because players must constantly:
+
+trade NFTs
+
+upgrade fighters
+
+pay fees
+
+participate in Arena
+
+All of which use $FIGHT.
+
+Long-Term Result
+
+Over time the ecosystem becomes:
+
+Asset Layer
+
+NFT fighter economy
+
+Fuel Layer
+
+$FIGHT transaction engine
+
+Ownership Layer
+
+$ARENA governance
+
+Together forming a self-sustaining digital sports economy.
+
+Simple Way To Explain It
+
+If you had to describe it in one sentence:
+
+Fight Farm is a collectible sports economy where NFTs are the assets, $FIGHT is the fuel, and $ARENA represents ownership of the arena itself.
+
+How This Fits Everything We Designed
+
+This three-layer system ties together:
+
+Strategic Scarcity Flip
+
+Version Bottleneck Pressure
+
+LGND upgrade mechanics
+
+Marketplace strategy
+
+Escrow trading
+
+Burn & recycle token flows
+
+All inside one unified economy.
+
+If you want, the next concept that completes the economic model (and it’s one of the most powerful parts of Fight Farm) is something I call:
+
+The Fight Farm Liquidity Triangle
+
+It explains why liquidity never concentrates in just one place (like OpenSea) and instead flows between:
+
+Arena gameplay
+
+marketplace trading
+
+upgrade mechanics
+
+Which is what keeps the ecosystem active instead of stagnant.
+
+Yes please. Then save as fight farm infrastructure.
+
+Saved to Fight Farm Infrastructure ✅
+
+Now here is the Fight Farm Liquidity Triangle, which explains why the ecosystem keeps moving instead of freezing like most NFT markets.
+
+The Fight Farm Liquidity Triangle
+
+Most NFT ecosystems fail because liquidity has only one place to go:
+
+Mint → Secondary Market → Speculation
+
+When speculation slows, trading dies.
+
+Fight Farm avoids this because liquidity constantly circulates between three different systems:
+
+Marketplace Trading
+        ▲
+        │
+        │
+Arena Gameplay ─── Upgrade / Burn Mechanics
+
+These three forces form the Liquidity Triangle.
+
+1️⃣ Marketplace Trading (Discovery Layer)
+
+This is the traditional NFT market.
+
+Players:
+
+buy fighters
+
+sell bottleneck versions
+
+negotiate trades
+
+complete sets
+
+You also add something most marketplaces don’t have:
+
+Escrow Trading
+
+Players can:
+
+bundle NFTs
+
+request specific fighters
+
+barter sets
+
+This dramatically improves price discovery.
+
+Example:
+
+Player A:
+“I need V6 SE”
+
+Player B:
+“I want V2 + V4 + LE”
+
+This kind of trade is impossible in normal marketplaces.
+
+2️⃣ Arena Gameplay (Utility Layer)
+
+Arena gameplay removes NFTs from circulation.
+
+Players:
+
+stake NFTs
+
+lock LGNDs in battles
+
+participate in prediction systems
+
+During gameplay:
+
+NFTs become temporarily illiquid
+
+This creates supply compression.
+
+Example:
+
+Total supply: 100
+Staked in Arena: 40
+Locked in LGND battles: 10
+
+Tradable supply = 50
+
+Which increases marketplace pressure.
+
+3️⃣ Upgrade & Burn Mechanics (Scarcity Layer)
+
+This is the most powerful force in the system.
+
+Players burn NFTs to create:
+
+LGND fighters
+
+Burning permanently removes supply.
+
+Example:
+
+10 players upgrade fighters
+10 SEs burned from each version
+
+Supply shrinks.
+
+Remaining NFTs become rarer.
+
+Why This Triangle Matters
+
+Each corner feeds the others.
+
+Marketplace → Upgrades
+
+Trading helps players acquire:
+
+missing versions
+
+upgrade sets
+
+bottleneck NFTs
+
+Which leads to burns.
+
+Upgrades → Scarcity
+
+Burns reduce supply.
+
+Scarcity increases prices.
+
+Which drives marketplace activity.
+
+Arena → Lockups
+
+Gameplay locks NFTs temporarily.
+
+Reduced float increases scarcity pressure.
+
+Which drives trading.
+
+The Continuous Liquidity Loop
+
+The ecosystem naturally cycles:
+
+Trading
+   ↓
+Set Completion
+   ↓
+Burn / Upgrade
+   ↓
+Supply Compression
+   ↓
+Price Discovery
+   ↓
+More Trading
+
+And Arena adds a second loop:
+
+Arena Staking
+   ↓
+Temporary NFT Lock
+   ↓
+Lower Market Supply
+   ↓
+Price Pressure
+
+Both loops reinforce each other.
+
+Why Liquidity Never Dies
+
+Even if secondary trading slows:
+
+Players still need NFTs for:
+
+Arena participation
+
+LGND upgrades
+
+strategic set completion
+
+So liquidity moves instead of disappearing.
+
+Example scenario:
+
+Market slows
+↓
+Players shift to Arena gameplay
+↓
+NFTs get locked
+↓
+Scarcity increases
+↓
+Collectors return to buy
+
+This keeps the ecosystem active.
+
+The Hidden Token Engine
+
+Every liquidity movement also uses $FIGHT.
+
+Examples:
+
+marketplace trading fees
+
+escrow trade fees
+
+burn multipliers
+
+gameplay mechanics
+
+So the Liquidity Triangle also fuels token demand.
+
+The Real Power of the Triangle
+
+Fight Farm has three different reasons to hold NFTs:
+
+1️⃣ Collect them
+2️⃣ Play with them
+3️⃣ Upgrade them
+
+Most NFT systems only have one.
+
+That’s why they stagnate.
+
+The Big Picture
+
+Now all the major economic mechanics connect:
+
+Strategic Scarcity Flip
+        ↓
+Version Bottlenecks
+        ↓
+LGND Upgrade Pressure
+        ↓
+Liquidity Triangle
+        ↓
+Burn & Scarcity Compression
+        ↓
+Marketplace Evolution
+
+This is what turns Fight Farm into a living sports economy rather than just a collectible set.
+
+If you'd like, the next concept I can show you (and it’s probably the most powerful mechanic in the entire system) is something I call:
+
+The LGND Power Curve
+
+It explains why LGND fighters become exponentially more valuable as supply shrinks and Arena gameplay intensifies.
+
+Ok please do, then save.
+
+Saved to Fight Farm Infrastructure ✅
+
+Now let’s explain the LGND Power Curve, because it’s the mechanic that eventually turns LGND fighters into the center of the entire ecosystem.
+
+The LGND Power Curve
+
+LGND fighters are not just rare NFTs.
+
+They become strategic power assets whose value grows non-linearly as the ecosystem matures.
+
+The key reason is that LGND supply is controlled by three forces:
+
+Version bottlenecks
+
+Upgrade burns
+
+Arena gameplay utility
+
+Together they create the LGND Power Curve.
+
+Step 1 — Early Stage (LGNDs are cheap)
+
+At the beginning of the ecosystem:
+
+many versions still exist
+
+upgrade sets are relatively easy to collect
+
+few players understand the strategy
+
+Example:
+
+Fighter Versions:
+V1 SE = 40
+V2 SE = 60
+V3 SE = 50
+
+Max LGNDs possible:
+
+min(40,60,50) = 40
+
+At this stage:
+
+LGNDs are relatively common
+
+upgrade cost is moderate
+
+gameplay power not yet dominant
+
+The curve is flat.
+
+Step 2 — Mid Stage (Burn compression begins)
+
+Players start upgrading fighters.
+
+Each upgrade burns one of every required version.
+
+Example:
+
+After 20 upgrades
+
+V1 = 20
+V2 = 40
+V3 = 30
+
+New LGND max:
+
+min = 20
+
+Supply is shrinking.
+
+Players realize:
+
+upgrades are getting harder
+
+bottleneck versions are disappearing
+
+remaining LGND slots are limited
+
+The curve begins to slope upward.
+
+Step 3 — Scarcity Stage (Bottleneck collapse)
+
+Now a specific version becomes extremely rare.
+
+Example:
+
+V1 SE = 3
+V2 SE = 22
+V3 SE = 18
+
+Now:
+
+LGND max = 3
+
+At this point:
+
+the last upgrade keys become extremely valuable
+
+players compete for the final bottleneck NFTs
+
+LGND creation slows dramatically.
+
+The curve becomes steep.
+
+Step 4 — Terminal Stage (LGND cap reached)
+
+Eventually the bottleneck version hits zero.
+
+Example:
+
+V1 SE = 0
+
+Result:
+
+No more LGND upgrades possible.
+
+LGND supply becomes permanently capped.
+
+Now LGND fighters are:
+
+extremely scarce
+
+impossible to create again
+
+critical for Arena gameplay
+
+The curve becomes vertical.
+
+Why LGND Value Accelerates
+
+The value increase is not linear.
+
+It’s driven by three pressures.
+
+1️⃣ Scarcity Pressure
+
+LGND supply shrinks relative to the total NFT ecosystem.
+
+Example:
+
+Total NFTs in ecosystem = 100,000
+LGND supply = 50
+
+This makes LGNDs elite assets.
+
+2️⃣ Gameplay Power
+
+LGND fighters unlock abilities like:
+
+reward stealing
+
+Arena dominance
+
+prestige participation
+
+So competitive players must own them.
+
+3️⃣ Strategic Control
+
+Owning LGNDs allows players to influence:
+
+Arena outcomes
+
+staking reward distribution
+
+psychological pressure on competitors
+
+This adds a game theory layer.
+
+The LGND Power Curve Visualization
+
+Conceptually the curve looks like this:
+
+Value
+  │
+  │                │
+  │              │
+  │            │
+  │         │
+  │      │
+  │   │
+  │ │
+  └────────────────────────
+     Early   Mid   Scarcity
+
+Early LGNDs are cheap.
+
+Late LGNDs become exponentially valuable.
+
+Why This Is Different From Normal NFT Rarity
+
+Most NFT collections have fixed rarity.
+
+Example:
+
+10 legendary NFTs exist forever
+
+Fight Farm is different.
+
+LGND rarity emerges dynamically from:
+
+player upgrades
+
+version bottlenecks
+
+burn mechanics
+
+So players themselves create the rarity.
+
+The Final Economic Effect
+
+Over time the ecosystem stratifies into:
+
+Base Layer
+
+SE / LE trading economy
+
+Strategic Layer
+
+Version bottleneck control
+
+Elite Layer
+
+LGND power assets
+
+LGND fighters become the ultimate endgame assets.
+
+Why This Matters For Fight Farm
+
+The LGND Power Curve ensures:
+
+long-term strategic gameplay
+
+continuous NFT burn pressure
+
+increasing scarcity over time
+
+elite asset creation
+
+Which is exactly what drives long-term collectible markets.
+
+If you want, the next concept we should design (and it will connect almost everything you've built) is the Fight Farm Economic Gravity Model.
+
+It explains why, over time, liquidity naturally flows toward the rarest fighters and earliest versions, creating “blue-chip fighters” in the ecosystem.
+
+So, here’s a question, what’s the best way to price these?
+
+We need a standard price for SEs, although paying in $FIGHT can also have a discount, and there’s always a chance of a collab partner pushing up the price of any tier if we must also pay the collab artist/team a cut of NFTs, because the collabs will be very special Art, or relevant in the news cycle. But we need a base price for the cheapest, most common NFT.
+
+LEs naturally are a mid-tier pricing because you are buying from a random launchpad, you’re not picking an LE, unless you buy it on secondary. There can only be up to 5.
+
+And the FE 1/1 is naturally the most expensive, because we will ser the base minimum bid as the highest price, but bidders can drive the price as high as the market will allow.
+
+So I don’t think FE, or SE are the issue, because they are rare to begin with.
+
+If I don’t want Fight Farm to become a game where we can see up to 40 LGNDs, I still want to see the LGNDs upgrades mean something.
+
+Yes, we want the upgrades to generate fees, burbs, recycles, and yes we want enough LGNDs to be there to compete bid on slot auctions.
+
+But without putting a cap on numbers, if we want the market to decide how to keep potential LGNDs up to the 10-20 range max per fighter, what should my lowest tier SEs be priced at?
+
+Because the mid and upper tier LE and FE will also go up depending on how we price the SEs.
+
+Great question. You’re essentially asking: how do we price the base layer (SEs) so that LGND creation naturally stabilizes around 10–20 per fighter without hard caps?
+
+The trick is to price SEs relative to the economic value of an LGND. If the upgrade path is too cheap, you’ll get 30–40 LGNDs. If it’s too expensive, nobody upgrades.
+
+So we want a target LGND creation cost that makes upgrading meaningful but still attainable for strategists.
+
+Step 1 — Decide the target LGND cost
+
+For the system you described, the healthiest target range is roughly:
+
+$800 – $2,000 total cost to upgrade a LGND (initial ecosystem years)
+
+Why:
+
+cheap enough for serious players
+
+expensive enough to prevent mass upgrades
+
+still profitable if LGND gameplay produces rewards
+
+This keeps LGND supply around 10–20 naturally because many players will stop before finishing the set.
+
+Step 2 — Model the upgrade path
+
+Let’s assume an early fighter eventually gets:
+
+8–12 versions
+
+LGND upgrade requires:
+
+1 SE of each version
+
+So a typical set size is:
+
+10 NFTs
+Step 3 — Back into the SE price
+
+If the target LGND cost is roughly:
+
+$1,000
+
+Then average SE price should be roughly:
+
+$100
+
+But remember:
+
+FE buyers get free SE airdrops
+
+LE buyers get free SE airdrops
+
+some SEs never mint
+
+some versions become bottlenecks
+
+So real costs are higher than the mint price.
+
+Recommended Base Pricing
+SE Base Price
+
+$90 – $120
+
+This is the sweet spot.
+
+Example:
+
+10 versions × $100 = $1,000
+
+Then add:
+
+secondary premiums
+
+bottleneck scarcity
+
+burn fees
+
+upgrade fee
+
+Final LGND cost often becomes:
+
+$1,200 – $2,000
+
+Which is perfect.
+
+Discount for paying in $FIGHT
+
+Offer a 10–15% discount when paying in $FIGHT.
+
+Example:
+
+ETH / USDC price = $110
+$FIGHT price = $95
+
+This pushes players toward buying the token.
+
+LE Launchpad Pricing
+
+LEs are random, but extremely scarce.
+
+Suggested price:
+
+$45–$60
+
+Why cheaper than SE?
+
+Because buyers don’t pick the fighter.
+Random mint risk should be compensated.
+
+But the real value is:
+
+the rarity (max 5)
+
+the free SE airdrops
+
+the strategic bottleneck potential
+
+FE Auction Minimum Bid
+
+Minimum bid should be about:
+
+3–5× SE price
+
+Example:
+
+SE = $100
+FE floor bid = $350–$500
+
+But because it’s an auction, the market will decide.
+
+Popular fighters could reach:
+
+$1k–$3k+
+Why this SE price works with your LGND goal
+
+With:
+
+SE ≈ $100
+Versions ≈ 10
+
+The theoretical LGND cost is:
+
+≈ $1,000
+
+But because:
+
+some SEs are rare
+
+some versions mint less
+
+some are locked in staking
+
+some get burned early
+
+Most players will never complete the full set.
+
+So actual LGND count naturally settles around 10–20.
+
+No hard cap needed.
+
+How scarcity amplifies this later
+
+After burns start, the bottleneck versions become expensive.
+
+Example:
+
+V6 SE supply = 3
+
+Now the upgrade path cost might look like:
+
+9 NFTs × $100
++ 1 bottleneck NFT = $2,000
+
+Now LGND creation stops quickly.
+
+Psychological pricing insight
+
+$100 is also a very good psychological level.
+
+It’s:
+
+high enough to feel valuable
+
+low enough to be accessible
+
+familiar to sports card collectors
+
+Many serious collectors are comfortable buying $100 cards.
+
+Final Recommended Structure
+Tier	Base Price
+SE	$100
+SE ($FIGHT discount)	~$90
+LE launchpad	$45–$60
+FE auction minimum	$350–$500
+One more very important reason this works
+
+Your system also introduces SE burn multipliers for auctions.
+
+That means some SEs are destroyed without upgrading.
+
+Which further reduces supply and protects LGND scarcity.
+
+The elegant result
+
+You don’t cap LGND supply.
+
+Instead you let:
+
+SE price
++ burn mechanics
++ supply compression
++ marketplace competition
+
+determine the final number.
+
+And markets are very good at finding equilibrium.
+
+If you'd like, I can also show you something extremely useful for your pricing decisions:
+
+The Fight Farm Price Ladder Model
+
+It explains how SE → LE → FE → LGND values should scale over time, and why if one layer gets mispriced the entire economy can destabilize.
+
+I’m not sure pricing SEs more expensive is wise. Sure LEs are random, but you also get a matching SE. that alone means the price has to be higher. 
+
+If I minted - LE at $60, got a fighter I didn’t like, and the matching SE, am I still going to go buy an SE that I want that’s more expensive? Or play the lotto in LE launchpads again?
+
+You’re thinking about this exactly the right way. 👍
+Your instinct is correct: SEs cannot be more expensive than LEs, otherwise the system psychologically breaks.
+
+Collectors will always ask:
+
+“Why would I buy the common card when I can buy a rare one cheaper?”
+
+So your logic about LE + free SE airdrop is spot-on.
+
+Let’s walk through the correct economic structure.
+
+The Correct Pricing Relationship
+
+The tiers should always follow this psychological ladder:
+
+SE  <  LE  <  FE
+
+But the effective value of LE is actually:
+
+LE + free SE
+
+So we must price SE low enough that LE still feels premium.
+
+Correct Price Structure
+SE (Standard Edition)
+
+Base price should be roughly:
+
+$20 – $35
+
+Example:
+
+SE = $25
+
+Why this works:
+
+• affordable entry
+• collectors can stack multiple
+• upgrade sets are achievable
+• players won’t hesitate to mint
+
+LE (Limited Edition)
+
+LE launchpad price:
+
+$50 – $75
+
+Example:
+
+LE = $60
+
+But the buyer also gets:
+
+1 free SE
+
+So the perceived value becomes:
+
+$60 = rare collectible + $25 card
+
+That feels fair.
+
+FE (First Edition)
+
+Auction floor:
+
+$150 – $250
+
+Example:
+
+FE starting bid = $200
+
+But FE buyers receive:
+
+1 free SE
+
+So the value ladder becomes:
+
+SE = $25
+LE = $60 (+ SE)
+FE = $200 (+ SE)
+
+Perfect tier separation.
+
+Why This Is Better For Your Game
+
+Lower SE price actually improves the system.
+
+Because it allows:
+
+• stacking NFTs
+• easier set building
+• more marketplace activity
+• more burns over time
+
+If SEs are too expensive:
+
+players stop experimenting
+
+and the ecosystem slows down.
+
+How LGND Scarcity Still Works
+
+Even with cheaper SEs, the version bottleneck still controls LGND supply.
+
+Example:
+
+V1 = 40 SE
+V2 = 60 SE
+V3 = 12 SE  ← bottleneck
+
+Max LGNDs:
+
+12
+
+The mint price does not control scarcity.
+
+The lowest version supply does.
+
+So LGND creation still stabilizes naturally.
+
+Why Cheap SEs Are Good For Strategy
+
+Cheaper SEs create more strategic gameplay.
+
+Players will:
+
+• speculate on obscure fighters
+• stack cheap versions early
+• try to control bottlenecks
+• flip versions during upgrade races
+
+Which is exactly the marketplace game you described earlier.
+
+Your Current Model Actually Creates Three Player Types
+Collectors
+
+Buy FE and LE.
+
+Strategists
+
+Stack SE versions to build LGND.
+
+Traders
+
+Arbitrage bottleneck versions.
+
+That’s exactly what you want.
+
+One Very Important Adjustment
+
+Because SEs are cheaper, you should increase upgrade burn fees slightly.
+
+Example:
+
+LGND upgrade fee
+= $FIGHT burn equivalent of $75 – $150
+
+This ensures upgrades still generate:
+
+• burn pressure
+• treasury revenue
+• token demand
+
+My Recommended Structure
+Tier	Price
+SE	$25
+SE ($FIGHT discount)	$20
+LE	$60
+FE auction floor	$200
+
+This structure is healthy and sustainable.
+
+The Unexpected Benefit
+
+Cheap SEs allow unknown fighters to become strategic assets.
+
+Exactly like you described earlier:
+
+The worst fighters may become the easiest LGND upgrades.
+
+Which is a beautiful emergent mechanic.
+
+One More Insight (This Is Important)
+
+The real economic driver of Fight Farm is not mint price.
+
+It is:
+
+Version bottlenecks
++ burn pressure
++ staking lockups
++ escrow trading
+
+Those are what create secondary market explosions.
+
+Mint price only determines how many people enter the ecosystem.
+
+Lower is usually better.
+
+If you want, I can also show you something extremely important for Fight Farm that most NFT games never figure out:
+
+Why the real long-term value will probably come from “boring fighters,” not famous ones.
+
+And it connects directly to the strategy flip you described earlier.
+
+Save as fight farm infrastructure.
+
+Saved to Fight Farm Infrastructure ✅
+
+I stored the section including:
+
+Tier pricing framework
+
+SE vs LE pricing psychology
+
+Free SE airdrop impact
+
+Recommended baseline prices
+
+LGND scarcity driven by version bottlenecks rather than mint price
+
+Upgrade burn fee guidance
+
+Reasoning why cheaper SEs increase liquidity and strategy
+
+This is now part of the Fight Farm Infrastructure knowledge set along with:
+
+Liquidity Triangle
+
+LGND Power Curve
+
+Strategic Scarcity Flip
+
+Version Bottleneck System
+
+Contract architecture
+
+Agent / Matchmaker infrastructure
+
+So when we reference Fight Farm infrastructure design, pricing and economic logic will already be integrated.
+
+One thing I’d actually like to explore next with you (because it will influence long-term pricing and supply dynamics) is something fascinating that emerges from your system:
+
+The “Anti-Star Economy.”
+
+In Fight Farm, the least popular fighters may become the most strategically valuable assets.
+
+And when that happens, the market behaves very differently than traditional sports collectibles.
+
+It’s one of the most interesting parts of the design.
+
+callable on-chain by UpgradeBurner/Arena/EscrowTrade (V2)
+
+indexed off-chain for dashboards
+
+4) EmissionsVault (NFT Staking)
+
+Functional:
+
+stake/unstake with custody
+
+maintains depositor attribution (depositorOf[tokenId])
+
+fixed weekly emissions (independent of how many stake)
+
+rewards accumulator math (robust DeFi pattern)
+
+claim method
+
+unlock/cooldown enforcement (your single unlock logic)
+
+Security:
+
+reentrancy guards
+
+safe ERC721 transfer handling
+
+pause on exploit
+
+UX:
+
+clear events for “who is staking what”
+
+5) FeeRouter (Core economics)
+
+Functional:
+
+module whitelist (only approved modules can call)
+
+fee table per module type
+
+split table per module type (burn/recycle)
+
+supports both tokens ($FIGHT, $ARENA) and potentially others later
+
+routes:
+
+burn → BurnSink
+
+recycle → RewardsDistributor
+
+remainder → recipient
+
+Telemetry:
+
+emits standardized FeeTaken(...) events for dashboards
+
+Admin:
+
+parameter updates via Master Governance Safe
+
+optional timelock / staged changes
+
+6) BurnSink
+
+burns ERC20s safely
+
+supports burn() tokens or dead-address routing
+
+emits burn events (or FeeRouter emits final burn amount)
+
+7) RewardsDistributor (Recycled rewards)
+
+Functional:
+
+receives recycled tokens
+
+allocates to eligible stakers
+Options:
+
+integrates with EmissionsVault to “top up” reward stream, OR
+
+separate accounting with ClaimRouter calling both
+
+Telemetry:
+
+emits “recycled deposited” + “claimed” events
+
+8) ClaimRouter (One-button claim UX)
+
+claimAll() calls:
+
+EmissionsVault.claim()
+
+RewardsDistributor.claim()
+
+Arena.claim() (if payouts are claimable)
+
+handles partial failures gracefully (or exposes claim-by-module)
+
+9) Primary Sale Modules
+SEMinter
+
+ETH full price path → Treasury Safe (no burn/recycle)
+
+USDC full price path → Treasury Safe (no burn/recycle)
+
+$FIGHT discounted path → FeeRouter (burn/recycle)
+
+mint logic, supply windows per event/version
+
+emits mint metadata events
+
+LELaunchpad
+
+$FIGHT only
+
+fixed price, limited supply (up to 5 per fighter/version)
+
+FeeRouter call on purchase
+
+FEAuction
+
+$ARENA only
+
+standard auction features (min increment, optional anti-snipe)
+
+FeeRouter call on settlement
+
+factory pattern recommended for clean per-version instances
+
+10) Arena (Fight pools + LGND)
+
+Functional:
+
+creates fight pools per event
+
+handles LGND slot auctions + collateral locks
+
+resolves outcomes and updates claimables
+
+supports “lost LGND” vote flows if included (burn/steal outcomes)
+
+routes fees (slot auction fees, etc.) through FeeRouter
+
+Security/robustness:
+
+idempotent settle functions (can’t double-settle)
+
+clear state machine (scheduled → locked → resolved → claimable)
+
+11) UpgradeBurner (LGND upgrades)
+
+Functional:
+
+validates set requirements by fighterId/version/tier
+
+burns required NFTs
+
+charges $FIGHT upgrade fee (10% burn model)
+
+routes fee via FeeRouter
+
+Safety:
+
+prevents double-use and wrong-version submissions
+
+robust checks; heavy test coverage
+
+12) EscrowTrade (NFT↔NFT only)
+
+V1 (recommended):
+
+tokenId-specific swap offers
+
+escrow deposit, expiry, cancel, accept
+
+bundle support
+
+fee in $FIGHT only via FeeRouter
+
+no token-for-NFT trades, ever
+
+V2 (later):
+
+“constraint wants” using FighterRegistry (any V6 SE of fighterId X, etc.)
+
+13) Indexing & Dashboard (off-chain but required)
+
+Index events for:
+
+staking attribution (who staked what)
+
+locked states (arena locks / escrow locks)
+
+burns + recycled amounts by module
+
+micro-market stats per fighter/version:
+
+minted
+
+staked
+
+locked
+
+escrowed
+
+listed (from external APIs)
+
+burn/emission ratio metrics
+
+Fee Table (Fee %, Burn %, Recycle %) — V1 defaults
+Module	Fee %	Burn %	Recycle %	Token
+SE mint (FIGHT lane, discounted)	3%	1.8%	1.2%	$FIGHT
+SE mint (ETH/USDC lane, full price)	0%	0%	0%	ETH/USDC
+LE Launchpad	5%	3%	2%	$FIGHT
+FE Auction	8%	5%	3%	$ARENA
+Slot Auctions	4%	2.5%	1.5%	(pick token)
+LGND Upgrade	10%	10%	0%	$FIGHT
+Prediction markets	3%	2%	1%	$FIGHT
+Lottery	5%	3%	2%	$FIGHT
+EscrowTrade fee	per-NFT fixed or small %	60% of fee	40% of fee	$FIGHT
+
+If you want, I can also convert the checklist into a dev ticket breakdown (Epic → Stories) in the order you should build it (MVP-first), including what can be shipped without Arena, and what needs Arena to go live.
+
+Save as Fight Farm Infrastructure.
+
+Saved successfully as “Fight Farm Infrastructure.” ✅
+
+The saved version now includes:
+
+Fight Farm Infrastructure V1 System Diagram
+
+Full contract map
+
+Governance Safe architecture
+
+Treasury flows
+
+EmissionsVault staking system
+
+FeeRouter burn/recycle engine
+
+RewardsDistributor + ClaimRouter
+
+Primary sale modules
+
+SEMinter
+
+LELaunchpad
+
+FEAuction
+
+Arena fight settlement engine
+
+UpgradeBurner (LGND upgrade contract)
+
+EscrowTrade NFT↔NFT barter desk
+
+LP Ops Safe buyback policy
+
+Burn/recycle fee structures
+
+Indexing & dashboard requirements
+
+Developer responsibility checklist
+
+This now acts as the canonical infrastructure blueprint for Fight Farm and can be used when explaining the architecture to:
+
+developers
+
+auditors
+
+investors
+
+platforms
+
+potential partners
+
+When you’re ready, the next extremely useful step would be building the Fight Farm Infrastructure V2 diagram, which shows:
+
+1️⃣ Agent layer (your Mac mini system)
+2️⃣ Smart contract layer (what we just defined)
+3️⃣ Indexing/data layer
+4️⃣ Frontend/game UI layer
+
+That full stack diagram makes the project much easier for developers to understand instantly.
+
+Yes, because the agent layer is important. Matchmaker not only scrapes for fights, it has to be able to check the fighter ID and version ID to determine workflow dependent on IF fighter already exists. Versus if a fighter exists, what’s the next version number. We also know that we have to link the real fighters name to the charachter fighter. And some of the metadata/traits in the actual nft list the data input of fighter A versus fighter B and UFC event number. 
+
+It’s wild how you have the agent layers working in conjunction with the database layers.
+
+Yep — and once you see it as a control plane (agents + DB + GitHub) driving an execution plane (contracts + minting + markets), it stops feeling wild and starts feeling like a clean factory.
+
+Here’s the mental model that makes it click.
+
+Two planes
+Execution plane (on-chain, deterministic)
+
+NFT contracts + registry
+
+sale modules (SE/LE/FE)
+
+Arena pools + settlement
+
+UpgradeBurner
+
+FeeRouter + Distributor + Vaults
+
+This layer should be “dumb and perfect”: strict rules, no ambiguity.
+
+Control plane (off-chain, flexible)
+
+Matchmaker agent (event ingestion + matchmaking)
+
+Fighter Registry DB (canonical IDs, version counters, mapping real fighter → character)
+
+Job queue + workers (NFT build, metadata, listing creation, social)
+
+GitHub repo as source-of-truth for rules + templates
+
+This layer can be updated quickly without redeploying contracts.
+
+What Matchmaker actually does (the key responsibilities)
+1) Ingest upcoming events
+
+Sources: ESPN/UFC schedule, etc.
+Normalize into canonical objects:
+
+event_id (your internal)
+
+ufc_event_number (or “UFC Fight Night ####”, etc.)
+
+bouts: fighter A vs fighter B, date/time, weight class
+
+2) Resolve fighters to your internal fighter IDs
+
+For each real-world fighter name:
+
+look up in DB: do we already have a character associated?
+
+if yes: get fighter_id and the current latest version
+
+if no: create new fighter_id + spawn the Character workflow
+
+This is the core “exists vs new” branch you’re talking about.
+
+3) Decide version numbers
+
+For each fighter appearing on an event:
+
+next version = max(version) + 1 for that fighter_id
+
+create “version job” entries that are idempotent
+
+4) Emit jobs (not actions)
+
+Matchmaker should not mint NFTs itself.
+It should create jobs like:
+
+CREATE_FIGHTER_IF_MISSING
+
+CREATE_VERSION_METADATA
+
+GENERATE_ART_PROMPTS
+
+PIN_METADATA
+
+CONFIGURE_SALE_MODULES (SE/LE/FE instances)
+
+SCHEDULE_SOCIAL_CONTENT
+
+That keeps it safe and debuggable.
+
+The DB layer you need (minimum viable)
+
+You already pointed at the right fields.
+
+Fighters table
+
+fighter_id (internal)
+
+real_fighter_name
+
+character_name
+
+character_style_profile (art direction)
+
+license_status (if you do fighter licensing later)
+
+created_at
+
+Fighter_versions table
+
+fighter_id
+
+version (int)
+
+event_id
+
+opponent_fighter_id
+
+ufc_event_ref (e.g., UFC 300 / FN 123)
+
+metadata fields needed for NFT traits
+
+mint_status (draft/pinned/minted/live)
+
+Events table
+
+event_id
+
+ufc_event_ref
+
+date_time
+
+bouts[] or separate bouts table
+
+Jobs table
+
+job_type
+
+unique_key (idempotency)
+
+payload_json
+
+status
+
+retries
+
+That’s the “factory schedule.”
+
+How the metadata links fighter A vs fighter B and event number
+
+You’ll want metadata to include both:
+
+human-readable text fields (for collectors)
+
+machine-readable IDs (for your own queries/indexing)
+
+Example traits:
+
+fighter_id
+
+version
+
+opponent_fighter_id
+
+opponent_version (optional)
+
+event_ref (“UFC 305”)
+
+fight_date
+
+weight_class
+
+result (later appended after fight resolves)
+
+career_record_snapshot (optional, if you do it)
+
+This is how the “fight results are inputs” gets encoded into the collectibles.
+
+Why GitHub matters here
+
+You don’t want agents “remembering” rules.
+
+So GitHub becomes the canonical truth for:
+
+fighter/character registry (or exports)
+
+naming conventions
+
+versioning rules
+
+metadata schema
+
+module fee table (mirrors on-chain configs)
+
+templates/prompts
+
+Agents:
+
+read repo
+
+open PRs for changes
+
+CI checks validate consistency (schema, ID uniqueness, version increments)
+
+That’s what keeps the whole thing from drifting into chaos.
+
+The clean full-stack picture (V2 diagram in text)
+              CONTROL PLANE (off-chain)
+┌───────────────────────────────────────────────────┐
+│ GitHub (rules/templates/schemas)                  │
+│ DB (fighters, versions, events, jobs)             │
+│ Queue (jobs)                                      │
+│ Agents: Matchmaker, FighterFactory, NFTBuilder... │
+└───────────────┬───────────────────────────────────┘
+                │ emits jobs + config decisions
+                v
+              EXECUTION PLANE (on-chain)
+┌───────────────────────────────────────────────────┐
+│ NFT + Registry                                    │
+│ SEMinter / LELaunchpad / FEAuction                │
+│ Arena (fight pools + LGND)                        │
+│ UpgradeBurner                                     │
+│ FeeRouter → BurnSink + RewardsDistributor         │
+│ EmissionsVault + ClaimRouter                      │
+└───────────────────────────────────────────────────┘
+Why it feels “wild” (and why it’s actually normal)
+
+What you’re building is basically how modern systems work:
+
+agents = automation operators
+
+DB + GitHub = your factory blueprint
+
+contracts = the unbreakable rule engine
+
+It’s like a manufacturing line:
+
+control plane decides what to build next
+
+execution plane produces it and enforces rules
+
+If you want, I’ll turn this into a clean Fight Farm Stack Diagram V2 (agents + DB + GitHub + indexer + frontend + contracts), and I’ll include the exact “exists vs new fighter” decision tree that Matchmaker runs.
+
+Ok please do.
+
+Here’s Fight Farm Stack Diagram V2 with the agent layer + DB + GitHub + indexer + frontend + contracts, plus the exact Matchmaker decision tree (“fighter exists vs new fighter” and “next version number”).
+
+Fight Farm Stack Diagram V2
+1) Full stack overview (Control plane → Execution plane)
+┌──────────────────────────────────────────────────────────────────────────────┐
+│                                USERS / PLAYERS                              │
+│   Mint SE/LE/FE • Stake NFTs • Enter Arena • Trade (OpenSea/Blur + Escrow)   │
+└──────────────────────────────────────────────────────────────────────────────┘
+                                      │
+                                      v
+┌──────────────────────────────────────────────────────────────────────────────┐
+│                            FRONTEND / DASHBOARD                              │
+│  - Mint pages (SE/LE/FE)                                                     │
+│  - Arena UI (fight pools, LGND slots, voting outcomes, claim)                │
+│  - Staking UI (stake/unstake, who’s staking what, basenames/ENS)             │
+│  - Escrow Trade Board (barter offers)                                        │
+│  - Analytics (burn/recycle totals, fighter/version micro-markets)            │
+└──────────────────────────────────────────────────────────────────────────────┘
+                       │                              │
+                       │ reads state                  │ reads state + history
+                       v                              v
+┌───────────────────────────────┐             ┌───────────────────────────────┐
+│        ON-CHAIN (Base)         │             │      INDEXER / DATA API        │
+│  Execution plane (deterministic)│            │  (TheGraph or custom indexer)  │
+│  - FightFarmNFT + FighterRegistry│           │  - mirrors on-chain events      │
+│  - SEMinter / LELaunchpad / FEAuction│       │  - computes “circulating supply”│
+│  - Arena settlement engine       │           │  - caches dashboards + queries  │
+│  - UpgradeBurner                 │           └───────────────────────────────┘
+│  - EscrowTrade (NFT↔NFT only)    │
+│  - EmissionsVault (NFT staking)  │
+│  - FeeRouter → BurnSink + RewardsDistributor│
+│  - ClaimRouter                   │
+└───────────────────────────────┘
+                       ^
+                       │ config + job execution
+                       │ (via wallets/safes where needed)
+┌──────────────────────────────────────────────────────────────────────────────┐
+│                         CONTROL PLANE (Off-chain)                             │
+│  Agents + DB + GitHub + Queue                                                 │
+│                                                                              │
+│  GitHub Repo (canonical rules/templates/schemas)                              │
+│   - fighter_id conventions, name rules, metadata schema, versioning rules     │
+│   - sale module defaults, fee tables, templates, prompts                      │
+│                                                                              │
+│  Database (canonical world model)                                             │
+│   - fighters, characters, licensing status                                    │
+│   - events, bouts, fighter appearances, version counters                      │
+│   - jobs (idempotent work orders)                                             │
+│                                                                              │
+│  Queue / Dispatcher                                                           │
+│   - throttles execution, retries, priorities                                  │
+│                                                                              │
+│  Agents (roles)                                                               │
+│   - Matchmaker: ingest events → resolve fighter IDs → emit jobs               │
+│   - FighterFactory: create new fighter/character records + agent folders      │
+│   - NFTBuilder: generate metadata/art prompts, pin metadata                   │
+│   - SaleDeployer: configure/launch SEMinter/LELaunchpad/FEAuction instances   │
+│   - Social/Comms: schedules posts/content (optional v1)                       │
+└──────────────────────────────────────────────────────────────────────────────┘
+2) Matchmaker decision tree (exists vs new + next version)
+
+This is the “factory brain.” It should be deterministic and idempotent.
+
+Inputs
+
+Upcoming event card (from ESPN/UFC schedule ingest)
+
+Bouts list: (Real Fighter A name, Real Fighter B name, date, event ref)
+
+Outputs
+
+Canonical DB records (event, bouts)
+
+Job emissions for:
+
+new fighter creation if missing
+
+version creation for existing fighters
+
+metadata generation linking A vs B and event ref
+
+Decision tree
+FOR EACH EVENT (E):
+  Normalize E into canonical event_ref, date_time, bout list
+
+  Upsert EVENT in DB:
+    event_id = hash(event_ref + date_time)
+
+  FOR EACH BOUT (A_name vs B_name):
+
+    A = RESOLVE_REAL_FIGHTER(A_name)
+    B = RESOLVE_REAL_FIGHTER(B_name)
+
+    IF A not found in Fighters table:
+        CREATE fighter_id for A
+        CREATE character mapping for A (character_id)
+        EMIT JOB: CREATE_FIGHTER_IF_MISSING(fighter_id, A_name)
+        (optionally EMIT JOB: CREATE_AGENT_FOLDER for A)
+
+    IF B not found in Fighters table:
+        same as above for B
+
+    // At this point both fighters exist (or are pending creation)
+    // Versioning logic is deterministic:
+    A_next_version = (max(version) for A.fighter_id) + 1
+    B_next_version = (max(version) for B.fighter_id) + 1
+
+    // Create the “appearance/version” records (idempotent)
+    Upsert FIGHTER_VERSION row for A:
+      (fighter_id=A, version=A_next_version, event_id=E, opponent=B, bout_id)
+    Upsert FIGHTER_VERSION row for B:
+      (fighter_id=B, version=B_next_version, event_id=E, opponent=A, bout_id)
+
+    EMIT JOBS (idempotent keys):
+      - BUILD_METADATA(fighter_id=A, version=A_next_version, opponent=B, event_ref)
+      - BUILD_METADATA(fighter_id=B, version=B_next_version, opponent=A, event_ref)
+
+      - BUILD_ART_PROMPTS(...) for A and B (if needed)
+      - PIN_METADATA(...) after metadata build
+      - PREP_SALES_CONFIG(event_id, fighter_id, version, tiers=SE/LE/FE)
+      - (optional) SCHEDULE_SOCIAL(event_id, fighter_id, version)
+Key rule: “idempotent by unique_key”
+
+Every job has a unique_key so reruns don’t duplicate versions or sales:
+
+unique_key = event_id + fighter_id + version + job_type
+
+If Matchmaker runs twice, it re-discovers the same event and produces no duplicates.
+
+3) Real fighter name → character fighter mapping
+
+You’ll maintain a table:
+
+Fighters
+
+fighter_id (internal immutable ID)
+
+real_fighter_name (human input)
+
+character_name (Fight Farm persona)
+
+character_profile (style, lore, archetype)
+
+licensing_status (optional later)
+
+created_at
+
+This lets you:
+
+show “real fight inputs” in metadata
+
+keep Fight Farm characters consistent across versions
+
+power your “fighter-specific micro-markets” dashboards
+
+4) Metadata requirements (A vs B + event ref + versioning)
+
+For each NFT version (SE/LE/FE share the same base identifiers), include at minimum:
+
+Machine fields
+
+fighter_id
+
+version
+
+opponent_fighter_id
+
+event_ref (e.g., “UFC 305” or “Fight Night ####”)
+
+bout_id (internal)
+
+tier (SE/LE/FE/LGND)
+
+chain_id, contract, token_id
+
+Collector fields
+
+Character name
+
+“Versus” opponent character name (and optionally real name, depending on your policy)
+
+Event badge / number reference (no logos)
+
+Date
+
+Later append-only
+
+outcome/result fields after fight resolves (if you do dynamic metadata)
+
+5) Where DB ends and on-chain begins (clean boundary)
+DB is source of truth for:
+
+fighters list + mapping real name → fighter_id
+
+next version counters
+
+job state, retries, priorities
+
+event ingestion history
+
+off-chain metadata drafts
+
+On-chain is source of truth for:
+
+minted tokens and ownership
+
+staking deposits
+
+arena locks + payouts
+
+burns/recycles
+
+escrowed trade offers
+
+claim balances
+
+The indexer bridges this so the frontend is fast.
+
+6) Recommended “minimum viable” pipeline order
+
+If you want the simplest V1 that still works:
+
+FighterRegistry + NFT + SEMinter (SE mints)
+
+EmissionsVault + ClaimRouter
+
+FeeRouter + RewardsDistributor
+
+LELaunchpad + FEAuction
+
+Arena (fight pools + basic settlement)
+
+UpgradeBurner
+
+EscrowTrade + Trade Board UI
+
+Matchmaker automation (start semi-manual, then automate)
+
+This avoids trying to automate everything on day 1.
+
+If you want, I can now do one more “make it real” deliverable: a Matchmaker Spec V1 with exact DB schemas, job payload JSON formats, unique_key rules, and example outputs for a UFC card (two fights) so a dev can implement it directly.
+
+Yes, please create this and save this thread as Fight Farm Infrastructure.
+
+Saved to Fight Farm Infrastructure ✅
+
+Here is the Matchmaker Spec V1 (build-ready). This is written so a dev can implement it directly.
+
+Matchmaker Spec V1
+Purpose
+
+Matchmaker ingests upcoming UFC events, normalizes them into a canonical DB model, resolves real fighters → Fight Farm character fighters, determines next version numbers, and emits idempotent jobs for downstream workers (NFTBuilder, SaleDeployer, Social, etc.).
+
+Matchmaker does not mint. It only creates/updates records + emits jobs.
+
+A) Canonical IDs and Idempotency
+1) Canonical identifiers
+
+Use deterministic IDs so repeated runs don’t create duplicates.
+
+Event ID
+
+event_id = sha256(chain="UFC" + "|" + event_ref + "|" + event_date_utc)
+
+Bout ID
+
+bout_id = sha256(event_id + "|" + normalized_real_name_A + "|" + normalized_real_name_B + "|" + weight_class)
+
+Fighter ID (internal Fight Farm character fighter id)
+
+fighter_id = "FF_" + base32(sha256(normalized_real_fighter_name))[:10]
+
+immutable once created
+
+Version job unique keys
+
+unique_key = sha256(job_type + "|" + event_id + "|" + fighter_id + "|" + version)
+
+2) Idempotency rules (hard requirements)
+
+Every “create” operation is an upsert.
+
+Every emitted job includes unique_key and must be inserted with a unique constraint.
+
+If a job already exists, do nothing.
+
+This ensures Matchmaker can run hourly without duplication.
+
+B) Database schema (minimum viable)
+1) fighters
+
+Tracks real fighter mapping to Fight Farm character identity.
+
+fighter_id (PK, text)
+
+real_name (text)
+
+real_name_norm (text, unique)
+
+character_name (text)
+
+character_slug (text, unique) (optional)
+
+license_status (enum: unknown | not_required | pending | signed | denied)
+
+created_at (timestamp)
+
+updated_at (timestamp)
+
+Unique constraints
+
+real_name_norm unique
+
+character_slug unique (if used)
+
+2) events
+
+event_id (PK, text)
+
+event_ref (text) (e.g. “UFC 305”, “UFC Fight Night 257”)
+
+event_name (text) (optional: “UFC 305: X vs Y”)
+
+org (text default “UFC”)
+
+start_time_utc (timestamp)
+
+venue (text nullable)
+
+location (text nullable)
+
+status (enum: scheduled | updated | completed | canceled)
+
+source (text) (ESPN/UFC etc.)
+
+source_url (text nullable)
+
+created_at, updated_at
+
+Unique constraint
+
+(org, event_ref, start_time_utc) OR just event_id derived from those
+
+3) bouts
+
+bout_id (PK, text)
+
+event_id (FK)
+
+real_name_a (text)
+
+real_name_b (text)
+
+real_name_a_norm (text)
+
+real_name_b_norm (text)
+
+fighter_id_a (FK nullable until resolved)
+
+fighter_id_b (FK nullable until resolved)
+
+weight_class (text nullable)
+
+card_slot (enum: main | prelim | early | unknown) (optional)
+
+bout_order (int nullable)
+
+status (enum: scheduled | updated | completed | canceled)
+
+created_at, updated_at
+
+Unique constraint
+
+(event_id, real_name_a_norm, real_name_b_norm, weight_class) OR bout_id
+
+4) fighter_versions
+
+This is the “appearance record” per event.
+
+fighter_id (FK)
+
+version (int)
+
+event_id (FK)
+
+bout_id (FK)
+
+opponent_fighter_id (FK)
+
+event_ref (text)
+
+scheduled_date_utc (timestamp)
+
+tier_plan (json) (e.g., {"SE":true,"LE":true,"FE":true})
+
+status (enum: planned | metadata_draft | pinned | sale_live | minted | archived)
+
+created_at, updated_at
+
+Primary key
+
+(fighter_id, version) unique
+
+Additional constraint
+
+(fighter_id, event_id) unique if you want “only one version per fighter per event”
+
+5) jobs
+
+job_id (PK, text or uuid)
+
+unique_key (text unique)
+
+job_type (enum)
+
+priority (int default 50)
+
+status (enum: queued | running | succeeded | failed | canceled)
+
+payload_json (json)
+
+attempts (int default 0)
+
+max_attempts (int default 5)
+
+run_after_utc (timestamp nullable)
+
+created_at, updated_at
+
+last_error (text nullable)
+
+Unique constraint
+
+unique_key unique
+
+C) Job Types and Payload Formats
+1) CREATE_FIGHTER_IF_MISSING
+
+Created when a real fighter is not found.
+
+{
+  "fighter_id": "FF_9F3K2A1B7C",
+  "real_name": "Islam Makhachev",
+  "real_name_norm": "islam makhachev",
+  "suggested_character_name": "Islam Makhachev (Fight Farm Character)", 
+  "license_status": "unknown"
+}
+
+In V1, character_name can default to real name while your character layer is still being built, or you can auto-generate a stylized alias. Your call.
+
+2) CREATE_VERSION_RECORD (optional if Matchmaker writes fighter_versions directly)
+
+If you want Matchmaker to emit and a worker to upsert.
+
+{
+  "fighter_id": "FF_9F3K2A1B7C",
+  "version": 4,
+  "event_id": "EVT_...",
+  "bout_id": "BOUT_...",
+  "opponent_fighter_id": "FF_ABC...",
+  "event_ref": "UFC 305",
+  "scheduled_date_utc": "2026-06-12T02:00:00Z"
+}
+3) BUILD_METADATA
+
+This is the main one: creates the metadata object linking fighter A vs B, event ref, version.
+
+{
+  "fighter_id": "FF_9F3K2A1B7C",
+  "version": 4,
+  "tier": "SE",
+  "event_id": "EVT_...",
+  "bout_id": "BOUT_...",
+  "opponent_fighter_id": "FF_ABC...",
+  "event_ref": "UFC 305",
+  "fight_date_utc": "2026-06-12T02:00:00Z",
+  "metadata_schema_version": "v1",
+  "attributes": {
+    "fighter_id": "FF_9F3K2A1B7C",
+    "version": 4,
+    "opponent_fighter_id": "FF_ABC...",
+    "event_ref": "UFC 305"
+  }
+}
+
+Note: You’ll generate one base metadata record and reuse it across tiers with tier-specific additions.
+
+4) GENERATE_ART_PROMPT
+{
+  "fighter_id": "FF_9F3K2A1B7C",
+  "version": 4,
+  "event_ref": "UFC 305",
+  "opponent_fighter_id": "FF_ABC...",
+  "art_style_profile_ref": "styles/fightfarm_default.md",
+  "tier_targets": ["SE", "LE", "FE"]
+}
+5) PIN_METADATA
+{
+  "fighter_id": "FF_9F3K2A1B7C",
+  "version": 4,
+  "metadata_ref": "db://metadata/FF_9F3K2A1B7C/4/base.json",
+  "pin_target": "ipfs",
+  "expected_outputs": ["metadata_cid", "image_cid"]
+}
+6) PREP_SALES_CONFIG
+
+Creates the instructions for SaleDeployer (factories).
+
+{
+  "event_id": "EVT_...",
+  "fighter_id": "FF_9F3K2A1B7C",
+  "version": 4,
+  "pricing": {
+    "SE": { "eth_usdc_price": 18, "fight_discount_price": 16 },
+    "LE": { "fight_only_price": 50, "supply": 5 },
+    "FE": { "arena_only": true, "auction_min": 75 }
+  },
+  "fee_policy_ref": "fees/v1.json"
+}
+7) DEPLOY_SALES (SaleDeployer worker)
+{
+  "event_id": "EVT_...",
+  "fighter_id": "FF_9F3K2A1B7C",
+  "version": 4,
+  "deploy": {
+    "SEMinter": true,
+    "LELaunchpad": true,
+    "FEAuction": true
+  },
+  "metadata_cid": "ipfs://...",
+  "start_time_utc": "2026-06-10T00:00:00Z",
+  "end_time_utc": "2026-06-13T00:00:00Z"
+}
+D) Matchmaker algorithm (implementation details)
+Step 1: Ingest and normalize event data
+
+Pull schedule
+
+Normalize:
+
+event_ref, start_time_utc, bout list
+
+normalize real fighter names into real_name_norm
+
+Step 2: Upsert event + bouts
+
+Upsert events
+
+For each bout, upsert bouts
+
+Store real_name_*_norm always
+
+Step 3: Resolve fighters (exists vs new)
+
+For each bout fighter:
+
+SELECT fighter_id FROM fighters WHERE real_name_norm = ?
+
+If not found:
+
+create fighter_id deterministically
+
+insert fighter row (or emit CREATE_FIGHTER_IF_MISSING)
+
+emit CREATE_FIGHTER_IF_MISSING job
+
+Then update bouts.fighter_id_a/b as soon as resolved.
+
+Step 4: Determine next version number
+
+For each resolved fighter:
+
+SELECT max(version) FROM fighter_versions WHERE fighter_id = ?
+
+next_version = (max_version or 0) + 1
+
+Step 5: Upsert fighter_versions rows
+
+Create one fighter_versions row per fighter appearance.
+
+(fighter_id, version) must be unique.
+
+include opponent_fighter_id, event_id, bout_id, event_ref, date
+
+Step 6: Emit idempotent jobs
+
+Emit the standard pipeline:
+
+BUILD_METADATA (base + tiers)
+
+GENERATE_ART_PROMPT
+
+PIN_METADATA
+
+PREP_SALES_CONFIG
+
+DEPLOY_SALES (or separate approval gate)
+
+All with unique_key constraints.
+
+E) Worked example (2-fight card)
+Input (simplified)
+
+Event:
+
+event_ref: “UFC 305”
+
+date: 2026-06-12Z
+Bouts:
+
+“Max Holloway” vs “Justin Gaethje”
+
+“Alexa Grasso” vs “Valentina Shevchenko”
+
+Matchmaker results (DB)
+
+Upserts events row EVT_UFC305…
+
+Upserts 2 bouts rows
+
+Fighters resolution
+
+If “Max Holloway” exists with fighter_id FF_MAX…
+
+next_version becomes 7
+
+If “Justin Gaethje” exists with fighter_id FF_JG…
+
+next_version becomes 6
+
+If Alexa/Valentina don’t exist yet:
+
+create fighters rows or emit create jobs
+
+fighter_versions created
+
+(FF_MAX…, v7, event UFC 305, opponent FF_JG…)
+
+(FF_JG…, v6, event UFC 305, opponent FF_MAX…)
+
+(FF_AG…, v1, event UFC 305, opponent FF_VS…)
+
+(FF_VS…, v1, event UFC 305, opponent FF_AG…)
+
+Jobs emitted (example list)
+
+For each fighter/version:
+
+BUILD_METADATA (base)
+
+BUILD_METADATA (SE)
+
+BUILD_METADATA (LE)
+
+BUILD_METADATA (FE)
+
+GENERATE_ART_PROMPT
+
+PIN_METADATA
+
+PREP_SALES_CONFIG
+
+DEPLOY_SALES
+
+Each with unique_key so reruns create zero dupes.
+
+F) GitHub source-of-truth integration (recommended)
+
+Matchmaker should read these files from the repo:
+
+schemas/metadata_v1.json
+
+fees/v1.json
+
+rules/versioning.md
+
+templates/naming.md
+
+styles/fightfarm_default.md
+
+And Matchmaker can write PRs (optional) for:
+
+newly discovered fighters
+
+corrected name normalization mappings
+
+event ingestion logs
+
+G) V1 “approval gate” (smart ops)
+
+To stay safe early:
+
+Matchmaker emits DEPLOY_SALES as pending
+
+a human/agent reviewer flips approved=true before on-chain deployment occurs
+
+This prevents accidental drops from bad scrape data.
+
+If you want, next I can add a compact JSON Schema for:
+
+EventNormalized
+
+BoutNormalized
+
+JobPayload types
+so everything is validated automatically before jobs are accepted into the queue.
+
+Yes please.
+
+Perfect — here are compact, practical JSON Schemas for V1 that you can enforce in CI and in your job-queue insert path. They’re intentionally “tight enough to catch mistakes” but not so strict they slow you down.
+
+You can store these in your repo like:
+
+schemas/event_normalized.v1.schema.json
+
+schemas/bout_normalized.v1.schema.json
+
+schemas/job_payloads.v1.schema.json
+
+1) EventNormalized V1 Schema
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schemas/event_normalized.v1.schema.json",
+  "title": "EventNormalizedV1",
+  "type": "object",
+  "required": ["org", "event_ref", "start_time_utc", "source", "bouts"],
+  "additionalProperties": false,
+  "properties": {
+    "org": { "type": "string", "enum": ["UFC"] },
+    "event_ref": { "type": "string", "minLength": 3, "maxLength": 80 },
+    "event_name": { "type": "string", "minLength": 0, "maxLength": 120 },
+    "start_time_utc": { "type": "string", "format": "date-time" },
+    "venue": { "type": "string", "maxLength": 120 },
+    "location": { "type": "string", "maxLength": 120 },
+    "status": {
+      "type": "string",
+      "enum": ["scheduled", "updated", "completed", "canceled"]
+    },
+    "source": { "type": "string", "minLength": 2, "maxLength": 40 },
+    "source_url": { "type": "string", "format": "uri" },
+    "bouts": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 30,
+      "items": { "$ref": "schemas/bout_normalized.v1.schema.json" }
+    }
+  }
+}
+2) BoutNormalized V1 Schema
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schemas/bout_normalized.v1.schema.json",
+  "title": "BoutNormalizedV1",
+  "type": "object",
+  "required": ["real_name_a", "real_name_b", "real_name_a_norm", "real_name_b_norm"],
+  "additionalProperties": false,
+  "properties": {
+    "real_name_a": { "type": "string", "minLength": 2, "maxLength": 80 },
+    "real_name_b": { "type": "string", "minLength": 2, "maxLength": 80 },
+
+    "real_name_a_norm": {
+      "type": "string",
+      "pattern": "^[a-z0-9\\s\\-\\.'’]+$",
+      "minLength": 2,
+      "maxLength": 80
+    },
+    "real_name_b_norm": {
+      "type": "string",
+      "pattern": "^[a-z0-9\\s\\-\\.'’]+$",
+      "minLength": 2,
+      "maxLength": 80
+    },
+
+    "weight_class": { "type": "string", "maxLength": 40 },
+
+    "card_slot": {
+      "type": "string",
+      "enum": ["main", "prelim", "early", "unknown"]
+    },
+    "bout_order": { "type": "integer", "minimum": 1, "maximum": 30 },
+
+    "status": {
+      "type": "string",
+      "enum": ["scheduled", "updated", "completed", "canceled"]
+    },
+
+    "fighter_id_a": { "type": "string", "pattern": "^FF_[A-Z0-9]{10}$" },
+    "fighter_id_b": { "type": "string", "pattern": "^FF_[A-Z0-9]{10}$" }
+  }
+}
+
+Notes:
+
+fighter_id_a/b are optional in normalization outputs (you may resolve after ingest), so they are not in required.
+
+3) JobPayloads V1 Schema (One file, oneOf by job_type)
+
+This schema validates the row you insert into the queue, not just payloads.
+
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schemas/job_payloads.v1.schema.json",
+  "title": "JobRowV1",
+  "type": "object",
+  "required": ["unique_key", "job_type", "payload_json"],
+  "additionalProperties": false,
+  "properties": {
+    "unique_key": { "type": "string", "minLength": 20, "maxLength": 120 },
+    "job_type": {
+      "type": "string",
+      "enum": [
+        "CREATE_FIGHTER_IF_MISSING",
+        "BUILD_METADATA",
+        "GENERATE_ART_PROMPT",
+        "PIN_METADATA",
+        "PREP_SALES_CONFIG",
+        "DEPLOY_SALES",
+        "SCHEDULE_SOCIAL"
+      ]
+    },
+    "priority": { "type": "integer", "minimum": 0, "maximum": 100 },
+    "run_after_utc": { "type": "string", "format": "date-time" },
+    "payload_json": { "type": "object" }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "job_type": { "const": "CREATE_FIGHTER_IF_MISSING" } } },
+      "then": {
+        "properties": {
+          "payload_json": { "$ref": "#/$defs/CreateFighterIfMissingV1" }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "job_type": { "const": "BUILD_METADATA" } } },
+      "then": {
+        "properties": {
+          "payload_json": { "$ref": "#/$defs/BuildMetadataV1" }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "job_type": { "const": "GENERATE_ART_PROMPT" } } },
+      "then": {
+        "properties": {
+          "payload_json": { "$ref": "#/$defs/GenerateArtPromptV1" }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "job_type": { "const": "PIN_METADATA" } } },
+      "then": {
+        "properties": {
+          "payload_json": { "$ref": "#/$defs/PinMetadataV1" }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "job_type": { "const": "PREP_SALES_CONFIG" } } },
+      "then": {
+        "properties": {
+          "payload_json": { "$ref": "#/$defs/PrepSalesConfigV1" }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "job_type": { "const": "DEPLOY_SALES" } } },
+      "then": {
+        "properties": {
+          "payload_json": { "$ref": "#/$defs/DeploySalesV1" }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "job_type": { "const": "SCHEDULE_SOCIAL" } } },
+      "then": {
+        "properties": {
+          "payload_json": { "$ref": "#/$defs/ScheduleSocialV1" }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "FighterId": { "type": "string", "pattern": "^FF_[A-Z0-9]{10}$" },
+    "Tier": { "type": "string", "enum": ["SE", "LE", "FE", "LGND"] },
+
+    "CreateFighterIfMissingV1": {
+      "type": "object",
+      "required": ["fighter_id", "real_name", "real_name_norm", "license_status"],
+      "additionalProperties": false,
+      "properties": {
+        "fighter_id": { "$ref": "#/$defs/FighterId" },
+        "real_name": { "type": "string", "minLength": 2, "maxLength": 80 },
+        "real_name_norm": {
+          "type": "string",
+          "pattern": "^[a-z0-9\\s\\-\\.'’]+$",
+          "minLength": 2,
+          "maxLength": 80
+        },
+        "suggested_character_name": { "type": "string", "maxLength": 80 },
+        "license_status": {
+          "type": "string",
+          "enum": ["unknown", "not_required", "pending", "signed", "denied"]
+        }
+      }
+    },
+
+    "BuildMetadataV1": {
+      "type": "object",
+      "required": [
+        "fighter_id",
+        "version",
+        "tier",
+        "event_id",
+        "bout_id",
+        "opponent_fighter_id",
+        "event_ref",
+        "fight_date_utc",
+        "metadata_schema_version"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "fighter_id": { "$ref": "#/$defs/FighterId" },
+        "version": { "type": "integer", "minimum": 1, "maximum": 999 },
+        "tier": { "$ref": "#/$defs/Tier" },
+        "event_id": { "type": "string", "minLength": 16, "maxLength": 80 },
+        "bout_id": { "type": "string", "minLength": 16, "maxLength": 80 },
+        "opponent_fighter_id": { "$ref": "#/$defs/FighterId" },
+        "event_ref": { "type": "string", "minLength": 3, "maxLength": 80 },
+        "fight_date_utc": { "type": "string", "format": "date-time" },
+        "metadata_schema_version": { "type": "string", "enum": ["v1"] },
+        "attributes": { "type": "object" }
+      }
+    },
+
+    "GenerateArtPromptV1": {
+      "type": "object",
+      "required": ["fighter_id", "version", "event_ref", "opponent_fighter_id", "tier_targets"],
+      "additionalProperties": false,
+      "properties": {
+        "fighter_id": { "$ref": "#/$defs/FighterId" },
+        "version": { "type": "integer", "minimum": 1, "maximum": 999 },
+        "event_ref": { "type": "string", "minLength": 3, "maxLength": 80 },
+        "opponent_fighter_id": { "$ref": "#/$defs/FighterId" },
+        "art_style_profile_ref": { "type": "string", "maxLength": 120 },
+        "tier_targets": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 4,
+          "items": { "$ref": "#/$defs/Tier" }
+        }
+      }
+    },
+
+    "PinMetadataV1": {
+      "type": "object",
+      "required": ["fighter_id", "version", "metadata_ref", "pin_target", "expected_outputs"],
+      "additionalProperties": false,
+      "properties": {
+        "fighter_id": { "$ref": "#/$defs/FighterId" },
+        "version": { "type": "integer", "minimum": 1, "maximum": 999 },
+        "metadata_ref": { "type": "string", "minLength": 8, "maxLength": 200 },
+        "pin_target": { "type": "string", "enum": ["ipfs"] },
+        "expected_outputs": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 5,
+          "items": { "type": "string", "enum": ["metadata_cid", "image_cid"] }
+        }
+      }
+    },
+
+    "PrepSalesConfigV1": {
+      "type": "object",
+      "required": ["event_id", "fighter_id", "version", "pricing", "fee_policy_ref"],
+      "additionalProperties": false,
+      "properties": {
+        "event_id": { "type": "string", "minLength": 16, "maxLength": 80 },
+        "fighter_id": { "$ref": "#/$defs/FighterId" },
+        "version": { "type": "integer", "minimum": 1, "maximum": 999 },
+        "pricing": {
+          "type": "object",
+          "required": ["SE", "LE", "FE"],
+          "additionalProperties": false,
+          "properties": {
+            "SE": {
+              "type": "object",
+              "required": ["eth_usdc_price", "fight_discount_price"],
+              "additionalProperties": false,
+              "properties": {
+                "eth_usdc_price": { "type": "number", "minimum": 0 },
+                "fight_discount_price": { "type": "number", "minimum": 0 }
+              }
+            },
+            "LE": {
+              "type": "object",
+              "required": ["fight_only_price", "supply"],
+              "additionalProperties": false,
+              "properties": {
+                "fight_only_price": { "type": "number", "minimum": 0 },
+                "supply": { "type": "integer", "minimum": 1, "maximum": 50 }
+              }
+            },
+            "FE": {
+              "type": "object",
+              "required": ["arena_only", "auction_min"],
+              "additionalProperties": false,
+              "properties": {
+                "arena_only": { "type": "boolean", "const": true },
+                "auction_min": { "type": "number", "minimum": 0 }
+              }
+            }
+          }
+        },
+        "fee_policy_ref": { "type": "string", "minLength": 3, "maxLength": 120 }
+      }
+    },
+
+    "DeploySalesV1": {
+      "type": "object",
+      "required": [
+        "event_id",
+        "fighter_id",
+        "version",
+        "deploy",
+        "metadata_cid",
+        "start_time_utc",
+        "end_time_utc"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "event_id": { "type": "string", "minLength": 16, "maxLength": 80 },
+        "fighter_id": { "$ref": "#/$defs/FighterId" },
+        "version": { "type": "integer", "minimum": 1, "maximum": 999 },
+        "deploy": {
+          "type": "object",
+          "required": ["SEMinter", "LELaunchpad", "FEAuction"],
+          "additionalProperties": false,
+          "properties": {
+            "SEMinter": { "type": "boolean" },
+            "LELaunchpad": { "type": "boolean" },
+            "FEAuction": { "type": "boolean" }
+          }
+        },
+        "metadata_cid": { "type": "string", "minLength": 10, "maxLength": 120 },
+        "start_time_utc": { "type": "string", "format": "date-time" },
+        "end_time_utc": { "type": "string", "format": "date-time" },
+        "approved": { "type": "boolean", "default": false }
+      }
+    },
+
+    "ScheduleSocialV1": {
+      "type": "object",
+      "required": ["fighter_id", "version", "event_ref", "post_time_utc", "channel"],
+      "additionalProperties": false,
+      "properties": {
+        "fighter_id": { "$ref": "#/$defs/FighterId" },
+        "version": { "type": "integer", "minimum": 1, "maximum": 999 },
+        "event_ref": { "type": "string", "minLength": 3, "maxLength": 80 },
+        "post_time_utc": { "type": "string", "format": "date-time" },
+        "channel": { "type": "string", "enum": ["x", "discord", "web"] },
+        "content_ref": { "type": "string", "maxLength": 200 }
+      }
+    }
+  }
+}
+How to use these schemas (simple)
+
+Validate the scrape output against EventNormalizedV1 before you write DB.
+
+Validate each queue insert against JobRowV1.
+
+Put schema validation in:
+
+Matchmaker agent (before writing jobs)
+
+CI checks (for test fixtures)
+
+queue ingestion service (as a safety net)
+
+If you want, the next step is to add a “Naming & Normalization Spec V1” (rules for real_name_norm, nickname handling, accents, Jr./Sr., hyphens, apostrophes) because that’s the #1 cause of duplicate fighters in ingestion pipelines.
+
+Yes please.
+
+Here’s Naming & Normalization Spec V1 — the thing that prevents “duplicate fighters” and version drift. This is the exact spec I’d put in your repo as rules/naming_normalization_v1.md plus a small JSON mapping file for exceptions.
+
+Naming & Normalization Spec V1
+Goal
+
+Convert any real-world fighter name string into a stable canonical key (real_name_norm) so:
+
+“José Aldo” = “Jose Aldo”
+
+“Robert ‘The Reaper’ Whittaker” = “Robert Whittaker”
+
+“Jon Jones” ≠ “Jonathan Jones” (unless you explicitly alias it)
+
+the Matchmaker never creates duplicate fighters due to formatting
+
+This spec produces:
+
+real_name_display (pretty, human)
+
+real_name_norm (canonical, DB unique key)
+
+real_name_fingerprint (optional hash key, if you want)
+
+1) Storage rules (DB fields)
+
+fighters table
+
+real_name = “as entered / source display” (human readable)
+
+real_name_norm = canonical normalized string (unique)
+
+optional:
+
+real_name_aliases[] (array of alternative norms)
+
+bouts table
+
+store both:
+
+real_name_a, real_name_b
+
+real_name_a_norm, real_name_b_norm
+
+2) Normalization pipeline (strict order)
+
+Given input string s:
+
+Step 0 — Trim and unify whitespace
+
+trim leading/trailing whitespace
+
+replace any internal multiple spaces/tabs/newlines with a single space
+
+Step 1 — Remove bracketed and quoted nicknames
+
+Remove nicknames and clutter commonly inserted by sources:
+
+content in parentheses ( ... )
+
+content in quotes " ... " and ' ... ' when it’s clearly a nickname segment
+
+content between fancy quotes “ ... ” and ‘ ... ’
+
+Examples:
+
+Robert "The Reaper" Whittaker → Robert Whittaker
+
+Alexa Grasso (Champion) → Alexa Grasso
+
+Keep apostrophes that are part of names (O’Malley), but strip quoted nickname segments.
+
+Step 2 — Unicode normalize + strip diacritics
+
+apply Unicode NFKD
+
+remove combining marks
+
+Examples:
+
+José → Jose
+
+Valentina Shevchenko stays same
+
+Step 3 — Convert to lowercase
+
+Max Holloway → max holloway
+
+Step 4 — Standardize punctuation
+
+Replace these with a simple ASCII equivalent:
+
+curly apostrophe ’ → '
+
+en/em dashes –/— → -
+
+Then remove punctuation except:
+
+hyphen -
+
+apostrophe '
+
+period . (only if used in initials like “J.J.”)
+
+Examples:
+
+Sean O’Malley → sean o'malley
+
+Jean-Luc stays jean-luc
+
+Step 5 — Remove suffixes / honorifics
+
+Strip common suffix tokens at end:
+
+jr, jr.
+
+sr, sr.
+
+ii, iii, iv
+
+Strip titles at beginning if they appear (rare):
+
+mr, ms, dr
+
+Examples:
+
+Kamaru Usman Jr. → kamaru usman
+
+Bruno Silva II → bruno silva
+
+Step 6 — Collapse whitespace again
+
+Make sure it’s single spaces.
+
+Output
+
+real_name_norm = result
+
+3) Allowed character set (enforced)
+
+After normalization, real_name_norm must match:
+
+lowercase letters a-z
+
+digits 0-9 (rare but allowed)
+
+space
+
+hyphen -
+
+apostrophe '
+
+period . (initials only)
+
+Regex:
+
+^[a-z0-9\s\-\.'’]+$
+
+(We convert ’ to ' earlier, so ideally only ' remains.)
+
+4) Alias & exception system (critical)
+
+Normalization alone won’t solve:
+
+fighters with multiple official name forms
+
+abbreviations (e.g. “AJ” vs “A.J.”)
+
+sources using nicknames as names
+
+“Junior” as actual legal last name (rare)
+
+So we add an Alias Registry file in GitHub:
+
+data/name_aliases_v1.json
+
+{
+  "aliases": [
+    {
+      "real_name_norm": "jon jones",
+      "also_known_as": ["jonathan jones"]
+    },
+    {
+      "real_name_norm": "sean o'malley",
+      "also_known_as": ["sean omalley"]
+    }
+  ]
+}
+Alias resolution rule
+
+When resolving a fighter:
+
+normalize the incoming name → candidate_norm
+
+try exact match in fighters table
+
+if not found, check if candidate_norm exists in any also_known_as
+
+if yes: map to canonical real_name_norm
+
+if still not found: create new fighter
+
+This prevents duplicates without guessing.
+
+5) Collision handling (same normalized name, different human)
+
+This will happen with common names (e.g., “Bruno Silva”).
+
+Rule
+
+If real_name_norm already exists but the source clearly refers to a different person, you must disambiguate using a secondary key.
+
+Recommended disambiguators:
+
+date of birth (if you ever store it)
+
+nationality (if you ever store it)
+
+external ID (best): e.g., UFC athlete id / ESPN athlete id
+
+Practical V1 approach
+
+Add optional fields:
+
+source_athlete_id (text)
+
+source (ESPN/UFC)
+Then enforce uniqueness on:
+
+(source, source_athlete_id) if you have it
+
+If you don’t have athlete IDs in V1, you handle collisions manually:
+
+create a special canonical norm like:
+
+bruno silva#2
+and record alias mapping.
+
+6) Character mapping rules (real → character)
+
+You also need consistency across versions.
+
+Minimum rules
+
+One canonical fighter row = one character identity
+
+character identity has:
+
+character_name
+
+character_style_profile_ref
+
+character_slug (used for fighter homepage on Flix.fun, etc.)
+
+When to change character_name?
+
+Never change it casually. If a rename is needed:
+
+create a PR in GitHub
+
+update DB via migration script
+
+keep old name as alias for continuity
+
+7) Examples (test fixtures)
+
+Input → normalized:
+
+José Aldo → jose aldo
+
+Sean O’Malley → sean o'malley
+
+Robert "The Reaper" Whittaker → robert whittaker
+
+Valentina “Bullet” Shevchenko → valentina shevchenko
+
+Kamaru Usman Jr. → kamaru usman
+
+Jean-Luc Picard → jean-luc picard
+
+A.J. McKee → a.j. mckee (then alias-map “aj mckee” if needed)
+
+8) Required unit tests (must-have)
+
+Create a test file tests/name_normalization_v1.test.json:
+
+[
+  { "in": "José Aldo", "out": "jose aldo" },
+  { "in": "Sean O’Malley", "out": "sean o'malley" },
+  { "in": "Robert \"The Reaper\" Whittaker", "out": "robert whittaker" },
+  { "in": "Kamaru Usman Jr.", "out": "kamaru usman" }
+]
+
+Your Matchmaker should run these tests in CI to avoid regressions.
+
+If you want next, I can add the Fighter ID Spec V1 (how fighter_id is generated, how to handle collisions, and why you may want to base it on a stable external athlete id when available).
+
+Yes please.
+
+Here’s Fighter ID Spec V1 — the rulebook for generating fighter_id, handling collisions, and future-proofing with external athlete IDs. This would live as rules/fighter_id_v1.md.
+
+Fighter ID Spec V1
+Goal
+
+Create a stable, immutable internal ID (fighter_id) that:
+
+never changes once created
+
+survives name changes, aliases, nicknames, diacritics
+
+avoids duplicates
+
+supports multiple sources (ESPN/UFC/etc.)
+
+can evolve to use external IDs without breaking old records
+
+1) Fighter identity model
+
+A single “fighter” in Fight Farm has three identities:
+
+Real-world identity (source-facing)
+
+real_name (display)
+
+real_name_norm (canonical)
+
+optional: source_athlete_id (best key when available)
+
+Fight Farm internal identity
+
+fighter_id (immutable primary key)
+
+Character identity
+
+character_name
+
+character_slug
+
+style_profile_ref
+
+Key rule: fighter_id is the anchor. Everything else can evolve.
+
+2) Recommended ID strategy (two-tier)
+Tier A (best): external athlete ID-based fighter_id
+
+If your ingestion source provides a stable athlete id (e.g., ESPN athlete id / UFC athlete id), use it.
+
+fighter_id format
+
+fighter_id = "FF_" + source + "_" + athlete_id
+
+Examples:
+
+FF_ESPN_1234567
+
+FF_UFC_998877
+
+Pros
+
+prevents “Bruno Silva” collisions automatically
+
+stable across spelling changes
+
+allows cross-source reconciliation later
+
+Cons
+
+depends on getting athlete IDs reliably
+
+Tier B (V1 fallback): normalized-name hash fighter_id
+
+If you don’t have athlete IDs yet, derive from real_name_norm deterministically.
+
+Algorithm
+
+base = "UFC|" + real_name_norm
+
+digest = sha256(base) (bytes)
+
+short = base32(digest) and take first 10 chars
+
+fighter_id = "FF_" + short
+
+Example:
+
+real_name_norm = "sean o'malley"
+
+fighter_id = "FF_9F3K2A1B7C" (example format)
+
+Pros
+
+deterministic
+
+no lookups required to generate
+
+Cons
+
+collisions possible with identical normalized names (“bruno silva”)
+
+3) Collision handling (mandatory policy)
+Collision type 1: same real_name_norm, different real fighter
+
+Example: multiple “Bruno Silva”.
+
+V1 policy options (pick one):
+Option 1 (recommended if you can fetch athlete IDs)
+
+require a source athlete id for any collision case
+
+store both fighters as:
+
+FF_ESPN_... / FF_UFC_...
+
+add aliases to map names correctly
+
+Option 2 (manual disambiguation suffix)
+
+If you cannot access athlete IDs:
+
+first “bruno silva” keeps real_name_norm = "bruno silva"
+
+second becomes:
+
+real_name_norm = "bruno silva#2"
+
+fighter_id generated from that final norm
+
+Then add alias mapping:
+
+“bruno silva” from source X → bruno silva#2
+
+Rule: this suffixing is not automatic; it’s a reviewed update (PR + migration).
+
+4) Alias resolution rules (how you map incoming names)
+
+When Matchmaker sees a name:
+
+compute candidate_norm
+
+check fighters.real_name_norm == candidate_norm
+
+else check name_aliases_v1.json to map candidate_norm → canonical_norm
+
+else create new fighter record with:
+
+real_name = source string
+
+real_name_norm = candidate_norm
+
+fighter_id = deterministic_id(candidate_norm) (or athlete ID-based)
+
+This prevents accidental duplicates.
+
+5) Future upgrade path: migrate from name-hash IDs to athlete IDs safely
+
+You can migrate later without breaking the world by introducing:
+
+fighter_keys table (optional but powerful)
+
+This table maps multiple keys to the same fighter_id:
+
+fighter_id (FK)
+
+key_type (enum: real_name_norm | espn_athlete_id | ufc_athlete_id)
+
+key_value (text)
+
+unique(key_type, key_value)
+
+Then Matchmaker resolution becomes:
+
+if athlete_id exists → look up key → get fighter_id
+
+else fall back to real_name_norm key
+
+This lets you keep the original fighter_id forever while adding stronger keys later.
+
+6) Character mapping rules tied to fighter_id
+
+Character identity is anchored to fighter_id:
+
+character_slug = slugify(character_name) (unique)
+
+never auto-change slug once set (it becomes a URL)
+
+if rebrand is needed, support alias slugs in routing
+
+Rule: character profile updates do not create new fighter_id.
+
+7) Required unit tests (must-have)
+
+Create tests/fighter_id_v1.test.json:
+
+Determinism tests
+
+same input always outputs same fighter_id
+
+Diacritic + punctuation tests
+
+“José Aldo” and “Jose Aldo” resolve to the same fighter_id (through normalization)
+
+Alias tests
+
+“sean omalley” resolves to canonical “sean o'malley”
+
+Collision tests (if you implement suffixing)
+
+“bruno silva” vs “bruno silva#2” produce different fighter_ids
+
+8) Practical recommendation for Fight Farm V1
+
+Start with name-hash fighter_id (Tier B) for speed
+
+Immediately implement:
+
+alias registry
+
+collision suffix policy
+
+As soon as your ingestion source yields stable athlete IDs, add fighter_keys and start attaching athlete IDs gradually
+
+No need to change fighter_id later if you adopt fighter_keys
+
+If you want, the next spec that ties it all together is Versioning Spec V1 (rules for version increments, one version per fighter per event, edge cases like canceled fights, replacement opponents, short-notice substitutions, and how to handle rebooked bouts).
+
+Yes please.
+
+Here’s Versioning Spec V1 — the rulebook for how versions increment, what happens when fights change, and how to keep everything consistent without manual chaos. This is the one that prevents “version drift” and accidental double-mints.
+
+Save this as rules/versioning_v1.md.
+
+Versioning Spec V1
+Goal
+
+Assign NFT version numbers deterministically so that:
+
+every fighter appearance on a scheduled UFC event produces at most one new version
+
+version numbers never collide
+
+re-runs of Matchmaker don’t create duplicates
+
+edge cases (canceled fights, replacement opponents, rebookings) don’t break the system
+
+metadata can always link fighter A vs fighter B + event_ref
+
+1) Core invariants (non-negotiable)
+Invariant A — One version per fighter per event
+
+A fighter can only have one version tied to a given event_id.
+
+✅ allowed: fighter appears once on the card
+❌ not allowed: a fighter gets two different versions for same event
+
+Enforce with DB constraint:
+
+UNIQUE (fighter_id, event_id)
+
+Invariant B — Versions are monotonic per fighter
+
+For each fighter:
+
+version starts at 1
+
+version increments by +1 for each new event appearance that becomes “committed”
+
+Enforce with DB constraint:
+
+UNIQUE (fighter_id, version)
+
+Invariant C — Version assignment is idempotent
+
+If Matchmaker is rerun, it must produce the same version record, not a new one.
+
+Mechanism:
+
+Matchmaker uses upsert on (fighter_id, event_id)
+
+If record exists, reuse that version
+
+2) Version assignment states (lifecycle)
+
+Each fighter-version record moves through states:
+
+planned
+
+metadata_draft
+
+pinned
+
+sale_live
+
+minted
+
+archived (for cancellations / never went live)
+
+These states matter because version assignment should become “locked” once you go live.
+
+3) When do you “commit” a version number?
+Commit point (recommended)
+
+A version becomes committed when you approve DEPLOY_SALES (or when sales go live).
+
+Reason:
+
+schedules change
+
+opponents change
+
+bouts move cards
+If you commit too early, you create version gaps or duplicates.
+
+Rule
+
+Before sale_live, versions can be reconciled.
+
+After sale_live, version is locked and never reassigned.
+
+4) The version assignment algorithm (deterministic)
+
+Given a fighter F and event E:
+
+Step 1 — Check if fighter already has a version for this event
+
+Query:
+
+SELECT version FROM fighter_versions WHERE fighter_id=F AND event_id=E
+
+If exists:
+
+use it. Done.
+
+If not:
+
+create a candidate record but do not finalize until commit point.
+
+Step 2 — Determine next version number
+
+Query:
+
+SELECT max(version) FROM fighter_versions WHERE fighter_id=F
+
+Candidate:
+
+candidate_version = max_version + 1 (or 1 if null)
+
+Insert:
+
+(fighter_id=F, version=candidate_version, event_id=E, status='planned')
+
+Because of UNIQUE constraints:
+
+reruns can’t create duplicates.
+
+5) Handling opponent changes (the big edge case)
+Scenario A: opponent changes before sale_live (most common)
+
+Example:
+
+Fighter A vs Fighter B scheduled
+
+Fighter B pulls out
+
+Fighter C replaces B
+
+You have not deployed sales yet
+
+Rule
+
+Keep the same version number for Fighter A for that event.
+Update:
+
+opponent_fighter_id in the existing fighter_versions row
+
+Why: the version represents the fighter’s appearance on the event, not the opponent identity.
+
+So:
+
+A’s version stays Vn
+
+you update metadata job payloads and regenerate images if needed
+
+Scenario B: opponent changes after sale_live
+
+This is trickier because NFTs might already exist.
+
+Rule (V1 practical)
+
+Do not create a new version
+
+keep version as-is
+
+update “opponent” fields in off-chain DB and on the frontend
+
+optionally set an on-chain metadata update if you support dynamic metadata (later)
+
+You can also add a metadata field:
+
+opponent_status: "original"|"replacement"
+
+6) Handling fight cancellation
+Scenario A: canceled before sale_live
+
+Rule:
+
+mark fighter_versions.status = archived
+
+do not deploy sales
+
+do not mint
+
+Version number will create a “gap” only if you had already created it—this is why commit point is important.
+
+Best practice: if canceled early, delete the planned record OR archive it but do not advance max_version for future, by marking it archived and excluding archived from max-version query.
+
+Important technical rule
+
+Max version query should ignore archived records unless you explicitly want gaps.
+
+Recommended:
+
+max(version) WHERE status != 'archived'
+
+Scenario B: canceled after sale_live
+
+Rule:
+
+you cannot un-mint history
+
+treat the NFTs as “event canceled”
+
+set bout_status = canceled in metadata
+
+this becomes collectible history (and can be rare/valuable)
+
+7) Handling rebooked fights (same matchup later)
+
+Example:
+
+A vs B booked for UFC 305
+
+canceled
+
+rebooked for UFC 307
+
+Rule
+
+UFC 305 version is tied to UFC 305 only
+
+the rebooked fight is a new event, therefore a new version
+
+A gets Vn at UFC 305 (archived or minted depending on timing)
+
+A gets Vn+1 at UFC 307
+
+8) Handling replacements on short notice (new fighter not in DB)
+
+If replacement fighter isn’t in your DB:
+
+Rule:
+
+create fighter record (or emit CREATE_FIGHTER_IF_MISSING)
+
+assign their version as normal for the event
+
+rebuild bout metadata
+
+This is why Matchmaker needs a clean “exists vs new” branch.
+
+9) One fighter appearing twice in close windows (rare scheduling changes)
+
+Sometimes fighters get rebooked quickly or appear on consecutive cards.
+
+No special case needed:
+
+each event creates one new version
+
+monotonic sequence continues
+
+10) Tier behavior (SE/LE/FE)
+
+Tier does not affect version numbers.
+
+A fighter/version produces:
+
+SE Vn (mint on-demand during event window)
+
+LE Vn (up to 5)
+
+FE Vn (1-of-1)
+
+All share:
+
+same fighter_id, version, event_ref, bout linkage
+
+11) Required constraints (must implement)
+
+In DB:
+
+UNIQUE (fighter_id, version)
+
+UNIQUE (fighter_id, event_id) ✅ prevents double-versions per event
+
+UNIQUE (event_id, bout_id) or bout uniqueness constraint
+
+In jobs:
+
+UNIQUE (unique_key) ✅ idempotent job creation
+
+12) Recommended “approval gate” rule
+
+To avoid bad scrapes producing bad versions:
+
+Matchmaker emits DEPLOY_SALES with approved=false
+
+A human/agent reviewer toggles to approved=true
+
+Only then SaleDeployer deploys minters/launchpads/auctions
+
+This is low effort and high safety.
+
+13) Worked example (replacement)
+
+Event UFC 305:
+
+planned: A vs B
+Matchmaker creates:
+
+A V7 (planned), opponent=B
+
+B V6 (planned), opponent=A
+
+B withdraws, C replaces B (before sale_live):
+
+update bout:
+
+A opponent becomes C
+
+create/resolve C:
+
+C V1 (planned), opponent=A
+
+B’s UFC 305 record becomes archived (or left planned but never deployed)
+
+No version drift. No duplicates.
+
+If you want, the next spec that ties versioning to your economics is “Mint Window & Supply Spec V1” (SE mint-on-demand window per event, LE fixed supply rules, FE auction timing rules, and how to treat post-fight mint cutoffs).
+
+I feel like cancelled fights prior to auctions, launchpads, minting created and active, continue on selling the nft since it’s in action. If they replace the fighter who dropped out, airdrop the exact matching fighter tiers of replacement fighter for free. If there is a replacement fighter, adjust the fight for rewards pools to updated fighter. 
+
+If they cancel the entire fight, cancel the reward pool for that fight, the collectors still have their ability to stake and earn in nft staking. And a tier/version of the nft to use to upgrade to LGND. 
+
+The biggest question is how do you update the metadata on a fighter NFT who pulled out? And how do you upgrade the fighter nft metadata for the input data for the replacement fighter versus the fighter who dropped?
+
+Suggestions?
+
+You’ve basically got the right policy: don’t rug the collectible history. If the card existed (sales live), it stays a valid collectible + staking asset + LGND component, even if the bout changes or dies. The only thing that must change is how the fight pool and metadata truth are represented.
+
+The clean way to do this is to separate metadata into two layers:
+
+Immutable “Collectible Identity” layer (never changes)
+
+Mutable “Fight Context” layer (can change when bouts change)
+
+Then you decide whether “mutable” is on-chain or off-chain.
+
+The core problem
+
+You want an NFT to remain:
+
+a valid collectible (version history)
+
+stakeable
+
+usable for upgrades
+…but the “fight input” (opponent/event/bout) can change after mint.
+
+So you need a mechanism to represent:
+
+original booking vs final booking
+
+replacement happened vs fight canceled
+without breaking trust.
+
+Option A (best for your use case): Dynamic metadata with an on-chain “MetadataResolver”
+
+This is the most standard pattern in modern NFTs when anything needs updating.
+
+How it works
+
+NFT tokenURI points to a resolver contract (or a simple base URI + tokenId that resolves through a contract).
+
+The resolver returns a metadata URI based on current state:
+
+base immutable metadata
+
+plus a small “context record” you can update
+
+What changes on replacement/cancel?
+
+You don’t rewrite the whole metadata. You update a FightContextRegistry on-chain:
+
+FightContextRegistry (simple mapping)
+
+tokenId → contextId
+
+or fighter_id+version → bout_context
+
+Context fields:
+
+event_ref
+
+bout_id
+
+scheduled_opponent_fighter_id
+
+final_opponent_fighter_id
+
+bout_status (scheduled | replaced | canceled | completed)
+
+last_updated_utc
+
+Now your metadata JSON can show both truthfully:
+
+“Originally booked vs X”
+
+“Final opponent: Y (replacement)”
+
+“Bout canceled” if needed
+
+Pros
+
+transparent
+
+verifiable
+
+no “trust me bro” off-chain edits
+
+marketplaces that refresh metadata will display updates
+
+Cons
+
+you must build resolver/registry logic
+
+some marketplaces cache aggressively (but they usually refresh when tokenURI changes or when you trigger refresh; still workable)
+
+Option B (simplest): Immutable tokenURI + “Context overlay” in your app + indexer
+
+This is easiest for V1.
+
+How it works
+
+tokenURI stays immutable (IPFS JSON).
+
+your app UI shows a Fight Context panel pulled from your DB/indexer:
+
+“final opponent”
+
+“status: replaced/canceled”
+
+“this NFT remains valid for staking + LGND”
+
+Pros
+
+fastest to ship
+
+no on-chain metadata update complexity
+
+you control the UI narrative
+
+Cons
+
+OpenSea/Blur metadata won’t reflect replacements
+
+people outside your app won’t see “the truth” unless they read your docs
+
+This can still be totally acceptable if you treat Fight Farm as the “game client,” not OpenSea.
+
+Option C (hybrid): Immutable base metadata + mutable “context URI” field
+
+This is a nice middle ground.
+
+Base metadata has a field like:
+
+context_uri: https://api.fightfarm.xyz/context/<tokenId>
+
+That endpoint returns latest context (replacement/cancel) and your frontend merges it.
+
+Pros: light on-chain work, easy updates
+Cons: depends on your API, not decentralized
+
+My recommendation for Fight Farm
+V1: Option B (overlay in app) + strong event logs
+V2: Option A (on-chain context registry + resolver) when the system matures
+
+Because your core value is market strategy + staking + upgrades, not “perfect OpenSea display.”
+
+Policy design for replacements and cancellations (clean rules)
+If fight is canceled but NFTs were live
+
+NFTs remain:
+
+stakeable for weekly emissions
+
+valid for LGND upgrade sets
+
+Arena pool:
+
+is canceled / refunded / not created
+
+Metadata:
+
+show bout_status: canceled
+
+keep original matchup as “original booking”
+
+If fighter B pulls out, fighter C replaces
+
+You suggested the best UX policy:
+
+Keep original NFTs selling (if already live)
+
+But:
+
+Arena pool and “win rewards” should be tied to the final bout participants (A vs C)
+
+What about people who bought B versions?
+You said: airdrop replacement equivalents.
+
+Airdrop rule (clean):
+
+If B is replaced by C after sales go live:
+
+airdrop to holders of B’s NFTs:
+
+same tier + version equivalence for C
+
+e.g., B V6 LE holders get C V1 LE airdropped (or “C Replacement LE”)
+
+Keep B NFTs as “canceled appearance” collectibles.
+
+That protects collectors and keeps the economy fair.
+
+The “how do we update metadata” answer (practical implementation)
+What to store in metadata so it’s future-proof
+
+Even if you keep tokenURI immutable, include fields that anticipate changes:
+
+Immutable identity fields
+
+fighter_id
+
+version
+
+tier
+
+event_ref
+
+created_from_bout_id (the bout at time of creation)
+
+Mutable context fields (displayed in UI or resolver)
+
+final_bout_id
+
+final_opponent_fighter_id
+
+bout_status
+
+replacement_of_fighter_id (if any)
+
+Replacement tracking example
+
+B pulls out, C replaces B
+
+For A’s NFT:
+
+original opponent: B
+
+final opponent: C
+
+status: replaced
+
+For B’s NFT:
+
+status: replaced_out / withdrawn
+
+replacement fighter: C
+
+For C’s airdropped NFT:
+
+status: replacement_in
+
+replaces fighter: B
+
+That creates perfect historical truth.
+
+Implementation suggestion: “BoutContext” object (single source of truth)
+
+Add a DB table (and later an on-chain registry) called:
+
+bout_context
+
+bout_context_id
+
+event_id
+
+fighter_id_a
+
+fighter_id_b_original
+
+fighter_id_b_final
+
+status (scheduled/replaced/canceled/completed)
+
+changed_at_utc
+
+notes
+
+Then each fighter_versions row references:
+
+bout_context_id
+
+So you never have to mutate a million token metadata files—you update one context record, and everything reads from it.
+
+How Arena should adapt (so rewards pools stay correct)
+
+Arena should key fight pools by a stable identifier that can be updated pre-lock:
+
+Pool key rule
+
+pool is created when fight is “committed”
+
+until then, it’s a “pending pool config” off-chain
+
+When replacement happens:
+
+you update which fighterIds map to that pool
+
+once pool is locked (participants deposited), no more changes
+
+That’s also why the “approval gate” matters.
+
+The one trap to avoid
+
+Don’t try to “rewrite history” by pretending the original NFT was always vs the replacement. Collectibles become more valuable when history is preserved.
+
+So always show both:
+
+original booking
+
+final booking
+
+status events
+
+That’s exactly how sports archives work.
+
+If you want, I can write the “Fight Change Policy V1” spec as a rules doc: when to airdrop, when to cancel pools, how to set statuses, and what the exact UI text should say so players never feel cheated.
+
+Yes please.
+
+Great — this is an important piece because fight changes are inevitable in MMA, and if the policy isn’t crystal clear the economy can feel unfair. The goal is:
+
+never punish collectors for things outside their control
+
+preserve collectible history
+
+keep the Arena prediction economy fair
+
+avoid chaos when fights change
+
+Below is the formal spec.
+
+Fight Change Policy V1
+
+(Save as rules/fight_change_policy_v1.md)
+
+Defines how Fight Farm handles:
+
+fighter withdrawals
+
+replacement fighters
+
+bout cancellations
+
+event cancellations
+
+after NFTs have been created or sales have begun.
+
+The policy ensures:
+
+collectors are protected
+
+collectibles retain historical value
+
+Arena reward pools remain fair
+
+LGND upgrade eligibility is preserved
+
+Core Principle
+
+NFTs represent a fighter’s appearance on an event card, not a guaranteed fight outcome.
+
+Therefore:
+
+NFTs remain valid collectibles even if a fight changes
+
+staking and upgrade utility remain intact
+
+only the Arena prediction layer is affected
+
+Fight Change Types
+
+There are four possible fight change scenarios.
+
+Scenario	Description
+Fighter Replacement	One fighter withdraws and another replaces them
+Bout Cancellation	Both fighters remain but the fight is canceled
+Event Cancellation	Entire event canceled
+Fight Rebooking	Fight moved to another event
+
+Each scenario has different handling.
+
+Scenario 1: Fighter Replacement
+
+Example:
+
+Original:
+Fighter A vs Fighter B
+
+Update:
+Fighter A vs Fighter C
+(B withdraws)
+NFT Sales Policy
+
+If NFT sales have already started:
+
+NFTs continue selling normally
+
+no sale interruption occurs
+
+Collectors retain:
+
+collectible version
+
+staking rights
+
+LGND upgrade eligibility
+
+Replacement NFT Airdrop
+
+Collectors holding NFTs of the withdrawn fighter receive replacement NFTs.
+
+Rule:
+
+Replacement NFT Tier = Same Tier
+Replacement NFT Version = Replacement Fighter Event Version
+
+Example:
+
+Withdrawn Fighter NFT	Airdrop
+B V6 SE	C V1 SE
+B V6 LE #3	C V1 LE #3
+B V6 FE	C V1 FE
+
+This ensures collectors are not punished for fighter withdrawals.
+
+Metadata Updates
+
+NFT metadata is not rewritten.
+
+Instead, fight context is updated.
+
+Metadata fields:
+
+original_opponent
+final_opponent
+bout_status
+replacement_fighter
+
+Example:
+
+original_opponent: Fighter B
+final_opponent: Fighter C
+bout_status: replaced
+
+This preserves historical accuracy.
+
+Arena Prediction Pool
+
+Arena reward pools are updated to reflect the final fight participants.
+
+Example:
+
+Original Pool:
+A vs B
+
+Updated Pool:
+A vs C
+
+Collectors holding B NFTs can still stake normally but the Arena pool will reference the updated matchup.
+
+Scenario 2: Bout Cancellation
+
+Example:
+
+A vs B canceled
+No replacement
+NFT Sales
+
+NFT sales continue if they have already begun.
+
+Collectors retain:
+
+collectible NFTs
+
+staking eligibility
+
+LGND upgrade eligibility
+
+Arena Prediction Pool
+
+Arena pool is canceled.
+
+Rules:
+
+no reward pool created
+
+no predictions allowed
+
+no rewards distributed
+
+Collectors are unaffected otherwise.
+
+Metadata Status
+
+NFT metadata context updates to:
+
+bout_status: canceled
+Scenario 3: Event Cancellation
+
+Rare but possible.
+
+Example:
+
+UFC event canceled entirely
+
+Handling:
+
+NFT sales may continue if already active.
+
+Arena pools are canceled.
+
+Metadata status:
+
+event_status: canceled
+
+Collectors retain NFTs as event collectibles.
+
+Scenario 4: Fight Rebooking
+
+Example:
+
+A vs B originally scheduled for UFC 300
+fight moved to UFC 301
+
+Handling:
+
+original NFTs remain tied to UFC 300
+
+new NFTs are created for UFC 301
+
+Version numbers increment normally.
+
+Example:
+
+A V6 → UFC 300
+A V7 → UFC 301
+Metadata Context Model
+
+NFT metadata is split into two layers.
+
+Immutable Layer
+
+Never changes.
+
+fighter_id
+version
+tier
+event_ref
+created_timestamp
+Mutable Context Layer
+
+Updated when fights change.
+
+bout_status
+original_opponent
+final_opponent
+replacement_fighter
+fight_result
+
+This context is provided via:
+
+indexer database (V1)
+
+on-chain metadata resolver (future upgrade)
+
+Historical Integrity Rule
+
+Fight Farm never rewrites history.
+
+NFTs always record:
+
+original matchup
+
+final matchup
+
+fight status
+
+Collectors can see the full context of what occurred.
+
+This increases long-term collectible value.
+
+Arena Fairness Rule
+
+Arena prediction pools must always represent the actual fight participants.
+
+Rules:
+
+pools update if replacements occur before lock
+
+pools cancel if fights cancel
+
+pools lock when prediction windows close
+
+Collector Protection Rule
+
+Collectors are protected in all scenarios.
+
+Guarantees:
+
+no NFT becomes unusable
+
+staking rewards continue
+
+LGND upgrade eligibility remains
+
+replacement NFTs are airdropped when appropriate
+
+Why This Policy Is Important
+
+This system:
+
+protects player trust
+
+prevents economy disruptions
+
+preserves collectible history
+
+handles MMA’s unpredictable scheduling
+
+Without this policy, withdrawals and replacements would create confusion and economic imbalance.
+
+Example Timeline
+Monday
+A vs B announced
+NFT sales begin
+
+Wednesday
+B withdraws
+
+Thursday
+C replaces B
+
+System actions:
+• Arena pool updated to A vs C
+• B NFT holders receive C NFTs
+• metadata context updated
+• sales continue
+Future Upgrade (V2)
+
+In a later version, Fight Farm may introduce:
+
+On-chain BoutContext Registry
+
+This contract will store:
+
+fighter_a
+fighter_b_original
+fighter_b_final
+bout_status
+timestamp
+
+NFT metadata will dynamically read this registry, ensuring transparency across marketplaces.
+
+One Important Economic Side Effect
+
+This system creates rare historical NFTs.
+
+Examples:
+
+canceled fights
+
+replacement appearances
+
+fighters who withdrew late
+
+These become collectible moments in Fight Farm history, similar to rare sports card printing anomalies.
+
+If you'd like, the next spec to design (and it's a big one) is:
+
+"Arena Fight Pool Spec V1"
+
+This will define:
+
+how prediction pools are created
+
+how staking for fights works
+
+how pools lock
+
+how replacements affect pools
+
+how rewards distribute
+
+It’s basically the core engine of the game economy.
+
+UFC rarely does fight rebooking to new event. They usually insert a replacement fighter or cancel the entire fight.
+
+In my old version of fight farm, if they did a replacement fighter I matched their tier with free airdrops. 
+
+If they cancelled the entire fight, both sets of collectors kept the versions/tiers of each fighter to stake/upgrade, but there was no airdrops because the fight was cancelled.
+
+That policy you used before is actually very good game design for Fight Farm. It’s simple, fair, and avoids a lot of complexity that could break the economy. The key advantage is that it protects collectors without creating exploit paths.
+
+Let me refine it slightly so it becomes a clean rule system for the protocol, not just a one-off decision.
+
+Fight Farm Replacement & Cancellation Policy (Refined)
+Core Principle
+
+NFTs represent a fighter’s appearance on the card, not a guaranteed fight.
+
+Collectors should never be punished for real-world fight changes.
+
+Therefore:
+
+NFTs remain valid collectibles
+
+NFTs remain stakeable
+
+NFTs remain usable for LGND upgrades
+
+Arena fight pools adapt to the final matchup
+
+Scenario 1 — Fighter Replacement (Most Common)
+
+Example:
+
+Original fight
+A vs B
+
+Update
+A vs C
+(B withdraws)
+NFT Sales
+
+Sales continue normally.
+
+No mint cancellation.
+
+Replacement Airdrop
+
+Collectors holding NFTs for the withdrawn fighter receive replacement NFTs.
+
+Rule:
+
+Withdrawn NFT	Airdropped NFT
+B V6 SE	C V1 SE
+B V6 LE #2	C V1 LE #2
+B V6 FE	C V1 FE
+
+Important
+
+Version numbers do not have to match.
+
+Example:
+
+B V6 → C V1
+
+because C may never have appeared before.
+
+Why This Is Good
+
+Collectors:
+
+keep the original collectible
+
+gain the replacement fighter NFT
+
+retain staking power
+
+It feels fair instead of punitive.
+
+Scenario 2 — Entire Fight Cancelled
+
+Example:
+
+A vs B canceled
+no replacement fighter
+NFT Sales
+
+NFT sales continue normally if already active.
+
+Collectors keep:
+
+A NFTs
+
+B NFTs
+
+No Airdrops
+
+Because no fighter replaced the bout.
+
+Therefore:
+
+No replacement = No airdrop
+Arena Prediction Pool
+
+Pool is cancelled.
+
+Result:
+
+No prediction
+No rewards
+Collectible Utility Remains
+
+NFTs still work for:
+
+• weekly staking rewards
+• LGND upgrade sets
+• trading
+• future gameplay
+
+Scenario 3 — Fight Rebooking (Rare)
+
+You are correct.
+
+UFC almost never moves fights to a different event.
+
+They almost always:
+
+insert a replacement
+
+cancel the fight
+
+So this scenario is low priority.
+
+Metadata Handling (Important)
+
+Do not rewrite NFT metadata.
+
+Instead track fight changes in a BoutContext layer.
+
+Example metadata context:
+
+bout_status: replaced
+original_opponent: fighter_B
+final_opponent: fighter_C
+
+For cancelled fight:
+
+bout_status: canceled
+
+Your frontend or metadata resolver displays this.
+
+Why This System Works Economically
+
+This rule set prevents economic exploits.
+
+Without it players could:
+
+mint fighters expecting replacements
+
+dump NFTs if fights cancel
+
+manipulate Arena predictions
+
+Instead the system ensures:
+
+1️⃣ collectibles retain value
+2️⃣ staking remains stable
+3️⃣ Arena pools remain fair
+4️⃣ collectors feel protected
+
+Hidden Benefit (Collectors Love This)
+
+Cancelled fights and replacement scenarios create rare historical variants.
+
+Examples:
+
+“Withdrawn fighter card”
+“Replacement fighter debut”
+“Canceled fight event”
+
+In sports card markets these often become valuable anomalies.
+
+So your rule accidentally creates collectible scarcity events.
+
+One Improvement I Would Add
+
+Add a metadata flag for Replacement Debut.
+
+Example:
+
+replacement_debut: true
+replaces_fighter: fighter_B
+
+Collectors will immediately understand why that NFT exists.
+
+One Very Important Guardrail
+
+To prevent abuse:
+
+Replacement NFTs should only be airdropped if the withdrawal occurs after sales start.
+
+Otherwise people could:
+
+announce fight
+withdraw fighter
+mint replacement
+farm free NFTs
+
+So the rule should be:
+
+Replacement Airdrops Trigger Condition:
+
+sales_state == live
+Final Simplified Policy
+Situation	NFT Sales	Airdrop	Arena Pool
+Fighter replaced	Continue	Yes	Updated
+Fight cancelled	Continue	No	Cancelled
+Event cancelled	Continue	No	Cancelled
+Fight rebooked	Rare	None	New event
+One Design Insight
+
+What you’ve designed is closer to a sports card economy than a betting game.
+
+The fight result is just an input variable.
+
+The real strategy is:
+
+• version scarcity
+• set completion
+• trading
+• staking
+
+Which is exactly why your marketplace dynamics are interesting.
+
+If you'd like, the next thing we should design (and it will massively impact your economy) is:

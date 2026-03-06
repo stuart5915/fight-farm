@@ -3,47 +3,344 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fight Farm</title>
-    <meta name="description" content="Fight Farm — UFC fight betting with NFT mechanics on Base">
-    <meta property="og:title" content="Fight Farm">
-    <meta property="og:description" content="UFC fight betting with NFT mechanics on Base">
+    <title>Fight Farm — Collect. Burn. Dominate.</title>
+    <meta name="description" content="Fight Farm is a combat sports collectible economy on Base. Collect fighter NFTs, burn to upgrade, bet in the Arena, and own the ecosystem.">
+    <meta property="og:title" content="Fight Farm — Collect. Burn. Dominate.">
+    <meta property="og:description" content="Combat sports collectible economy on Base. Fighter NFTs, prediction markets, and a deflationary burn engine.">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🥊</text></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Oswald:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/styles/main.css">
 </head>
 <body>
+
+    <!-- ═══ Nav ═══ -->
     <nav class="nav">
-        <a href="/" class="nav-brand">Fight Farm 🥊</a>
+        <a href="/" class="nav-brand"><span>Fight</span> Farm</a>
         <div class="nav-links">
-            <a href="#about" class="nav-link">About</a>
             <a href="#how-it-works" class="nav-link">How It Works</a>
+            <a href="#nfts" class="nav-link">NFTs</a>
+            <a href="#tokens" class="nav-link">Tokens</a>
+            <a href="#arena" class="nav-link">Arena</a>
+            <a href="#roadmap" class="nav-link">Roadmap</a>
         </div>
     </nav>
 
-    <main>
-        <section class="hero">
-            <h1>Fight Farm</h1>
-            <p class="hero-sub">UFC fight betting meets NFT mechanics on Base.</p>
-            <p class="hero-desc">Coming soon.</p>
-        </section>
+    <!-- ═══ Hero ═══ -->
+    <section class="hero">
+        <div class="hero-badge">Built on Base</div>
+        <h1><span class="fight">Fight</span> <span class="farm">Farm</span></h1>
+        <p class="hero-sub">The combat sports collectible economy. Collect versioned fighter NFTs from real UFC events. Burn them to forge Legendaries. Bet in the Arena. Own the ecosystem.</p>
+        <div class="hero-actions">
+            <a href="#how-it-works" class="btn btn-primary">Learn More</a>
+            <a href="#roadmap" class="btn btn-secondary">View Roadmap</a>
+        </div>
+    </section>
 
-        <section id="about" class="section">
-            <h2>About</h2>
-            <p>Details coming soon.</p>
-        </section>
+    <!-- ═══ Stats Bar ═══ -->
+    <div class="stats-bar">
+        <div class="stat">
+            <div class="stat-value"><span class="accent">4</span></div>
+            <div class="stat-label">NFT Tiers</div>
+        </div>
+        <div class="stat">
+            <div class="stat-value"><span class="accent">2</span></div>
+            <div class="stat-label">Tokens</div>
+        </div>
+        <div class="stat">
+            <div class="stat-value">Base <span class="accent">L2</span></div>
+            <div class="stat-label">Chain</div>
+        </div>
+        <div class="stat">
+            <div class="stat-value"><span class="accent">Burn</span></div>
+            <div class="stat-label">To Upgrade</div>
+        </div>
+    </div>
 
-        <section id="how-it-works" class="section">
-            <h2>How It Works</h2>
-            <p>Details coming soon.</p>
-        </section>
-    </main>
+    <!-- ═══ How It Works ═══ -->
+    <section id="how-it-works" class="section section-center">
+        <div class="section-label">The Game Loop</div>
+        <h2 class="section-title">How It Works</h2>
+        <p class="section-desc">Every real UFC event generates new versioned fighter NFTs. Collect, stake, trade, burn, and compete in a self-reinforcing economy.</p>
+        <div class="steps-grid">
+            <div class="step-card">
+                <div class="step-num">01</div>
+                <div class="step-title">Collect</div>
+                <p class="step-desc">UFC event announced. New fighter versions drop as Standard, Limited, and First Edition NFTs. Each appearance creates a new version.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-num">02</div>
+                <div class="step-title">Compete</div>
+                <p class="step-desc">Enter the Arena. Lock your fighters in prediction pools tied to real bouts. LGNDs compete for prestige slots with steal mechanics.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-num">03</div>
+                <div class="step-title">Burn</div>
+                <p class="step-desc">Collect every version of a fighter, then burn them all to forge a Legendary. The scarcest version caps how many LGNDs can ever exist.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-num">04</div>
+                <div class="step-title">Dominate</div>
+                <p class="step-desc">LGNDs unlock the highest Arena tiers, the biggest reward pools, and permanent prestige. Supply only goes down. Value only goes up.</p>
+            </div>
+        </div>
+    </section>
 
+    <hr class="divider">
+
+    <!-- ═══ NFT Tiers ═══ -->
+    <section id="nfts" class="section section-center">
+        <div class="section-label">Fighter NFTs</div>
+        <h2 class="section-title">Four Tiers of Power</h2>
+        <p class="section-desc">Every fighter gets a new version per UFC appearance. Four tiers serve different players &mdash; from casual fans to hardcore strategists.</p>
+        <div class="tiers-grid">
+            <div class="tier-card" style="--tier-color: var(--text-secondary);">
+                <span class="tier-icon">&#9876;</span>
+                <div class="tier-name">SE</div>
+                <div class="tier-full">Standard Edition</div>
+                <div class="tier-price">$25 <span class="currency">ETH/USDC</span></div>
+                <p class="tier-details">Primary supply. Mint on-demand during event windows. Pay with $FIGHT for a 10-15% discount. The building blocks for LGND upgrades.</p>
+            </div>
+            <div class="tier-card" style="--tier-color: var(--arena-blue);">
+                <span class="tier-icon">&#9733;</span>
+                <div class="tier-name">LE</div>
+                <div class="tier-full">Limited Edition</div>
+                <div class="tier-price">$50&ndash;75 <span class="currency">$FIGHT only</span></div>
+                <p class="tier-details">Max 5 per fighter per version. Random launchpad &mdash; you don't pick your fighter. Scarce from day one. Comes with a free matching SE.</p>
+            </div>
+            <div class="tier-card" style="--tier-color: var(--orange);">
+                <span class="tier-icon">&#128293;</span>
+                <div class="tier-name">FE</div>
+                <div class="tier-full">First Edition</div>
+                <div class="tier-price">$200+ <span class="currency">$ARENA auction</span></div>
+                <p class="tier-details">One-of-one. Prestige collectibles sold via auction. $ARENA only. The ultimate flex. Comes with a free matching SE.</p>
+            </div>
+            <div class="tier-card tier-card--lgnd" style="--tier-color: var(--gold);">
+                <span class="tier-icon">&#128081;</span>
+                <div class="tier-name">LGND</div>
+                <div class="tier-full">Legendary</div>
+                <div class="tier-price">Burn <span class="currency">all versions</span></div>
+                <p class="tier-details">Burn one SE of every version of a fighter to forge a Legendary. Supply capped by the scarcest version. The most powerful asset in Fight Farm.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ LGND Upgrade Visual ═══ -->
+    <section class="section lgnd-section">
+        <div class="section-label">The Burn Engine</div>
+        <h2 class="section-title">Forge a Legendary</h2>
+        <p class="section-desc" style="max-width:640px;margin:0 auto 1rem;">Collect every version of a fighter's career. Burn them all. Pay the $FIGHT upgrade fee. Receive an irreplaceable LGND. The bottleneck version &mdash; the scarcest one &mdash; caps how many LGNDs can ever be created for that fighter. When it hits zero, no more LGNDs. Ever.</p>
+        <div class="lgnd-flow">
+            <div class="lgnd-step">
+                <div class="lgnd-step-label">Version 1</div>
+                <div class="lgnd-step-value">SE #1</div>
+            </div>
+            <div class="lgnd-arrow">+</div>
+            <div class="lgnd-step">
+                <div class="lgnd-step-label">Version 2</div>
+                <div class="lgnd-step-value">SE #2</div>
+            </div>
+            <div class="lgnd-arrow">+</div>
+            <div class="lgnd-step">
+                <div class="lgnd-step-label">Version 3</div>
+                <div class="lgnd-step-value">SE #3</div>
+            </div>
+            <div class="lgnd-arrow">+</div>
+            <div class="lgnd-step">
+                <div class="lgnd-step-label">$FIGHT Fee</div>
+                <div class="lgnd-step-value">Burn</div>
+            </div>
+            <div class="lgnd-arrow">=</div>
+            <div class="lgnd-step lgnd-step--result">
+                <div class="lgnd-step-label">Result</div>
+                <div class="lgnd-step-value">LGND</div>
+            </div>
+        </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- ═══ Tokens ═══ -->
+    <section id="tokens" class="section">
+        <div class="section-label">Two-Token Economy</div>
+        <h2 class="section-title">$FIGHT + $ARENA</h2>
+        <p class="section-desc">Two tokens, two purposes. $FIGHT fuels every transaction. $ARENA governs the ecosystem. Together they create a self-reinforcing flywheel.</p>
+        <div class="tokens-grid">
+            <div class="token-card" style="--token-color: var(--fight-green); --token-glow: hsla(150, 60%, 45%, 0.06);">
+                <div class="token-ticker">$FIGHT</div>
+                <div class="token-role">Utility / Fuel</div>
+                <p class="token-desc">The transactional engine. Every player action consumes $FIGHT. Fees are split between permanent burns (deflationary) and recycled rewards (back to stakers).</p>
+                <ul class="token-uses">
+                    <li>10-15% discount on SE purchases</li>
+                    <li>Required for LE Launchpad</li>
+                    <li>LGND upgrade fee (100% burn)</li>
+                    <li>Arena entry &amp; predictions</li>
+                    <li>Escrow trade fees</li>
+                    <li>Burn + recycle on every transaction</li>
+                </ul>
+            </div>
+            <div class="token-card" style="--token-color: var(--arena-blue); --token-glow: hsla(220, 70%, 55%, 0.06);">
+                <div class="token-ticker">$ARENA</div>
+                <div class="token-role">Governance / Ownership</div>
+                <p class="token-desc">Ownership of the Fight Farm ecosystem. $ARENA holders control treasury decisions, reward distribution, and the future direction of the platform.</p>
+                <ul class="token-uses">
+                    <li>Required for FE auctions (1-of-1s)</li>
+                    <li>Treasury governance votes</li>
+                    <li>Reward distribution rules</li>
+                    <li>Ecosystem upgrade proposals</li>
+                    <li>Revenue share (future)</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- ═══ Arena ═══ -->
+    <section id="arena" class="section">
+        <div class="arena-section">
+            <div class="arena-inner">
+                <div>
+                    <div class="section-label">Prediction Markets</div>
+                    <h2 class="section-title">The Arena</h2>
+                    <p class="section-desc" style="margin-bottom:2rem;">The heart of Fight Farm. Every UFC bout creates an on-chain prediction pool. Lock your fighters, call the outcome, claim the rewards.</p>
+                    <div class="arena-features">
+                        <div class="arena-feature">
+                            <div class="arena-feature-icon">&#127942;</div>
+                            <div>
+                                <div class="arena-feature-title">Fight Pools</div>
+                                <p class="arena-feature-desc">Prediction markets tied to real UFC bouts. Pools lock at fight time and resolve on-chain.</p>
+                            </div>
+                        </div>
+                        <div class="arena-feature">
+                            <div class="arena-feature-icon">&#128081;</div>
+                            <div>
+                                <div class="arena-feature-title">LGND Slots</div>
+                                <p class="arena-feature-desc">Legendary holders compete for prestige slots with collateral locks and steal mechanics.</p>
+                            </div>
+                        </div>
+                        <div class="arena-feature">
+                            <div class="arena-feature-icon">&#128176;</div>
+                            <div>
+                                <div class="arena-feature-title">Reward Engine</div>
+                                <p class="arena-feature-desc">Winners claim from the pool. Fees split between $FIGHT burns and recycled rewards.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="arena-visual">
+                    <div class="arena-pool">
+                        <div class="arena-pool-header">
+                            <div class="arena-pool-matchup">Pereira vs Adesanya</div>
+                            <div class="arena-pool-event">UFC 305</div>
+                        </div>
+                        <div class="arena-pool-bar"><div class="arena-pool-fill" style="width:62%"></div></div>
+                        <div class="arena-pool-stats">
+                            <span>62% Pereira</span>
+                            <span>38% Adesanya</span>
+                        </div>
+                    </div>
+                    <div class="arena-pool">
+                        <div class="arena-pool-header">
+                            <div class="arena-pool-matchup">Topuria vs Holloway</div>
+                            <div class="arena-pool-event">UFC 305</div>
+                        </div>
+                        <div class="arena-pool-bar"><div class="arena-pool-fill" style="width:55%"></div></div>
+                        <div class="arena-pool-stats">
+                            <span>55% Topuria</span>
+                            <span>45% Holloway</span>
+                        </div>
+                    </div>
+                    <div class="arena-pool">
+                        <div class="arena-pool-header">
+                            <div class="arena-pool-matchup">O'Malley vs Dvalishvili</div>
+                            <div class="arena-pool-event">UFC 305</div>
+                        </div>
+                        <div class="arena-pool-bar"><div class="arena-pool-fill" style="width:48%"></div></div>
+                        <div class="arena-pool-stats">
+                            <span>48% O'Malley</span>
+                            <span>52% Dvalishvili</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- ═══ Roadmap ═══ -->
+    <section id="roadmap" class="section section-center">
+        <div class="section-label">Build Plan</div>
+        <h2 class="section-title">Roadmap</h2>
+        <p class="section-desc">Four phases. From genesis mint to a fully autonomous fight economy.</p>
+        <div class="roadmap-grid">
+            <div class="roadmap-card" style="--phase-color: var(--red);">
+                <div class="roadmap-phase">Phase 1 &mdash; Foundation</div>
+                <div class="roadmap-title">Genesis Drop</div>
+                <ul class="roadmap-items">
+                    <li>$FIGHT and $ARENA token launch on Base</li>
+                    <li>Fighter NFT contract (ERC-721) deployment</li>
+                    <li>SE minting for first UFC event</li>
+                    <li>Fighter Registry + metadata on IPFS</li>
+                    <li>Basic staking (EmissionsVault)</li>
+                </ul>
+            </div>
+            <div class="roadmap-card" style="--phase-color: var(--orange);">
+                <div class="roadmap-phase">Phase 2 &mdash; The Arena</div>
+                <div class="roadmap-title">Predictions Go Live</div>
+                <ul class="roadmap-items">
+                    <li>Arena fight pools + on-chain settlement</li>
+                    <li>LE Launchpad (random, $FIGHT only)</li>
+                    <li>FE 1-of-1 auctions ($ARENA only)</li>
+                    <li>FeeRouter + burn/recycle engine</li>
+                    <li>Escrow trade board (NFT-for-NFT)</li>
+                </ul>
+            </div>
+            <div class="roadmap-card" style="--phase-color: var(--gold);">
+                <div class="roadmap-phase">Phase 3 &mdash; Burn Era</div>
+                <div class="roadmap-title">Legendaries Unlocked</div>
+                <ul class="roadmap-items">
+                    <li>LGND upgrade system (burn all versions)</li>
+                    <li>LGND Arena slots + steal mechanics</li>
+                    <li>Bottleneck analytics dashboard</li>
+                    <li>AI Matchmaker agent (automated event detection)</li>
+                    <li>DAO governance via Snapshot + Safe</li>
+                </ul>
+            </div>
+            <div class="roadmap-card" style="--phase-color: var(--arena-blue);">
+                <div class="roadmap-phase">Phase 4 &mdash; Domination</div>
+                <div class="roadmap-title">Full Autonomy</div>
+                <ul class="roadmap-items">
+                    <li>Custom marketplace UI</li>
+                    <li>Full agent automation (FighterFactory, NFTBuilder)</li>
+                    <li>Cross-event meta and fighter career tracking</li>
+                    <li>Revenue share for $ARENA holders</li>
+                    <li>Expansion beyond UFC</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- ═══ CTA ═══ -->
+    <section class="cta-section">
+        <h2 class="cta-title">Enter the Farm</h2>
+        <p class="cta-desc">The first UFC drop is coming. Get in early or get left behind.</p>
+        <div class="cta-links">
+            <a href="#" class="btn btn-primary">Join the Community</a>
+            <a href="#" class="btn btn-secondary">Read the Docs</a>
+        </div>
+    </section>
+
+    <!-- ═══ Footer ═══ -->
     <footer class="footer">
-        <p>&copy; 2026 Fight Farm. All rights reserved.</p>
+        <p>&copy; 2026 Fight Farm. All rights reserved. Built on Base.</p>
     </footer>
+
 </body>
 </html>
