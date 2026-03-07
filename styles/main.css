@@ -556,6 +556,33 @@ a { color: inherit; text-decoration: none; }
 }
 .lgnd-step--result .lgnd-step-value { color: var(--gold); }
 
+/* ── LGND Paths ── */
+.lgnd-paths {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    position: relative;
+}
+.lgnd-path-card {
+    padding: 1.5rem;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-subtle);
+    background: var(--bg-card);
+}
+.lgnd-path-tier {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-bottom: 0.25rem;
+}
+.lgnd-path-req {
+    font-size: 0.82rem;
+    color: var(--text-dim);
+    margin-bottom: 1rem;
+}
+
 /* ── Roadmap ── */
 .roadmap-grid {
     display: grid;
@@ -679,7 +706,7 @@ a { color: inherit; text-decoration: none; }
     .nav { padding: 0.9rem 1.25rem; }
     .nav-links { gap: 0.75rem; }
     .nav-link { display: none; }
-    .steps-grid { grid-template-columns: 1fr; }
+    .steps-grid { grid-template-columns: 1fr !important; }
     .tiers-grid { grid-template-columns: 1fr; }
     .tokens-grid { grid-template-columns: 1fr; }
     .stats-bar { gap: 1.5rem; flex-wrap: wrap; }

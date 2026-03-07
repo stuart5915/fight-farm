@@ -189,14 +189,18 @@
             <div class="docs-toc-title">Contents</div>
             <ul class="docs-toc-list">
                 <li><a href="#overview">Overview</a></li>
-                <li><a href="#nft-tiers">NFT Tiers</a></li>
-                <li><a href="#versioning">Versioning System</a></li>
-                <li><a href="#tokens">Tokens ($FIGHT & $ARENA)</a></li>
-                <li><a href="#arena">The Arena</a></li>
-                <li><a href="#lgnd">Legendary Upgrade (Burn)</a></li>
-                <li><a href="#fees">Fee Structure</a></li>
-                <li><a href="#staking">Staking</a></li>
+                <li><a href="#nft-tiers">NFT Structure &amp; Editions</a></li>
+                <li><a href="#versioning">Version Scarcity System</a></li>
+                <li><a href="#tokens">Tokens ($FIGHT &amp; $ARENA)</a></li>
+                <li><a href="#lgnd">Legendary Upgrade (LGND)</a></li>
+                <li><a href="#arena">Arena Gameplay</a></li>
+                <li><a href="#staking">NFT Staking Rewards</a></li>
+                <li><a href="#fees">Burn &amp; Recycle Fee Routing</a></li>
+                <li><a href="#revenue">Revenue Streams</a></li>
+                <li><a href="#agents">Agent Infrastructure</a></li>
+                <li><a href="#architecture">Architecture</a></li>
                 <li><a href="#trading">Trading</a></li>
+                <li><a href="#future">Future Expansion</a></li>
             </ul>
         </div>
 
@@ -204,7 +208,7 @@
         <div class="docs-section" id="overview">
             <div class="docs-section-label">01</div>
             <h2>Overview</h2>
-            <p>Fight Farm is a <strong>combat sports collectible economy</strong> built on Base (Ethereum L2). Every real UFC event generates new fighter NFTs. Players collect versioned fighters, compete in prediction markets, burn complete sets to forge Legendaries, and govern the ecosystem through token ownership.</p>
+            <p>Fight Farm is a <strong>collectible strategy game</strong> where NFTs representing fighters are tied to real-world combat sports events. Players collect, trade, stake, upgrade, and deploy NFTs to earn rewards based on fight outcomes and marketplace strategy.</p>
             <div class="docs-box docs-box--key">
                 <strong>Core thesis:</strong> Fight Farm is a collectible sports economy where NFTs are the assets, $FIGHT is the fuel, and $ARENA represents ownership of the arena itself.
             </div>
@@ -213,11 +217,11 @@
 
         <hr class="docs-divider">
 
-        <!-- ═══ NFT Tiers ═══ -->
+        <!-- ═══ NFT Structure & Editions ═══ -->
         <div class="docs-section" id="nft-tiers">
             <div class="docs-section-label">02</div>
-            <h2>NFT Tiers</h2>
-            <p>Fighter NFTs follow the <strong>ERC-721</strong> standard on Base. There are four tiers, each serving different player types.</p>
+            <h2>NFT Structure &amp; Editions</h2>
+            <p>Fighter NFTs follow the <strong>ERC-721</strong> standard on Base. There are four tiers, each serving different player types and feeding into the LGND upgrade system.</p>
             <div class="docs-table-wrap">
                 <table class="docs-table">
                     <thead>
@@ -232,31 +236,31 @@
                     <tbody>
                         <tr>
                             <td><strong>SE</strong> (Standard)</td>
-                            <td>Uncapped</td>
+                            <td>Mint on demand; cap on fight day</td>
                             <td>$25</td>
                             <td>ETH/USDC or $FIGHT</td>
-                            <td>10-15% discount with $FIGHT</td>
+                            <td>Common collectible used for staking and upgrades</td>
                         </tr>
                         <tr>
                             <td><strong>LE</strong> (Limited)</td>
-                            <td>Max 5 / fighter</td>
+                            <td>Up to 5 per fighter per version</td>
                             <td>$50-75</td>
                             <td>$FIGHT only</td>
-                            <td>Random launchpad, free SE airdrop</td>
+                            <td>Randomized Launchpad. SE airdrop for matching fighter. Elements: Fire, Water, Earth, Wood, Metal</td>
                         </tr>
                         <tr>
                             <td><strong>FE</strong> (First Edition)</td>
-                            <td>1 of 1</td>
+                            <td>1 per fighter per version</td>
                             <td>$200+ bid</td>
                             <td>$ARENA only</td>
-                            <td>Auction, free SE airdrop</td>
+                            <td>Premium 1/1 Auction-only</td>
                         </tr>
                         <tr>
                             <td><strong>LGND</strong> (Legendary)</td>
                             <td>Burn-limited</td>
                             <td>Burn all versions</td>
                             <td>+ $FIGHT fee</td>
-                            <td>Capped by scarcest version</td>
+                            <td>Created via upgrade. Three types: SE LGND, LE LGND, FE LGND</td>
                         </tr>
                     </tbody>
                 </table>
@@ -265,14 +269,17 @@
 
         <hr class="docs-divider">
 
-        <!-- ═══ Versioning ═══ -->
+        <!-- ═══ Version Scarcity System ═══ -->
         <div class="docs-section" id="versioning">
             <div class="docs-section-label">03</div>
-            <h2>Versioning System</h2>
-            <p>Every fighter receives a <strong>new version number</strong> each time they appear on a UFC card. Version 1 is their first Fight Farm appearance, incrementing by +1 per event. Versions are immutable once committed.</p>
+            <h2>Version Scarcity System</h2>
+            <p>Every fighter receives a <strong>new NFT version</strong> each time their real-world fighter competes. Version 1 is their first Fight Farm appearance, incrementing by +1 per event. Versions are immutable once committed.</p>
             <p>This creates a growing collection per fighter over their career. A fighter who has appeared at 5 UFC events has 5 versions. To forge their Legendary, you need <strong>one SE from every version</strong>.</p>
             <div class="docs-box docs-box--gold">
-                <strong>The Bottleneck:</strong> The scarcest version of any fighter caps how many LGNDs can ever exist. When it reaches zero supply, no more Legendaries can be forged. Ever.
+                <strong>Retirement Lock:</strong> If a fighter retires, quits, or is cut/fired by the UFC, the in-game character's NFT set is complete. No more versions will ever be created. The lowest supply version becomes the upgrade bottleneck, permanently capping how many LGNDs can exist for that fighter.
+            </div>
+            <div class="docs-box docs-box--key">
+                <strong>The Bottleneck:</strong> The scarcest version of any fighter caps how many LGNDs can ever exist. When it reaches zero supply, no more Legendaries can be forged. Ever. The formula: <code>LGND_max = min(Float_v1, Float_v2, ..., Float_vN)</code>
             </div>
         </div>
 
@@ -283,17 +290,17 @@
             <div class="docs-section-label">04</div>
             <h2>Tokens</h2>
 
-            <h3>$FIGHT — Utility / Fuel</h3>
+            <h3>$FIGHT &mdash; Utility / Fuel</h3>
             <p>The transactional engine of Fight Farm. Every player action consumes $FIGHT. Fees are split between <strong>permanent burns</strong> (deflationary) and <strong>recycled rewards</strong> (back to stakers).</p>
             <ul>
                 <li>10-15% discount on SE purchases</li>
                 <li>Required for LE Launchpad purchases</li>
                 <li>LGND upgrade fee (100% burn)</li>
-                <li>Arena entry and predictions</li>
+                <li>Arena slot auction fees</li>
                 <li>Escrow trade fees</li>
             </ul>
 
-            <h3>$ARENA — Governance / Ownership</h3>
+            <h3>$ARENA &mdash; Governance / Ownership</h3>
             <p>Ownership of the Fight Farm ecosystem. $ARENA holders control treasury decisions, reward distribution rules, and the platform's future direction.</p>
             <ul>
                 <li>Required for FE auctions (1-of-1s)</li>
@@ -306,46 +313,155 @@
 
         <hr class="docs-divider">
 
-        <!-- ═══ Arena ═══ -->
-        <div class="docs-section" id="arena">
-            <div class="docs-section-label">05</div>
-            <h2>The Arena</h2>
-            <p>The Arena creates <strong>on-chain prediction pools</strong> for every UFC bout. Players lock fighters, predict outcomes, and claim rewards when fights resolve.</p>
-            <ul>
-                <li><strong>Fight Pools:</strong> Tied to real bout slots (not specific fighters). Pools survive fighter replacements.</li>
-                <li><strong>LGND Slots:</strong> Legendary holders compete for prestige positions with collateral locks and steal mechanics.</li>
-                <li><strong>State Machine:</strong> Scheduled &rarr; Locked &rarr; Resolved &rarr; Claimable</li>
-                <li><strong>3% fee:</strong> 2% burned, 1% recycled to rewards</li>
-            </ul>
-            <p>Pools are keyed by stable bout identifiers (e.g., <strong>UFC326_BOUT04</strong>), not fighter names. If a fighter gets replaced, the pool updates &mdash; it doesn't cancel.</p>
-        </div>
-
-        <hr class="docs-divider">
-
         <!-- ═══ LGND ═══ -->
         <div class="docs-section" id="lgnd">
-            <div class="docs-section-label">06</div>
-            <h2>Legendary Upgrade</h2>
-            <p>The LGND upgrade is the core burn mechanic. To forge a Legendary:</p>
-            <ul>
-                <li>Own <strong>one SE of every version</strong> of that fighter</li>
-                <li>Burn all of them in a single transaction</li>
-                <li>Pay a <strong>$FIGHT upgrade fee</strong> ($75-150 equivalent, 100% burned)</li>
-                <li>Receive an irreplaceable LGND NFT</li>
-            </ul>
-            <div class="docs-box docs-box--key">
-                <strong>Version Bottleneck Ratchet:</strong> Each LGND upgrade burns one SE from every version. The scarcest version hits zero first. At that point, LGND supply is permanently capped. The formula: <code>LGND_max = min(Float_v1, Float_v2, ..., Float_vN)</code>
+            <div class="docs-section-label">05</div>
+            <h2>Legendary Upgrade (LGND)</h2>
+            <p>The LGND upgrade is the core burn mechanic. LGNDs are created via upgrade and come in <strong>three distinct types</strong>, each with different requirements and power levels in the Arena.</p>
+
+            <h3>SE LGND</h3>
+            <p>The base legendary tier. Requires <strong>one SE from every version</strong> of that fighter. All SEs are burned in a single transaction along with a $FIGHT upgrade fee.</p>
+
+            <h3>LE LGND</h3>
+            <p>Mid-tier legendary. Requires <strong>one SE from every version</strong> of that fighter <strong>plus one LE</strong> of the same fighter. Grants a higher steal rate in the Arena.</p>
+
+            <h3>FE LGND</h3>
+            <p>The premium legendary. Requires <strong>one SE from every version</strong> of that fighter <strong>plus one FE</strong> of the same fighter. Grants the highest steal rate in the Arena.</p>
+
+            <div class="docs-table-wrap">
+                <table class="docs-table">
+                    <thead>
+                        <tr>
+                            <th>LGND Type</th>
+                            <th>Requirements</th>
+                            <th>Arena Steal Rate</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>SE LGND</strong></td>
+                            <td>All SE versions</td>
+                            <td>50%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>LE LGND</strong></td>
+                            <td>All SE versions + 1 LE</td>
+                            <td>55%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>FE LGND</strong></td>
+                            <td>All SE versions + 1 FE</td>
+                            <td>60%</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-            <p>This creates a <strong>deflationary spiral</strong>: early LGNDs are cheap, but as bottleneck versions get burned, remaining upgrade paths become exponentially more valuable.</p>
+
+            <div class="docs-box docs-box--key">
+                <strong>Version Bottleneck Ratchet:</strong> Each LGND upgrade burns one SE from every version. The scarcest version hits zero first. At that point, LGND supply is permanently capped. This creates a deflationary spiral: early LGNDs are cheap, but as bottleneck versions get burned, remaining upgrade paths become exponentially more valuable.
+            </div>
         </div>
 
         <hr class="docs-divider">
 
-        <!-- ═══ Fee Structure ═══ -->
-        <div class="docs-section" id="fees">
+        <!-- ═══ Arena ═══ -->
+        <div class="docs-section" id="arena">
+            <div class="docs-section-label">06</div>
+            <h2>Arena Gameplay</h2>
+            <p>The Arena is where <strong>LGND NFTs</strong> are deployed for high-stakes fight predictions. Players bid on slot auctions to compete, risking their LGND NFT to make a prediction on a real-world fight outcome.</p>
+
+            <h3>How It Works</h3>
+            <ul>
+                <li><strong>Slot Auctions:</strong> LGND holders bid on Arena slots for upcoming fights. Winners enter the Arena with their LGND on the line.</li>
+                <li><strong>Predictions:</strong> Arena participants risk their LGND NFT to predict the fight outcome.</li>
+                <li><strong>Staker Rewards:</strong> Other players have NFTs staked to win rewards for that fight. Winning Arena predictions steal rewards from those stakers.</li>
+                <li><strong>Voting:</strong> Players must vote in line with the winning vote to be included in the outcome.</li>
+            </ul>
+
+            <h3>Winning Predictions</h3>
+            <p>If your LGND's prediction is <strong>correct</strong>, you steal a percentage of the staked rewards from other players. The steal rate depends on your LGND type:</p>
+            <div class="docs-table-wrap">
+                <table class="docs-table">
+                    <thead>
+                        <tr>
+                            <th>LGND Type</th>
+                            <th>Steal Rate</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>FE LGND</strong></td><td>60%</td></tr>
+                        <tr><td><strong>LE LGND</strong></td><td>55%</td></tr>
+                        <tr><td><strong>SE LGND</strong></td><td>50%</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>Losing Predictions</h3>
+            <p>If a LGND <strong>predicts incorrectly</strong>, they forfeit their LGND to the winning players, who collectively decide its fate:</p>
+            <ul>
+                <li><strong>Burn for $FIGHT bribe</strong> &mdash; destroy the LGND (SE, LE, or FE) and receive a $FIGHT payout</li>
+                <li><strong>Award to random solo player</strong> &mdash; one winning player receives the forfeited LGND</li>
+                <li><strong>Award to DAO team</strong> &mdash; the DAO treasury claims the LGND</li>
+                <li><strong>Zombie LGND (FE/LE only)</strong> &mdash; postpone the bribe for one calendar year to burn; LGND redirects as a Zombie LGND. Players split the bribe plus a percentage of the auctioned Zombie LGND</li>
+            </ul>
+
+            <h3>Slot Auction Lock Periods</h3>
+            <p>Losing slot auction bidders (those who bid but did not win the slot) have their NFTs <strong>locked</strong> for a cooldown period based on tier:</p>
+            <div class="docs-table-wrap">
+                <table class="docs-table">
+                    <thead>
+                        <tr>
+                            <th>Tier</th>
+                            <th>Lock Period</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>SE</strong></td><td>90 days</td></tr>
+                        <tr><td><strong>LE</strong></td><td>60 days</td></tr>
+                        <tr><td><strong>FE</strong></td><td>30 days</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>Zombie LGNDs</h3>
+            <div class="docs-box docs-box--gold">
+                <strong>Important:</strong> Zombie LGNDs are <strong>NOT</strong> used in Arena gameplay. They become partners with agents that live in the ecosystem and generate revenue for ROI. Zombie LGNDs partner with their fighter's agent to share in the revenue that agent generates.
+            </div>
+        </div>
+
+        <hr class="docs-divider">
+
+        <!-- ═══ Staking ═══ -->
+        <div class="docs-section" id="staking">
             <div class="docs-section-label">07</div>
-            <h2>Fee Structure</h2>
-            <p>All fees route through the <strong>FeeRouter</strong> contract, which splits between burn and recycle based on the module type.</p>
+            <h2>NFT Staking Rewards</h2>
+            <p>All NFTs earn rewards through two distinct channels. There are <strong>no rarity multipliers</strong> &mdash; rewards are evenly distributed across all staked NFTs.</p>
+
+            <h3>Token Emissions</h3>
+            <p>All staked NFTs earn via <strong>$FIGHT &amp; $ARENA token emissions</strong>, distributed evenly with no rarity multipliers. Emissions are distributed pro-rata to all stakers regardless of NFT tier.</p>
+
+            <h3>Fight Win Rewards</h3>
+            <p>Only players staking NFTs of the <strong>real-world fight winner</strong> are rewarded for fight wins. Winning NFTs earn via <strong>treasury yield</strong> &mdash; sourced from LP fees, DeFi returns, trading revenue, partner tokens, and advertising revenue.</p>
+
+            <div class="docs-box docs-box--key">
+                <strong>Key distinction:</strong> Token emissions reward all stakers equally. Treasury yield rewards only go to holders who staked the winning fighter's NFTs. This creates a prediction layer on top of passive staking.
+            </div>
+
+            <ul>
+                <li>Staked NFTs are held in custody by the contract</li>
+                <li>Cooldown period on unstake to prevent gaming</li>
+                <li>Staked NFTs cannot be traded, burned, or used in Arena simultaneously</li>
+                <li>ClaimRouter enables one-click claim from all sources (vault + rewards + arena)</li>
+            </ul>
+        </div>
+
+        <hr class="docs-divider">
+
+        <!-- ═══ Burn & Recycle Fee Routing ═══ -->
+        <div class="docs-section" id="fees">
+            <div class="docs-section-label">08</div>
+            <h2>Burn &amp; Recycle Fee Routing</h2>
+            <p>All platform fees route through a <strong>FeeRouter</strong> contract which splits between burning, recycling to stakers, and treasury funding.</p>
             <div class="docs-table-wrap">
                 <table class="docs-table">
                     <thead>
@@ -363,7 +479,7 @@
                         <tr><td>LE Launchpad</td><td>5%</td><td>3%</td><td>2%</td><td>$FIGHT</td></tr>
                         <tr><td>FE Auction</td><td>8%</td><td>5%</td><td>3%</td><td>$ARENA</td></tr>
                         <tr><td>LGND Upgrade</td><td>10%</td><td>10%</td><td>0%</td><td>$FIGHT</td></tr>
-                        <tr><td>Arena Predictions</td><td>3%</td><td>2%</td><td>1%</td><td>$FIGHT</td></tr>
+                        <tr><td>LGND Slot Auction</td><td>3%</td><td>2%</td><td>1%</td><td>$FIGHT</td></tr>
                         <tr><td>Escrow Trade</td><td>Fixed</td><td>60%</td><td>40%</td><td>$FIGHT</td></tr>
                     </tbody>
                 </table>
@@ -372,24 +488,92 @@
 
         <hr class="docs-divider">
 
-        <!-- ═══ Staking ═══ -->
-        <div class="docs-section" id="staking">
-            <div class="docs-section-label">08</div>
-            <h2>Staking</h2>
-            <p>The <strong>EmissionsVault</strong> lets players stake fighter NFTs to earn weekly rewards. Staked NFTs are held in custody by the contract.</p>
+        <!-- ═══ Revenue Streams ═══ -->
+        <div class="docs-section" id="revenue">
+            <div class="docs-section-label">09</div>
+            <h2>Revenue Streams</h2>
+            <p>All revenue streams push fees to the treasury. The treasury funds staking rewards, ecosystem development, and platform operations.</p>
+            <div class="docs-table-wrap">
+                <table class="docs-table">
+                    <thead>
+                        <tr>
+                            <th>Source</th>
+                            <th>Currency</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>SE Mints</strong></td><td>ETH / USDC / $FIGHT</td></tr>
+                        <tr><td><strong>LE Launchpads</strong></td><td>$FIGHT</td></tr>
+                        <tr><td><strong>FE Auctions</strong></td><td>$ARENA</td></tr>
+                        <tr><td><strong>LGND Burn to Upgrade</strong></td><td>$FIGHT</td></tr>
+                        <tr><td><strong>LGND Slot Auction Fees</strong></td><td>$FIGHT</td></tr>
+                        <tr><td><strong>Marketplace Escrow Trade Fees</strong></td><td>$FIGHT</td></tr>
+                        <tr><td><strong>Analytics Dashboard Subscriptions</strong></td><td>$FIGHT</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <hr class="docs-divider">
+
+        <!-- ═══ Agent Infrastructure ═══ -->
+        <div class="docs-section" id="agents">
+            <div class="docs-section-label">10</div>
+            <h2>Agent Infrastructure</h2>
+            <p>Fight Farm is powered by <strong>autonomous agents</strong> that handle scraping fight schedules, creating NFT versions, generating metadata, and triggering proposals. Agents need approval before executing on-chain transactions.</p>
+
+            <h3>Fighter Agents</h3>
+            <p>Each fighter in the Fight Farm ecosystem has their own dedicated agent with:</p>
             <ul>
-                <li>Fixed weekly emissions distributed pro-rata to stakers</li>
-                <li>Cooldown period on unstake to prevent gaming</li>
-                <li>Staked NFTs cannot be traded, burned, or used in Arena simultaneously</li>
-                <li>ClaimRouter enables one-click claim from all sources (vault + rewards + arena)</li>
+                <li><strong>A Base wallet</strong> &mdash; used for on-chain transactions and revenue accumulation</li>
+                <li><strong>Social media pages on Flix.fun</strong> &mdash; automated content and community engagement</li>
+                <li><strong>An X account</strong> &mdash; public-facing social presence for the fighter character</li>
             </ul>
+
+            <h3>Agent Goals &amp; Leaderboard</h3>
+            <p>Every agent's goal is to <strong>maximize wallet growth</strong>. Agent wallets act as a leaderboard, creating a competitive layer where the most successful agents (and their associated fighters) rise to the top.</p>
+
+            <div class="docs-box docs-box--gold">
+                <strong>Zombie LGND Partnership:</strong> Zombie LGNDs partner with their fighter agents to share in the revenue that agent generates. This creates a long-term ROI path for players whose LGNDs were forfeited in the Arena.
+            </div>
+        </div>
+
+        <hr class="docs-divider">
+
+        <!-- ═══ Architecture ═══ -->
+        <div class="docs-section" id="architecture">
+            <div class="docs-section-label">11</div>
+            <h2>Architecture</h2>
+            <p>Fight Farm operates on a <strong>two-plane architecture</strong> that separates off-chain orchestration from on-chain execution.</p>
+
+            <h3>Control Plane (Off-Chain)</h3>
+            <p>The control plane handles all off-chain logic and orchestration:</p>
+            <ul>
+                <li><strong>Agents</strong> &mdash; autonomous bots that scrape data and trigger workflows</li>
+                <li><strong>Databases</strong> &mdash; fight schedules, fighter metadata, version tracking</li>
+                <li><strong>Event Ingestion</strong> &mdash; real-time fight results and schedule changes</li>
+                <li><strong>Workflow Orchestration</strong> &mdash; coordinating multi-step processes across systems</li>
+            </ul>
+
+            <h3>Execution Plane (On-Chain)</h3>
+            <p>The execution plane handles all on-chain state and value transfer:</p>
+            <ul>
+                <li><strong>Minting Contracts</strong> &mdash; SE mints, LE launchpads, FE auctions</li>
+                <li><strong>Staking Contracts</strong> &mdash; EmissionsVault, fight win distribution</li>
+                <li><strong>Arena Contracts</strong> &mdash; slot auctions, predictions, LGND forfeiture</li>
+                <li><strong>Fee Routing</strong> &mdash; FeeRouter contract for burn/recycle/treasury splits</li>
+            </ul>
+
+            <div class="docs-box docs-box--key">
+                <strong>Trust boundary:</strong> Agents propose actions off-chain. Smart contracts enforce rules on-chain. Agents need approval before executing transactions, ensuring no autonomous agent can unilaterally move funds or mint NFTs.
+            </div>
         </div>
 
         <hr class="docs-divider">
 
         <!-- ═══ Trading ═══ -->
         <div class="docs-section" id="trading">
-            <div class="docs-section-label">09</div>
+            <div class="docs-section-label">12</div>
             <h2>Trading</h2>
             <p>Fight Farm NFTs are tradable on <strong>OpenSea, Blur, Magic Eden, and Zora</strong> automatically via ERC-721 compatibility.</p>
             <p>Fight Farm also provides a native <strong>EscrowTrade</strong> system for direct NFT-for-NFT swaps:</p>
@@ -400,6 +584,22 @@
                 <li>$FIGHT fee routed through FeeRouter</li>
             </ul>
             <p>This creates a barter economy where players can swap bottleneck versions directly without needing to sell and rebuy.</p>
+        </div>
+
+        <hr class="docs-divider">
+
+        <!-- ═══ Future Expansion ═══ -->
+        <div class="docs-section" id="future">
+            <div class="docs-section-label">13</div>
+            <h2>Future Expansion</h2>
+            <p>Fight Farm is designed to grow beyond its initial combat sports foundation. Planned expansions include:</p>
+            <ul>
+                <li><strong>Prediction Markets</strong> &mdash; broader fight outcome markets beyond the Arena</li>
+                <li><strong>Fantasy Statistics Betting</strong> &mdash; wager on specific fighter stats and performance metrics</li>
+                <li><strong>NFT Pack Openings</strong> &mdash; randomized pack mechanics for new collection experiences</li>
+                <li><strong>Chaos System</strong> &mdash; unpredictable events that shake up the meta and reward adaptability</li>
+                <li><strong>Cross-Sport Integration</strong> &mdash; expand the Fight Farm model to boxing, kickboxing, and other combat sports</li>
+            </ul>
         </div>
 
     </div>

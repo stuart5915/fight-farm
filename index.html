@@ -109,7 +109,7 @@
                 <div class="tier-name">LE</div>
                 <div class="tier-full">Limited Edition</div>
                 <div class="tier-price">$50&ndash;75 <span class="currency">$FIGHT only</span></div>
-                <p class="tier-details">Max 5 per fighter per version. Random launchpad &mdash; you don't pick your fighter. Scarce from day one. Comes with a free matching SE.</p>
+                <p class="tier-details">Max 5 per fighter per version. Random launchpad &mdash; you don't pick your fighter. Comes with a free matching SE. Five elements: Fire, Water, Earth, Wood, Metal.</p>
             </div>
             <div class="tier-card" style="--tier-color: var(--orange);">
                 <span class="tier-icon">&#128293;</span>
@@ -122,8 +122,8 @@
                 <span class="tier-icon">&#128081;</span>
                 <div class="tier-name">LGND</div>
                 <div class="tier-full">Legendary</div>
-                <div class="tier-price">Burn <span class="currency">all versions</span></div>
-                <p class="tier-details">Burn one SE of every version of a fighter to forge a Legendary. Supply capped by the scarcest version. The most powerful asset in Fight Farm.</p>
+                <div class="tier-price">Burn <span class="currency">required set</span></div>
+                <p class="tier-details">Three tiers: SE LGND (burn all SE versions), LE LGND (SEs + 1 LE), FE LGND (SEs + 1 FE). Supply capped by the scarcest version. The most powerful asset in Fight Farm.</p>
             </div>
         </div>
     </section>
@@ -132,31 +132,43 @@
     <section class="section lgnd-section">
         <div class="section-label">The Burn Engine</div>
         <h2 class="section-title">Forge a Legendary</h2>
-        <p class="section-desc" style="max-width:640px;margin:0 auto 1rem;">Collect every version of a fighter's career. Burn them all. Pay the $FIGHT upgrade fee. Receive an irreplaceable LGND. The bottleneck version &mdash; the scarcest one &mdash; caps how many LGNDs can ever be created for that fighter. When it hits zero, no more LGNDs. Ever.</p>
-        <div class="lgnd-flow">
-            <div class="lgnd-step">
-                <div class="lgnd-step-label">Version 1</div>
-                <div class="lgnd-step-value">SE #1</div>
+        <p class="section-desc" style="max-width:640px;margin:0 auto 1rem;">Collect every version of a fighter's career. Burn the required set. Pay the $FIGHT upgrade fee. Receive an irreplaceable LGND. The bottleneck version &mdash; the scarcest one &mdash; caps how many LGNDs can ever be created for that fighter. When it hits zero, no more LGNDs. Ever.</p>
+
+        <div class="lgnd-paths">
+            <div class="lgnd-path-card">
+                <div class="lgnd-path-tier" style="color: var(--text-secondary);">SE LGND</div>
+                <p class="lgnd-path-req">Burn 1 SE from every version</p>
+                <div class="lgnd-flow">
+                    <div class="lgnd-step"><div class="lgnd-step-label">v1</div><div class="lgnd-step-value">SE</div></div>
+                    <div class="lgnd-arrow">+</div>
+                    <div class="lgnd-step"><div class="lgnd-step-label">v2</div><div class="lgnd-step-value">SE</div></div>
+                    <div class="lgnd-arrow">+</div>
+                    <div class="lgnd-step"><div class="lgnd-step-label">v3</div><div class="lgnd-step-value">SE</div></div>
+                    <div class="lgnd-arrow">=</div>
+                    <div class="lgnd-step lgnd-step--result"><div class="lgnd-step-label">Result</div><div class="lgnd-step-value">SE LGND</div></div>
+                </div>
             </div>
-            <div class="lgnd-arrow">+</div>
-            <div class="lgnd-step">
-                <div class="lgnd-step-label">Version 2</div>
-                <div class="lgnd-step-value">SE #2</div>
+            <div class="lgnd-path-card" style="border-color: hsla(220, 70%, 55%, 0.2);">
+                <div class="lgnd-path-tier" style="color: var(--arena-blue);">LE LGND</div>
+                <p class="lgnd-path-req">Burn all SE versions + 1 LE</p>
+                <div class="lgnd-flow">
+                    <div class="lgnd-step"><div class="lgnd-step-label">v1&ndash;v3</div><div class="lgnd-step-value">SEs</div></div>
+                    <div class="lgnd-arrow">+</div>
+                    <div class="lgnd-step" style="border-color: hsla(220, 70%, 55%, 0.3);"><div class="lgnd-step-label">Any ver</div><div class="lgnd-step-value" style="color:var(--arena-blue);">LE</div></div>
+                    <div class="lgnd-arrow">=</div>
+                    <div class="lgnd-step lgnd-step--result" style="border-color:hsla(220,70%,55%,0.3);background:hsla(220,70%,55%,0.05);"><div class="lgnd-step-label">Result</div><div class="lgnd-step-value" style="color:var(--arena-blue);">LE LGND</div></div>
+                </div>
             </div>
-            <div class="lgnd-arrow">+</div>
-            <div class="lgnd-step">
-                <div class="lgnd-step-label">Version 3</div>
-                <div class="lgnd-step-value">SE #3</div>
-            </div>
-            <div class="lgnd-arrow">+</div>
-            <div class="lgnd-step">
-                <div class="lgnd-step-label">$FIGHT Fee</div>
-                <div class="lgnd-step-value">Burn</div>
-            </div>
-            <div class="lgnd-arrow">=</div>
-            <div class="lgnd-step lgnd-step--result">
-                <div class="lgnd-step-label">Result</div>
-                <div class="lgnd-step-value">LGND</div>
+            <div class="lgnd-path-card" style="border-color: hsla(25, 90%, 52%, 0.2);">
+                <div class="lgnd-path-tier" style="color: var(--orange);">FE LGND</div>
+                <p class="lgnd-path-req">Burn all SE versions + 1 FE</p>
+                <div class="lgnd-flow">
+                    <div class="lgnd-step"><div class="lgnd-step-label">v1&ndash;v3</div><div class="lgnd-step-value">SEs</div></div>
+                    <div class="lgnd-arrow">+</div>
+                    <div class="lgnd-step" style="border-color: hsla(25, 90%, 52%, 0.3);"><div class="lgnd-step-label">Any ver</div><div class="lgnd-step-value" style="color:var(--orange);">FE</div></div>
+                    <div class="lgnd-arrow">=</div>
+                    <div class="lgnd-step lgnd-step--result" style="border-color:hsla(25,90%,52%,0.3);background:hsla(25,90%,52%,0.05);"><div class="lgnd-step-label">Result</div><div class="lgnd-step-value" style="color:var(--orange);">FE LGND</div></div>
+                </div>
             </div>
         </div>
     </section>
@@ -211,22 +223,29 @@
                         <div class="arena-feature">
                             <div class="arena-feature-icon">&#127942;</div>
                             <div>
-                                <div class="arena-feature-title">Fight Pools</div>
-                                <p class="arena-feature-desc">Prediction markets tied to real UFC bouts. Pools lock at fight time and resolve on-chain.</p>
+                                <div class="arena-feature-title">LGND Slot Auctions</div>
+                                <p class="arena-feature-desc">Bid your LGND into a slot auction to compete. Risk your NFT on a fight prediction. Win and steal rewards from other players.</p>
                             </div>
                         </div>
                         <div class="arena-feature">
                             <div class="arena-feature-icon">&#128081;</div>
                             <div>
-                                <div class="arena-feature-title">LGND Slots</div>
-                                <p class="arena-feature-desc">Legendary holders compete for prestige slots with collateral locks and steal mechanics.</p>
+                                <div class="arena-feature-title">Steal Mechanics</div>
+                                <p class="arena-feature-desc">Correct predictions steal from staked players: FE LGND 60%, LE LGND 55%, SE LGND 50%. Wrong predictions forfeit your LGND.</p>
                             </div>
                         </div>
                         <div class="arena-feature">
-                            <div class="arena-feature-icon">&#128176;</div>
+                            <div class="arena-feature-icon">&#128128;</div>
                             <div>
-                                <div class="arena-feature-title">Reward Engine</div>
-                                <p class="arena-feature-desc">Winners claim from the pool. Fees split between $FIGHT burns and recycled rewards.</p>
+                                <div class="arena-feature-title">Zombie LGNDs</div>
+                                <p class="arena-feature-desc">Forfeited FE/LE LGNDs can be postponed for one year. They become Zombie LGNDs &mdash; partnered with fighter agents to generate revenue.</p>
+                            </div>
+                        </div>
+                        <div class="arena-feature">
+                            <div class="arena-feature-icon">&#128274;</div>
+                            <div>
+                                <div class="arena-feature-title">Lock Periods</div>
+                                <p class="arena-feature-desc">Losing slot auction bidders are locked: SE LGND 90 days, LE LGND 60 days, FE LGND 30 days.</p>
                             </div>
                         </div>
                     </div>
@@ -266,6 +285,62 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- ═══ Staking ═══ -->
+    <section id="staking" class="section">
+        <div class="section-label">NFT Staking</div>
+        <h2 class="section-title">Stake &amp; Earn</h2>
+        <p class="section-desc">Stake your fighter NFTs to earn rewards. Two streams, two paths to income.</p>
+        <div class="tokens-grid">
+            <div class="token-card" style="--token-color: var(--fight-green); --token-glow: hsla(150, 60%, 45%, 0.06);">
+                <div class="token-ticker">Emissions</div>
+                <div class="token-role">All Staked NFTs</div>
+                <p class="token-desc">Every staked NFT earns from $FIGHT and $ARENA token emissions. Distributed evenly &mdash; no rarity multipliers. Fair for all players.</p>
+            </div>
+            <div class="token-card" style="--token-color: var(--gold); --token-glow: hsla(42, 85%, 55%, 0.06);">
+                <div class="token-ticker">Treasury Yield</div>
+                <div class="token-role">Winning Fight NFTs Only</div>
+                <p class="token-desc">Only NFTs staked on the winning fighter earn treasury yield &mdash; LP fees, DeFi returns, trading revenue, partner tokens, and advertising revenue.</p>
+            </div>
+        </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- ═══ Version Scarcity ═══ -->
+    <section id="scarcity" class="section section-center">
+        <div class="section-label">Scarcity Engine</div>
+        <h2 class="section-title">Career-Locked Supply</h2>
+        <p class="section-desc">Each fighter gets a new NFT version every time their real-world counterpart competes. If a fighter retires, quits, or gets cut by the UFC &mdash; their NFT set is complete. No more versions will ever be created. The lowest-supply version becomes the upgrade bottleneck, permanently capping how many LGNDs can ever exist for that fighter.</p>
+    </section>
+
+    <hr class="divider">
+
+    <!-- ═══ Fighter Agents ═══ -->
+    <section id="agents" class="section section-center">
+        <div class="section-label">Agent Infrastructure</div>
+        <h2 class="section-title">Fighter Agents</h2>
+        <p class="section-desc">Every fighter in Fight Farm has two extensions: collectible NFTs and an autonomous fighter agent. Each agent gets a Base wallet, social media presence, and a singular mission &mdash; maximize wallet growth.</p>
+        <div class="steps-grid" style="grid-template-columns: repeat(3, 1fr);">
+            <div class="step-card">
+                <div class="step-num">&#129302;</div>
+                <div class="step-title">Autonomous Agents</div>
+                <p class="step-desc">Each fighter agent promotes its own NFTs, interacts with the community, and competes with other fighter agents. Agent wallets serve as a public leaderboard.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-num">&#128128;</div>
+                <div class="step-title">Zombie Partnerships</div>
+                <p class="step-desc">Zombie LGNDs partner with their fighter agents to share in generated revenue and future earnings. A second life for forfeited assets.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-num">&#9881;</div>
+                <div class="step-title">Off-Chain Orchestration</div>
+                <p class="step-desc">Agents scrape fight schedules, create NFT versions, generate metadata, and trigger proposals. All transactions require on-chain approval.</p>
             </div>
         </div>
     </section>

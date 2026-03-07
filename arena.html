@@ -206,12 +206,261 @@
             font-size: 0.75rem;
             color: var(--text-dim);
         }
+        .lgnd-slot-risk {
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            color: var(--red-bright);
+            margin-top: 0.5rem;
+            font-weight: 600;
+        }
+
+        /* ── Arena Mechanics Sections ── */
+        .arena-mechanics {
+            margin-top: 2rem;
+        }
+        .mechanics-section {
+            margin-top: 2rem;
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-subtle);
+            background: var(--bg-card);
+        }
+        .mechanics-section-title {
+            font-family: var(--font-display);
+            font-size: 1.15rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 0.75rem;
+        }
+        .mechanics-section-title--red { color: var(--red-bright); }
+        .mechanics-section-title--gold { color: var(--gold); }
+        .mechanics-section-title--green { color: var(--fight-green); }
+        .mechanics-section-title--zombie { color: #9b59b6; }
+
+        .mechanics-desc {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.25rem;
+            line-height: 1.6;
+        }
+
+        /* ── Steal Rates Table ── */
+        .steal-rates-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .steal-rate-card {
+            padding: 1.25rem 1rem;
+            border-radius: var(--radius-md);
+            background: var(--bg-elevated);
+            border: 1px solid var(--border-subtle);
+            text-align: center;
+        }
+        .steal-rate-card--fe { border-top: 3px solid var(--red-bright); }
+        .steal-rate-card--le { border-top: 3px solid var(--gold); }
+        .steal-rate-card--se { border-top: 3px solid var(--text-secondary); }
+
+        .steal-rate-label {
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 0.5rem;
+        }
+        .steal-rate-value {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 900;
+            margin-bottom: 0.2rem;
+        }
+        .steal-rate-value--fe { color: var(--red-bright); }
+        .steal-rate-value--le { color: var(--gold); }
+        .steal-rate-value--se { color: var(--text-secondary); }
+
+        .steal-rate-sub {
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            color: var(--text-dim);
+        }
+
+        /* ── Lock Periods ── */
+        .lock-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        .lock-card {
+            padding: 1.25rem 1rem;
+            border-radius: var(--radius-md);
+            background: var(--bg-elevated);
+            border: 1px solid var(--border-subtle);
+            text-align: center;
+        }
+        .lock-card-type {
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 0.4rem;
+        }
+        .lock-card-days {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 900;
+            color: var(--red-bright);
+        }
+        .lock-card-label {
+            font-family: var(--font-mono);
+            font-size: 0.6rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+        }
+
+        /* ── Fate Options ── */
+        .fate-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+        .fate-card {
+            padding: 1.25rem;
+            border-radius: var(--radius-md);
+            background: var(--bg-elevated);
+            border: 1px solid var(--border-subtle);
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+        .fate-number {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 900;
+            color: var(--red-bright);
+            min-width: 1.5rem;
+            line-height: 1;
+        }
+        .fate-content {}
+        .fate-title {
+            font-family: var(--font-display);
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--text-primary);
+            margin-bottom: 0.3rem;
+        }
+        .fate-desc {
+            font-size: 0.78rem;
+            color: var(--text-dim);
+            line-height: 1.5;
+        }
+
+        /* ── Zombie LGNDs ── */
+        .zombie-traits {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+        .zombie-trait {
+            padding: 1.25rem;
+            border-radius: var(--radius-md);
+            background: var(--bg-elevated);
+            border: 1px solid hsla(280, 40%, 50%, 0.15);
+            display: flex;
+            gap: 0.75rem;
+            align-items: flex-start;
+        }
+        .zombie-trait-icon {
+            font-size: 1.3rem;
+            line-height: 1;
+        }
+        .zombie-trait-text {
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+        .zombie-trait-text strong {
+            color: #9b59b6;
+        }
+
+        /* ── Staking Section ── */
+        .staking-rules {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+        .staking-rule {
+            padding: 1.25rem;
+            border-radius: var(--radius-md);
+            background: var(--bg-elevated);
+            border: 1px solid var(--border-subtle);
+        }
+        .staking-rule-title {
+            font-family: var(--font-display);
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--fight-green);
+            margin-bottom: 0.4rem;
+        }
+        .staking-rule-desc {
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+        .staking-rule-tokens {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 0.6rem;
+        }
+        .staking-token {
+            font-family: var(--font-mono);
+            font-size: 0.62rem;
+            font-weight: 600;
+            padding: 0.25em 0.6em;
+            border-radius: var(--radius-sm);
+            text-transform: uppercase;
+        }
+        .staking-token--fight { background: hsla(0, 70%, 55%, 0.12); color: var(--red-bright); }
+        .staking-token--arena { background: hsla(42, 85%, 55%, 0.12); color: var(--gold); }
+
+        .warning-callout {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 1rem 1.25rem;
+            border-radius: var(--radius-md);
+            background: hsla(0, 70%, 55%, 0.06);
+            border: 1px solid hsla(0, 70%, 55%, 0.15);
+            margin-top: 1rem;
+        }
+        .warning-callout-icon {
+            font-size: 1.1rem;
+            line-height: 1.2;
+        }
+        .warning-callout-text {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+        .warning-callout-text strong {
+            color: var(--red-bright);
+        }
 
         @media (max-width: 640px) {
             .arena-header h1 { font-size: 2rem; }
             .pool-matchup { grid-template-columns: 1fr; gap: 0.5rem; }
             .pool-bottom { flex-direction: column; text-align: center; }
             .lgnd-slot-grid { grid-template-columns: 1fr; }
+            .steal-rates-grid { grid-template-columns: 1fr; }
+            .lock-grid { grid-template-columns: 1fr; }
+            .fate-grid { grid-template-columns: 1fr; }
+            .zombie-traits { grid-template-columns: 1fr; }
+            .staking-rules { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -231,7 +480,7 @@
     <div class="arena-page">
         <div class="arena-header">
             <h1>The <span>Arena</span></h1>
-            <p>On-chain prediction pools for real UFC bouts. Lock your fighters, call the outcome, claim the rewards.</p>
+            <p>On-chain prediction pools for real UFC bouts. Bid on LGND slots, risk your NFT to make fight predictions, and steal rewards from stakers.</p>
         </div>
 
         <div class="arena-event-bar">
@@ -357,25 +606,171 @@
 
         <!-- LGND Slots -->
         <div class="lgnd-slots-section">
-            <div class="lgnd-slots-title">LGND Slots</div>
-            <p class="lgnd-slots-desc">Legendary holders can compete for prestige slots in main event pools. Lock your LGND, gain steal mechanics, and claim bonus rewards.</p>
+            <div class="lgnd-slots-title">LGND Slot Auctions</div>
+            <p class="lgnd-slots-desc">LGND NFTs participate in Arena gameplay through slot auctions. Players bid to win a slot, then risk their LGND NFT to make a fight prediction. Other players have NFTs staked on that fight to earn rewards &mdash; winning predictions steal a percentage of those rewards. Lose your prediction, and you forfeit your LGND NFT.</p>
             <div class="lgnd-slot-grid">
                 <div class="lgnd-slot">
                     <div class="lgnd-slot-label">Slot 1 &middot; Main Event</div>
                     <span class="lgnd-slot-icon">&#128081;</span>
-                    <div class="lgnd-slot-status">Empty &mdash; awaiting LGND</div>
+                    <div class="lgnd-slot-status">Empty &mdash; awaiting auction</div>
+                    <div class="lgnd-slot-risk">Risk: LGND NFT forfeited on loss</div>
                 </div>
                 <div class="lgnd-slot">
                     <div class="lgnd-slot-label">Slot 2 &middot; Co-Main</div>
                     <span class="lgnd-slot-icon">&#128081;</span>
-                    <div class="lgnd-slot-status">Empty &mdash; awaiting LGND</div>
+                    <div class="lgnd-slot-status">Empty &mdash; awaiting auction</div>
+                    <div class="lgnd-slot-risk">Risk: LGND NFT forfeited on loss</div>
                 </div>
                 <div class="lgnd-slot">
                     <div class="lgnd-slot-label">Slot 3 &middot; Featured</div>
                     <span class="lgnd-slot-icon">&#128081;</span>
-                    <div class="lgnd-slot-status">Empty &mdash; awaiting LGND</div>
+                    <div class="lgnd-slot-status">Empty &mdash; awaiting auction</div>
+                    <div class="lgnd-slot-risk">Risk: LGND NFT forfeited on loss</div>
                 </div>
             </div>
+            <div class="warning-callout">
+                <span class="warning-callout-icon">&#9888;&#65039;</span>
+                <div class="warning-callout-text">
+                    <strong>High-risk, high-reward gameplay.</strong> Winning a slot auction commits your LGND NFT. A correct fight prediction steals rewards from stakers. An incorrect prediction means your LGND NFT is forfeited and its fate is decided by winning players.
+                </div>
+            </div>
+        </div>
+
+        <!-- Arena Mechanics -->
+        <div class="arena-mechanics">
+
+            <!-- Steal Rates -->
+            <div class="mechanics-section">
+                <div class="mechanics-section-title mechanics-section-title--red">Steal Rates &mdash; Winning Predictions</div>
+                <p class="mechanics-desc">When your fight prediction is correct, your LGND NFT steals a percentage of the rewards earned by players who staked NFTs on the winning fighter. The steal rate depends on the rarity of your LGND.</p>
+                <div class="steal-rates-grid">
+                    <div class="steal-rate-card steal-rate-card--fe">
+                        <div class="steal-rate-label">First Edition LGND</div>
+                        <div class="steal-rate-value steal-rate-value--fe">60%</div>
+                        <div class="steal-rate-sub">of staker rewards stolen</div>
+                    </div>
+                    <div class="steal-rate-card steal-rate-card--le">
+                        <div class="steal-rate-label">Limited Edition LGND</div>
+                        <div class="steal-rate-value steal-rate-value--le">55%</div>
+                        <div class="steal-rate-sub">of staker rewards stolen</div>
+                    </div>
+                    <div class="steal-rate-card steal-rate-card--se">
+                        <div class="steal-rate-label">Standard Edition LGND</div>
+                        <div class="steal-rate-value steal-rate-value--se">50%</div>
+                        <div class="steal-rate-sub">of staker rewards stolen</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lock Periods -->
+            <div class="mechanics-section">
+                <div class="mechanics-section-title mechanics-section-title--gold">Lock Periods &mdash; Losing Auction Bidders</div>
+                <p class="mechanics-desc">If you bid on a slot auction but do not win the slot, your LGND NFT is locked for a cooldown period before it can be used in another Arena auction. Lock duration depends on edition.</p>
+                <div class="lock-grid">
+                    <div class="lock-card">
+                        <div class="lock-card-type">Standard Edition</div>
+                        <div class="lock-card-days">90</div>
+                        <div class="lock-card-label">day lock</div>
+                    </div>
+                    <div class="lock-card">
+                        <div class="lock-card-type">Limited Edition</div>
+                        <div class="lock-card-days">60</div>
+                        <div class="lock-card-label">day lock</div>
+                    </div>
+                    <div class="lock-card">
+                        <div class="lock-card-type">First Edition</div>
+                        <div class="lock-card-days">30</div>
+                        <div class="lock-card-label">day lock</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Losing LGND Fate -->
+            <div class="mechanics-section">
+                <div class="mechanics-section-title mechanics-section-title--red">Losing LGND Fate</div>
+                <p class="mechanics-desc">When a prediction is wrong, the LGND NFT is forfeited. Winning players (those who staked on the correct fighter) vote on what happens to the lost LGND.</p>
+                <div class="fate-grid">
+                    <div class="fate-card">
+                        <div class="fate-number">1</div>
+                        <div class="fate-content">
+                            <div class="fate-title">Burn for $FIGHT Bribe</div>
+                            <div class="fate-desc">The LGND is burned permanently. In return, $FIGHT tokens are distributed as a bribe to winning voters.</div>
+                        </div>
+                    </div>
+                    <div class="fate-card">
+                        <div class="fate-number">2</div>
+                        <div class="fate-content">
+                            <div class="fate-title">Award to Random Solo Player</div>
+                            <div class="fate-desc">The forfeited LGND is awarded to a random individual player from the winning side of the pool.</div>
+                        </div>
+                    </div>
+                    <div class="fate-card">
+                        <div class="fate-number">3</div>
+                        <div class="fate-content">
+                            <div class="fate-title">Award to DAO Team</div>
+                            <div class="fate-desc">The LGND is transferred to the Fight Farm DAO team treasury for community-directed use.</div>
+                        </div>
+                    </div>
+                    <div class="fate-card">
+                        <div class="fate-number">4</div>
+                        <div class="fate-content">
+                            <div class="fate-title">Postpone &rarr; Zombie LGND</div>
+                            <div class="fate-desc">FE and LE only. The bribe is postponed for one year. The LGND becomes a Zombie LGND with a new role in the ecosystem.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Zombie LGNDs -->
+            <div class="mechanics-section" style="border-color: hsla(280, 40%, 50%, 0.15); background: hsla(280, 40%, 50%, 0.02);">
+                <div class="mechanics-section-title mechanics-section-title--zombie">Zombie LGNDs</div>
+                <p class="mechanics-desc">When a First Edition or Limited Edition LGND's bribe is postponed, it becomes a Zombie LGND &mdash; a transformed asset with a different purpose in the Fight Farm ecosystem.</p>
+                <div class="zombie-traits">
+                    <div class="zombie-trait">
+                        <span class="zombie-trait-icon">&#128683;</span>
+                        <div class="zombie-trait-text"><strong>No Arena gameplay.</strong> Zombie LGNDs cannot participate in slot auctions or make fight predictions.</div>
+                    </div>
+                    <div class="zombie-trait">
+                        <span class="zombie-trait-icon">&#129302;</span>
+                        <div class="zombie-trait-text"><strong>Fighter agent partnerships.</strong> Zombie LGNDs partner with fighter agents to generate revenue and earn ROI.</div>
+                    </div>
+                    <div class="zombie-trait">
+                        <span class="zombie-trait-icon">&#128176;</span>
+                        <div class="zombie-trait-text"><strong>Revenue split.</strong> Players split the original bribe plus a percentage of the auctioned Zombie LGND's generated revenue.</div>
+                    </div>
+                    <div class="zombie-trait">
+                        <span class="zombie-trait-icon">&#9200;</span>
+                        <div class="zombie-trait-text"><strong>One-year lifecycle.</strong> The Zombie LGND operates for one year from the date the bribe was postponed.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Staking -->
+            <div class="mechanics-section">
+                <div class="mechanics-section-title mechanics-section-title--green">Staking in the Arena</div>
+                <p class="mechanics-desc">All NFTs can be staked on Arena fights. Staking earns token emissions regardless of fight outcome, but only stakers on the winning fighter earn a share of the treasury yield.</p>
+                <div class="staking-rules">
+                    <div class="staking-rule">
+                        <div class="staking-rule-title">All Stakers Earn Emissions</div>
+                        <div class="staking-rule-desc">Every staked NFT earns $FIGHT and $ARENA token emissions. No rarity multipliers &mdash; all NFTs earn equally.</div>
+                        <div class="staking-rule-tokens">
+                            <span class="staking-token staking-token--fight">$FIGHT</span>
+                            <span class="staking-token staking-token--arena">$ARENA</span>
+                        </div>
+                    </div>
+                    <div class="staking-rule">
+                        <div class="staking-rule-title">Winning Side Earns Treasury Yield</div>
+                        <div class="staking-rule-desc">Only NFTs staked on the winning fighter receive a share of the treasury yield. Pick the wrong fighter and you miss out on yield &mdash; but you still keep your NFT and emissions.</div>
+                    </div>
+                </div>
+                <div class="warning-callout">
+                    <span class="warning-callout-icon">&#128161;</span>
+                    <div class="warning-callout-text">
+                        <strong>Staking is lower risk than LGND slots.</strong> Stakers never lose their NFTs. However, a winning LGND slot prediction will steal a portion of the staker rewards on that fight.
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 

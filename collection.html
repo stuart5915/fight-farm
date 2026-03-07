@@ -262,25 +262,25 @@
         <!-- Fighters -->
         <div class="fighters-section-title">Your Fighters</div>
         <div class="fighter-coll-grid">
-            <!-- Fighter 1: Complete set -->
+            <!-- Fighter 1: SE LGND -->
             <div class="fighter-coll-card">
                 <div class="fighter-coll-top">
                     <div class="fighter-coll-avatar">&#128081;</div>
                     <div>
                         <div class="fighter-coll-name">Max Holloway</div>
-                        <div class="fighter-coll-meta">LGND &middot; 155 lbs</div>
+                        <div class="fighter-coll-meta">SE LGND &middot; 155 lbs</div>
                     </div>
                 </div>
                 <div class="version-progress">
                     <div class="version-progress-label">
                         <span>Version Progress</span>
-                        <strong>3/3 &mdash; LGND Forged</strong>
+                        <strong>3/3 &mdash; SE LGND Forged</strong>
                     </div>
                     <div class="version-bar"><div class="version-bar-fill version-bar-fill--complete" style="width:100%"></div></div>
                     <div class="version-chips">
-                        <span class="version-chip version-chip--owned">v1 Burned</span>
-                        <span class="version-chip version-chip--owned">v2 Burned</span>
-                        <span class="version-chip version-chip--owned">v3 Burned</span>
+                        <span class="version-chip version-chip--owned">v1 SE Burned</span>
+                        <span class="version-chip version-chip--owned">v2 SE Burned</span>
+                        <span class="version-chip version-chip--owned">v3 SE Burned</span>
                     </div>
                 </div>
                 <div class="fighter-coll-actions">
@@ -289,30 +289,32 @@
                 </div>
             </div>
 
-            <!-- Fighter 2: Partial set -->
+            <!-- Fighter 2: Partial set with LE -->
             <div class="fighter-coll-card">
                 <div class="fighter-coll-top">
                     <div class="fighter-coll-avatar">&#129354;</div>
                     <div>
                         <div class="fighter-coll-name">Charles Oliveira</div>
-                        <div class="fighter-coll-meta">2 SEs &middot; 155 lbs</div>
+                        <div class="fighter-coll-meta">2 SEs + 1 LE &middot; 155 lbs</div>
                     </div>
                 </div>
                 <div class="version-progress">
                     <div class="version-progress-label">
                         <span>Version Progress</span>
-                        <strong>2/4 versions</strong>
+                        <strong>2/4 SE versions</strong>
                     </div>
                     <div class="version-bar"><div class="version-bar-fill" style="width:50%"></div></div>
                     <div class="version-chips">
-                        <span class="version-chip version-chip--owned">v1</span>
-                        <span class="version-chip version-chip--missing">v2</span>
-                        <span class="version-chip version-chip--owned">v3</span>
-                        <span class="version-chip version-chip--missing">v4</span>
+                        <span class="version-chip version-chip--owned">v1 SE</span>
+                        <span class="version-chip version-chip--missing">v2 SE</span>
+                        <span class="version-chip version-chip--owned">v3 SE</span>
+                        <span class="version-chip version-chip--missing">v4 SE</span>
+                        <span class="version-chip version-chip--owned" style="background:var(--arena-dim);color:var(--arena-blue);">v2 LE &#128167;</span>
                     </div>
                 </div>
                 <div class="fighter-coll-actions">
-                    <button class="coll-action-btn coll-action-btn--burn" disabled>Need all versions to forge LGND</button>
+                    <button class="coll-action-btn coll-action-btn--burn" disabled>Need all SE versions for SE LGND</button>
+                    <button class="coll-action-btn coll-action-btn--burn" disabled>Need all SEs + LE for LE LGND</button>
                 </div>
             </div>
 
@@ -341,31 +343,48 @@
                 </div>
             </div>
 
-            <!-- Fighter 4: LE holder -->
+            <!-- Fighter 4: LE holder with element -->
             <div class="fighter-coll-card">
                 <div class="fighter-coll-top">
                     <div class="fighter-coll-avatar" style="border-color:var(--arena-blue);">&#9733;</div>
                     <div>
                         <div class="fighter-coll-name">Caio Borralho</div>
-                        <div class="fighter-coll-meta">1 LE + 1 SE &middot; 185 lbs</div>
+                        <div class="fighter-coll-meta">1 LE (&#128293; Fire) + 1 SE &middot; 185 lbs</div>
                     </div>
                 </div>
                 <div class="version-progress">
                     <div class="version-progress-label">
                         <span>Version Progress</span>
-                        <strong>1/1 versions</strong>
+                        <strong>1/1 SE versions &mdash; Ready to forge!</strong>
                     </div>
-                    <div class="version-bar"><div class="version-bar-fill" style="width:100%"></div></div>
+                    <div class="version-bar"><div class="version-bar-fill version-bar-fill--complete" style="width:100%"></div></div>
                     <div class="version-chips">
-                        <span class="version-chip version-chip--owned">v1 (LE)</span>
-                        <span class="version-chip version-chip--owned">v1 (SE)</span>
+                        <span class="version-chip version-chip--owned">v1 SE</span>
+                        <span class="version-chip version-chip--owned" style="background:var(--arena-dim);color:var(--arena-blue);">v1 LE &#128293;</span>
                     </div>
                 </div>
                 <div class="fighter-coll-actions">
+                    <button class="coll-action-btn coll-action-btn--burn">Forge SE LGND</button>
+                    <button class="coll-action-btn coll-action-btn--burn" style="background:var(--arena-blue);color:#fff;">Forge LE LGND</button>
                     <button class="coll-action-btn coll-action-btn--stake">Stake in Vault</button>
                 </div>
             </div>
         </div>
+        <!-- Staking Info -->
+        <div class="staking-info" style="margin-top:2.5rem;padding:1.5rem;border-radius:var(--radius-lg);border:1px solid var(--border-subtle);background:var(--bg-card);">
+            <div style="font-family:var(--font-display);font-size:1.1rem;font-weight:700;text-transform:uppercase;margin-bottom:0.75rem;">Staking Rewards</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+                <div style="padding:1rem;border-radius:var(--radius-md);background:hsla(150,60%,45%,0.04);border:1px solid hsla(150,60%,45%,0.1);">
+                    <div style="font-family:var(--font-mono);font-size:0.68rem;font-weight:600;text-transform:uppercase;color:var(--fight-green);margin-bottom:0.3rem;">Emissions</div>
+                    <p style="font-size:0.8rem;color:var(--text-secondary);line-height:1.5;">All staked NFTs earn $FIGHT &amp; $ARENA emissions. Distributed evenly &mdash; no rarity multipliers.</p>
+                </div>
+                <div style="padding:1rem;border-radius:var(--radius-md);background:hsla(42,85%,55%,0.04);border:1px solid hsla(42,85%,55%,0.1);">
+                    <div style="font-family:var(--font-mono);font-size:0.68rem;font-weight:600;text-transform:uppercase;color:var(--gold);margin-bottom:0.3rem;">Treasury Yield</div>
+                    <p style="font-size:0.8rem;color:var(--text-secondary);line-height:1.5;">Only staked NFTs of the winning fighter earn treasury yield &mdash; LP fees, DeFi, trading, partners.</p>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <footer class="footer">

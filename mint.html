@@ -165,6 +165,28 @@
         }
         .le-notice-icon { font-size: 1.2rem; }
 
+        /* ── LE Elements ── */
+        .le-elements {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+        .le-element {
+            display: flex;
+            align-items: center;
+            gap: 0.4em;
+            padding: 0.4em 0.8em;
+            border-radius: var(--radius-sm);
+            background: hsla(0, 0%, 100%, 0.04);
+            border: 1px solid hsla(0, 0%, 100%, 0.06);
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--el-color, var(--text-secondary));
+        }
+        .le-element-icon { font-size: 1rem; }
+        .le-element-name { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.04em; }
+
         /* ── FE Auction ── */
         .fe-auction {
             display: grid;
@@ -310,10 +332,32 @@
                 <div class="mint-tier-title">Limited Edition</div>
                 <span class="mint-tier-badge mint-tier-badge--le">Max 5 Per Fighter</span>
             </div>
-            <p class="mint-tier-desc">$50-75 in $FIGHT only. Random launchpad &mdash; you don't pick your fighter. Max 5 per fighter per version. Comes with a free matching SE airdrop.</p>
+            <p class="mint-tier-desc">$50-75 in $FIGHT only. Random launchpad &mdash; you don't pick your fighter. Max 5 per fighter per version. Comes with a free matching SE airdrop. Each LE has an elemental affinity.</p>
             <div class="le-notice">
                 <span class="le-notice-icon">&#127922;</span>
                 <span><strong>Random drop:</strong> You'll receive a random fighter from this event's card. The surprise is part of the strategy.</span>
+            </div>
+            <div class="le-elements">
+                <div class="le-element" style="--el-color: hsl(10, 80%, 55%);">
+                    <span class="le-element-icon">&#128293;</span>
+                    <span class="le-element-name">Fire</span>
+                </div>
+                <div class="le-element" style="--el-color: hsl(210, 70%, 55%);">
+                    <span class="le-element-icon">&#128167;</span>
+                    <span class="le-element-name">Water</span>
+                </div>
+                <div class="le-element" style="--el-color: hsl(30, 60%, 45%);">
+                    <span class="le-element-icon">&#127759;</span>
+                    <span class="le-element-name">Earth</span>
+                </div>
+                <div class="le-element" style="--el-color: hsl(120, 50%, 45%);">
+                    <span class="le-element-icon">&#127795;</span>
+                    <span class="le-element-name">Wood</span>
+                </div>
+                <div class="le-element" style="--el-color: hsl(220, 15%, 65%);">
+                    <span class="le-element-icon">&#9881;</span>
+                    <span class="le-element-name">Metal</span>
+                </div>
             </div>
             <div style="text-align:center;padding:2rem;">
                 <button class="btn btn-secondary" style="cursor:not-allowed;opacity:0.5;">LE Launchpad &mdash; Coming Soon</button>
